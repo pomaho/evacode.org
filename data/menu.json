@@ -1,0 +1,39 @@
+{
+  "data": [
+    {
+      "title": "Главная",
+      "type": "sub",
+      "badgeValue": "new",
+      "active": false,
+      "path": "/"
+    },
+    {
+      "title": "Магазин",
+      "type": "sub",
+      "badgeValue": "new",
+      "active": false,
+      "path": "/collection/shop"
+    },
+    {
+      "title": "Доставка",
+      "type": "sub",
+      "badgeValue": "new",
+      "active": false,
+      "path": "/page/faq"
+    },
+    {
+      "title": "Контакты",
+      "type": "sub",
+      "badgeValue": "new",
+      "active": false,
+      "path": "/page/account/contact"
+    },
+    {
+      "title": "О нас",
+      "type": "sub",
+      "badgeValue": "new",
+      "active": false,
+      "path": "/page/about"
+    }
+  ]
+}
