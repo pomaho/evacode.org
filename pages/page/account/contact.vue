@@ -19,7 +19,7 @@
                     <h6>Звоните</h6>
                   </div>
                   <div class="media-body">
-                    <p>{{ phone1 }}</p>
+                    <p><phone-link :phone="phone1" /> (там WhatsApp)</p>
                   </div>
                 </li>
                 <li>
@@ -37,8 +37,8 @@
                     <h6>Email</h6>
                   </div>
                   <div class="media-body">
-                    <p>{{ email1 }}</p>
-                    <p>{{ email2 }}</p>
+                    <p><mail-link :email="email1"/></p>
+                    <p><mail-link :email="email2"/></p>
                   </div>
                 </li>
               </ul>
@@ -99,7 +99,7 @@ export default {
     return {
       phoneimage: '/images/icon/phone.png',
       emailimage: '/images/icon/email.png',
-      phone1: '+8210-7652-8595 (там WhatsApp)',
+      phone1: '+8210-7652-8595',
       phone2: '',
       address: '안산시 단원구 초지동 742-3, 2 этаж, 210 кабинет <br />' +
           'Gyeonggi-do, Ansan-si, Danwon-gu, Choji-dong, 742-3, 210호',

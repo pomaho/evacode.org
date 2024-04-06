@@ -7,7 +7,7 @@
             <ul>
               <li>Добро пожаловать в наш интернет-магазин "Evacode"</li>
               <li>
-                <i class="fa fa-phone" aria-hidden="true"></i>Звоните нам: +8210-7652-8595 (там WhatsApp)
+                <i class="fa fa-phone" aria-hidden="true"></i>Звоните нам: <phone-link :phone="'+8210-7652-8595'"/> (там WhatsApp)
               </li>
             </ul>
           </div>
