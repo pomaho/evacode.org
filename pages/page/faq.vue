@@ -12,8 +12,7 @@
                   <h5 class="mb-0">
                     <button class="btn btn-link" type="button" data-bs-toggle="collapse"
                                            :data-bs-target="`#collapseOne${index}`" :aria-expanded="index === 0"
-                                           :aria-controls="`collapseOne${index}`">
-                      {{ item.question }}
+                                           :aria-controls="`collapseOne${index}`" v-html="item.question">
                     </button>
                   </h5>
                 </div>
@@ -22,8 +21,7 @@
                   show: index === 0,
                 }" :aria-labelledby="`headingOne${index}`"
                      data-bs-parent="#accordionExample">
-                  <div class="card-body">
-                    <p>{{ item.answer }}</p>
+                  <div class="card-body" v-html="item.answer">
                   </div>
                 </div>
               </div>
@@ -43,28 +41,95 @@ export default {
     return {
       items: [
         {
-          question: 'How can I downgrade to an earlier version of Dummy Content?',
-          answer: 'it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years,All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words. combined with a handful of model sentence structures'
+          question: '🇺🇿  Узбекистан',
+          answer: '<p>📦 1 кг - 10$</p>' +
+              '<p>Другие города Узбекистана +10$ за коробку</p>' +
+              '<p>(с Ташкента в другие города)</p>' +
+              '<p>Вес не имеет значения.</p>' +
+              '<p>🕒 Срок доставки - неделя с момента отправки.</p>' +
+              '<p>Оплата за доставку в Узбекистане при получении</p>'
         },
         {
-          question: 'How can I upgrade from version?',
-          answer: 'it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years,All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words. combined with a handful of model sentence structures'
+          question: '🇰🇬  Кыргызстан Бишкек',
+          answer: '<p>📦 1 кг - 12$</p>' +
+              '<p>🕒 Срок доставки 1-2 недели</p>' +
+              '<p>Отправка каждую пятницу</p>' +
+              '<p>Доставка в другие города за доплату по тарифам местной почты</p>' +
+              '<p>Оплата за доставку при выходе груза с таможни</p>'
         },
         {
-          question: 'Under what license are Regular Labs extensions released?',
-          answer: 'it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years,All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words. combined with a handful of model sentence structures'
+          question: '🇰🇷  Корея',
+          answer: '<p>🔹️4000 вон. - 1- 2 рабочих дня</p>' +
+              '<p>🙋‍ Доставка посылки осуществляется до дверей.</p>'
         },
         {
-          question: 'Can I turn on/off some blocks on the page?',
-          answer: 'it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years,All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words. combined with a handful of model sentence structures'
+          question: '🇹🇷  Турция',
+          answer: '<p>📦 1 кг - 20$</p>' +
+              '<p>Минимальный вес- 2 кг</p>' +
+              '<p>🕒 Срок доставки 2-3 недели с момента отправки</p>' +
+              '<p>До Стамбула.</p>' +
+              '<p>Другие города Турции за доплату по тарифам местной почты</p>'
         },
         {
-          question: 'What is included in the theme package?',
-          answer: 'it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years,All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words. combined with a handful of model sentence structures'
+          question: '🇷🇺  Россия',
+          answer: '<p>В Россию есть 3 способа доставки:</p>' +
+              '<br/>' +
+              '<p>⭕️  Any Logis. Корея-Владивосток</p>' +
+              '<p>📦 1кг - 4,9$ + 0.5$ 1кг Переупаковка</p>' +
+              '<p>Доставка по РФ транспортными компаниями СДЭК, Желдорэкспедиция и тд по тарифам транспортных компаний.</p>' +
+              '<p>Авиа и ЖД –по факту, согласно тарифам российских транспортных компаний.</p>' +
+              '<p>Минимальный вес: 10 кг.</p>' +
+              '<p>🕒 Срок доставки: 2-3 недели.</p>' +
+              '<p>Оплата за доставку логистам после выхода посылки из таможни.</p>' +
+              '<br/>' +
+              '<br/>' +
+              '<p>⭕️  EMS' +
+              '<p>📦 Стоимость доставки зависит от веса и параметров посылки.</p>' +
+              '<p>Любой вес.</p>' +
+              '<p>🕒 Срок доставки 1-2 недели.' +
+              '<p>Оплата за доставку вместе с заказом</p>' +
+              '<br/>' +
+              '<br/>' +
+              '<p>⭕️ SHIPKOR от 2кг</p>' +
+              '<p>Тариф доставки для косметики:' +
+              '<p>📦 Зимний период - Корея-Владивосток - 4,2$/кг. (0,2$/кг- надбавка за теплорежим). </p>' +
+              '<p>📦 Бады 12$/кг до Владивостока </p>' +
+              '<p>🕒 Срок доставки 10-14 дней с момента отправки из Южной Кореи </p>' +
+              '<p>Выход парома каждую пятницу</p>' +
+              '<p>Из Владивостока до Вашего города стоимость доставки зависит от способа  доставки (наземный или авиа). </p>' +
+              '<p>Приблизительную стоимость доставки можно рассчитать на сайте ТК: <a target="_blank" href="https://dpd.ru">dpd.ru</a>, <a target="_blank" href="https://jde.ru">jde.ru</a>.</p>' +
+              '<p>Курс доллара берется на день выхода груза с таможни.</p>' +
+              '<p>Расчет по доставке, с расшифровкой присылаем после отправки из Владивостока, вместе с ТТН</p>' +
+              '<p>Таможенное оформление входит в стоимость доставки</p>'
         },
         {
-          question: 'how to install and run project?',
-          answer: 'it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years,All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words. combined with a handful of model sentence structures'
+          question: '🇰🇿 Казахстан',
+          answer: '<p>Есть 2 способа доставки </p>' +
+              '<br/>' +
+              '<p>⭕️ ESL Logis. Казахстан (Алматы) </p>' +
+              '<p>📦 Косметика, витамины - 10$ за кг </p>' +
+              '<p>Минимальный вес 5кг (груз менее 5кг считают как 5кг).</p>' +
+              '<p>🕒 Сроки доставки 1-2 дня с момента вылета рейса (еженедельно) </p>' +
+              '<p>📦 Другие города Казахстана +1$ за 1кг</p>' +
+              '<p>Доставка до города/склада</p>' +
+              '<p>Оплата в Казахстане в $, либо в тенге, по курсу на момент выхода груза. </p>' +
+              '<br/>' +
+              '<p>⭕️ Манас</p>' +
+              '<p>📦 1 кг - 12$</p>' +
+              '<p>🕒 Срок доставки 2 недели.</p>' +
+              '<p>Любой вес от 1 кг. Оплата при выходе с таможни</p>'
+        },
+        {
+          question: '🇪🇺  Европа, 🇺🇸 Америка, 🇺🇦 Украина и др.',
+          answer: '<p>⭕️EMS</p>' +
+              '<br/>' +
+              '<p>📦 Стоимость доставки зависит от веса и параметров посылки.</p>' +
+              '<p>Любой вес.</p>' +
+              '<p>🕒 Срок доставки 1-2 недели. Оплата за доставку вместе с заказом.</p>' +
+              '<p>После оплаты за заказ Мы отправляем груз логистической компании(4$ доставка по Корее) </p>' +
+              '<p>Логисты получают ваш заказ через 1-2 дня </p>' +
+              '<p>Оформляют и отправляют к вам </p>' +
+              '<p>Оплата за доставку в зависимости от страны </p>'
         }
       ]
     }
