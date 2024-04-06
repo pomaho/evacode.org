@@ -45,47 +45,6 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <form class="theme-form" @submit="checkForm" method="post">
-              <div v-if="errors.length">
-                <ul class="validation-error mb-3">
-                  <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
-                </ul>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <label for="fname">Имя</label>
-                  <input type="text" class="form-control" id="fname" v-model="fname" placeholder="Имя"
-                         name="fname" required/>
-                </div>
-                <div class="col-md-6">
-                  <label for="lname">Фамилия</label>
-                  <input type="text" class="form-control" id="lname" v-model="lname" placeholder="Фамилия"
-                         name="lname" required/>
-                </div>
-                <div class="col-md-6">
-                  <label for="phone">Номер телефона</label>
-                  <input type="tel" class="form-control" id="phone" v-model="phone" placeholder="Введите свой номер телефона"
-                         name="phone" required/>
-                </div>
-                <div class="col-md-6">
-                  <label for="email">Email</label>
-                  <input type="text" class="form-control" id="email" v-model="email" placeholder="Email" name="email"
-                         required/>
-                </div>
-                <div class="col-md-12">
-                  <label for="message">Напишите свое сообщение</label>
-                  <textarea class="form-control" placeholder="Напишите свое сообщение" id="message" v-model="message"
-                            name="message" rows="6"></textarea>
-                </div>
-                <div class="col-md-12">
-                  <input type="submit" class="btn btn-solid m-0" value="Отправить Ваше Сообщение">
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
       </div>
     </section>
   </div>
