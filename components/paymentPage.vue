@@ -7,70 +7,51 @@
             <div class="row">
               <div class="col-lg-6 col-sm-12">
                 <div class="checkout-title">
-                  <h3>Billing Details</h3>
+                  <h3>Данные о заказчике</h3>
                 </div>
                 <div class="row check-out">
                   <div class="form-group col-md-6 col-sm-6">
-                    <div class="field-label">First Name</div>
+                    <div class="field-label">Имя</div>
                     <input type="text" v-model="user.firstName.value" name="First name" />
                     <span class="validate-error" v-if="user.firstName.value.length === 0">{{
                       user.firstName.errormsg
                     }}</span>
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
-                    <div class="field-label">Last Name</div>
+                    <div class="field-label">Фамилия</div>
                     <input type="text" v-model="user.lastName.value" name="Last name" />
                     <span class="validate-error" v-if="user.lastName.value.length === 0">{{
                       user.lastName.errormsg
                     }}</span>
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
-                    <div class="field-label">Phone</div>
+                    <div class="field-label">Телефон</div>
                     <input type="tel" v-model="user.phone.value" name="Phone" />
                     <span class="validate-error" v-if="user.phone.value.length === 0">{{ user.phone.errormsg }}</span>
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
-                    <div class="field-label">Email Address</div>
+                    <div class="field-label">Email</div>
+                    <input type="email" v-model="user.email.value" name="Email Address" />
+                    <span class="validate-error" v-if="!user.email.value || !validEmail(user.email.value)">{{
+                      user.email.errormsg
+                    }}</span>
+                  </div>
+                  <div class="form-group col-md-6 col-sm-6">
+                    <div class="field-label">Telegram</div>
+                    <input type="tel" v-model="user.phone.value" name="Phone" />
+                    <span class="validate-error" v-if="user.phone.value.length === 0">{{ user.phone.errormsg }}</span>
+                  </div>
+                  <div class="form-group col-md-6 col-sm-6">
+                    <div class="field-label">Instagram</div>
                     <input type="email" v-model="user.email.value" name="Email Address" />
                     <span class="validate-error" v-if="!user.email.value || !validEmail(user.email.value)">{{
                       user.email.errormsg
                     }}</span>
                   </div>
                   <div class="form-group col-md-12 col-sm-12">
-                    <div class="field-label">Country</div>
-                    <select required>
-                      <option>India</option>
-                      <option selected>South Africa</option>
-                      <option>United State</option>
-                      <option>Australia</option>
-                    </select>
-                  </div>
-                  <div class="form-group col-md-12 col-sm-12">
-                    <div class="field-label">Address</div>
-                    <input type="text" v-model="user.address.value" name="Address" />
-                    <span class="validate-error" v-if="user.address.value.length === 0">{{
-                      user.address.errormsg
-                    }}</span>
-                  </div>
-                  <div class="form-group col-md-12 col-sm-12">
-                    <div class="field-label">Town/City</div>
+                    <div class="field-label">Город</div>
                     <input type="text" v-model="user.city.value" name="City" />
                     <span class="validate-error" v-if="user.city.value.length === 0">{{ user.city.errormsg }}</span>
-                  </div>
-                  <div class="form-group col-md-12 col-sm-6">
-                    <div class="field-label">State / County</div>
-                    <input type="text" v-model="user.state.value" name="State" />
-                    <span class="validate-error" v-if="user.state.value.length === 0">{{ user.state.errormsg }}</span>
-                  </div>
-                  <div class="form-group col-md-12 col-sm-6">
-                    <div class="field-label">Postal Code</div>
-                    <input type="text" v-model="user.pincode.value" name="Postal Code" />
-                    <span class="validate-error" v-if="user.pincode.value.length === 0">{{
-                      user.pincode.errormsg
-                    }}</span>
-                  </div>
-                  <div class="form-group col-lg-12 col-md-12 col-sm-12">
-                    <nuxt-link :to="{ path: '/page/account/register' }">Create an Account?</nuxt-link>
                   </div>
                 </div>
               </div>
@@ -79,8 +60,8 @@
                   <div class="order-box">
                     <div class="title-box">
                       <div>
-                        Product
-                        <span>Total</span>
+                        Продукт
+                        <span>Всего</span>
                       </div>
                     </div>
                     <ul class="qty" v-if="cart.length">
@@ -91,10 +72,10 @@
                     </ul>
                     <ul class="sub-total">
                       <li>
-                        Subtotal
+                        Итого
                         <span class="count">{{ cartTotal * curr.curr }}</span>
                       </li>
-                      <li>Shipping
+                      <li>Доставка
                         <div class="shipping">
                           <div class="shopping-option">
                             <input type="checkbox" name="free-shipping" id="free-shipping">
@@ -109,43 +90,14 @@
                     </ul>
                     <ul class="sub-total">
                       <li>
-                        Total
+                        Общая стоимость
                         <span class="count">{{ cartTotal * curr.curr }}</span>
                       </li>
                     </ul>
                   </div>
                   <div class="payment-box">
-                    <div class="upper-box">
-                      <div class="payment-options">
-                        <ul>
-                          <li>
-                            <label class="d-block" for="edo-ani1">
-                              <input class="radio_animated" id="edo-ani1" value="stripe" v-model="selectedPayment"
-                                type="radio" name="rdo-ani" data-original-title="">Stripe
-                            </label>
-
-                          </li>
-                          <li>
-                            <label class="d-block" for="edo-ani2">
-
-                              <input class="radio_anima ted" id="edo-ani2" value="paypal" v-model="selectedPayment"
-                                type="radio" name="rdo-ani" data-original-title="" title="">PayPal
-
-
-                            </label>
-
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
                     <div class="text-end">
-
-
-                      <div id="paypal-button-container" :class="[{ 'd-none': selectedPayment != 'paypal' }]"></div>
-                      <div class="order-place" v-if="selectedPayment === 'stripe' && cart.length">
-
-                        <button class="btn btn-primary" @click.prevent="payWithStripe">Place Order </button>
-                      </div>
+                      <button class="btn btn-primary" @click.prevent="onSubmit">Отправить заказ</button>
                     </div>
                   </div>
                 </div>
@@ -205,7 +157,7 @@ import { useProductStore } from '~~/store/products'
       amtchar: ''
     }
   },
- 
+
 watch:{
     cart:{
       handler(value){
@@ -213,55 +165,13 @@ watch:{
           useNuxtApp().$showToast({ msg: "Cart is Empty.", type: "error" })
           this.$router.replace('/page/account/cart')
         }
-        
+
       },deep:true
     }
   },
 
 
   methods: {
-
-    payWithStripe() {
-      this.onSubmit()
-
-      this.isLogin = useCookie('userlogin').value
-      if (!this.isLogin) {
-
-        this.$router.replace('/page/account/login')
-      }
-      else if (this.user.firstName.errormsg != '' && this.user.lastName.errormsg != '' && this.user.city.errormsg != '' && this.user.pincode.errormsg != '' && this.user.state.errormsg != '' && this.user.phone.errormsg != '' && this.user.address.errormsg != '' && this.user.email.errormsg != '') {
-
-        this.onSubmit()
-      }
-      else if (this.isLogin) {
-
-        this.payment = false
-        var handler = (window).StripeCheckout.configure({
-          key: 'PUBLISHBLE_KEY', // 'PUBLISHBLE_KEY'
-          locale: 'auto',
-          closed: function () {
-            handler.close()
-          },
-          token: (token) => {
-            this.$store.dispatch('products/createOrder', {
-              product: this.cart,
-              userDetail: this.user,
-              token: token.id,
-              amt: this.cartTotal
-            })
-            this.$router.push('/page/order-success')
-          }
-        });
-        handler.open({
-          name: 'Multikart ',
-          description: 'Your Choice Theme',
-          amount: this.cartTotal * 100
-        });
-      }
-
-
-    },
-
     onSubmit() {
 
       if (this.user.firstName.value.length <= 1 || this.user.firstName.value.length > 10) {
@@ -318,7 +228,7 @@ watch:{
       return re.test(email)
     }
   },
-  
+
    mounted(){
     window.paypal.Buttons({
 
@@ -327,12 +237,9 @@ watch:{
 
 
 
-    this.isLogin = useCookie('userlogin').value
+    this.isLogin = true;
 
-    if (!this.isLogin) {
-      this.$router.replace('/page/account/login')
-    }
-    else if (this.isLogin && this.cart.length == 0) {
+    if (this.isLogin && this.cart.length == 0) {
       useNuxtApp().$showToast({ msg: "Cart is Empty.", type: "error" })
       this.$router.replace('/page/account/cart')
     }
