@@ -107,13 +107,6 @@
                 </h4>
                 <h3 v-if="getDetail.sale">{{ curr.symbol }}{{ discountedPrice(getDetail) }}</h3>
                 <h3 v-else>{{ curr.symbol }}{{ (getDetail.price * curr.curr).toFixed(2) }}</h3>
-                <ul class="color-variant">
-                  <li v-bind:class="{ active: activeColor == variant }"
-                    v-for="(variant, variantIndex) in Color(getDetail.variants)" :key="variantIndex">
-                    <a :class="[variant]" v-bind:style="{ 'background-color': variant }"
-                      v-on:click="sizeVariant(getDetail.variants[variantIndex].image_id, variantIndex, variant)"></a>
-                  </li>
-                </ul>
                 <div class="product-description border-product">
                   <h6 class="product-title">Time Reminder</h6>
                   <WidgetsTimer date="December 20, 2020" />

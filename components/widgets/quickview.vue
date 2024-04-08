@@ -28,11 +28,6 @@
                     <del>{{ (productData.price * curr.curr).toFixed(2) }}</del>
                   </h3>
                   <h3 v-else>{{ (productData.price * curr.curr).toFixed(2) }}</h3>
-                  <ul class="color-variant" v-if="productData.variants[0].color">
-                    <li v-for="(variant, variantIndex) in Color(productData.variants)" :key="variantIndex">
-                      <a :class="[variant]" v-bind:style="{ 'background-color': variant }"></a>
-                    </li>
-                  </ul>
                   <div class="product-description border-product" v-if="productData.variants[0].size">
                     <h6 class="product-title">select size</h6>
                     <div class="size-box">

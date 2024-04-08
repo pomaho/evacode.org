@@ -39,14 +39,6 @@
                                 </h4>
                                 <h3 v-if="getDetail.sale">{{ curr.symbol }}{{ discountedPrice(getDetail) }}</h3>
                                 <h3 v-else>{{ curr.symbol }}{{ (getDetail.price * curr.curr).toFixed(2) }}</h3>
-                                <ul class="color-variant">
-                                    <li v-bind:class="{ active: activeColor == variant }"
-                                        v-for="(variant, variantIndex) in Color(getDetail.variants)"
-                                        :key="variantIndex">
-                                        <a :class="[variant]" v-bind:style="{ 'background-color': variant }"
-                                            @click="sizeVariant(getDetail.variants[variantIndex].image_id, variantIndex, variant)"></a>
-                                    </li>
-                                </ul>
                                 <div class="pro_inventory" v-if="getDetail.stock < 8">
                                     <p class="active"> Hurry! We have only {{ getDetail.stock }} product in stock. </p>
                                     <div class="inventory-scroll">

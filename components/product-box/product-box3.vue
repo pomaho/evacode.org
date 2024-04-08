@@ -48,12 +48,6 @@
         <del>{{ (product.price * curr.curr).toFixed(2) }}</del>
       </h4>
       <h4 v-else>{{ curr.symbol }}{{ (product.price * curr.curr).toFixed(2) }}</h4>
-      <ul class="color-variant" v-if="product.variants[0].color">
-        <li v-for="(variant, variantIndex) in Color(product.variants)" :key="variantIndex">
-          <a @click="productColorchange(variant, product, index)" :class="[variant]"
-            v-bind:style="{ 'background-color': variant }"></a>
-        </li>
-      </ul>
       <div class="add-btn">
         <button data-toggle="modal" data-target="#addtocart" title="Добавить в корзину" class="btn btn-outline"
           @click="addToCart(product)">
