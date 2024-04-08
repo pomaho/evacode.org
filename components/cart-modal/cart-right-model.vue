@@ -4,7 +4,7 @@
       <a href="javascript:void(0)" class="overlay" @click="closeCart(openCart)"></a>
       <div class="cart-inner">
         <div class="cart_top">
-          <h3>my cart</h3>
+          <h3>Моя корзина</h3>
           <div class="close-cart">
             <a href="javascript:void(0)" @click="closeCart(openCart)">
               <i class="fa fa-times" aria-hidden="true"></i>
@@ -23,7 +23,7 @@
                     <h4>{{ item.title }}</h4>
                   </nuxt-link>
                   <h4>
-                    <span>{{ curr.symbol }}{{ item.quantity }} x {{ item.price * curr.curr }}</span>
+                    <span>{{ item.quantity }} x {{ curr.symbol }}{{ item.price * curr.curr }}</span>
                   </h4>
                 </div>
               </div>
@@ -38,7 +38,7 @@
             <li>
               <div class="total">
                 <h5>
-                  subto11tal :
+                  Итого :
                   <span>{{ curr.symbol }}{{ cartTotal * curr.curr }}</span>
                 </h5>
               </div>
@@ -46,10 +46,10 @@
             <li>
               <div class="buttons">
                 <nuxt-link :to="{ path: '/page/account/cart' }" :class="'btn btn-solid btn-xs view-cart'">
-                  view cart
+                  Посмотреть корзину
                 </nuxt-link>
                 <nuxt-link :to="{ path: '/page/account/checkout' }" :class="'btn btn-solid btn-xs checkout'">
-                  checkout
+                  Моя корзина
                 </nuxt-link>
               </div>
             </li>

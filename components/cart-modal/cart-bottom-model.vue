@@ -4,7 +4,7 @@
       <a href="javascript:void(0)" class="overlay" v-on:click="closeCart(openCart)"></a>
       <div class="cart-inner">
         <div class="cart_top">
-          <h3>my cart</h3>
+          <h3>Моя корзина</h3>
           <div class="close-cart">
             <a href="javascript:void(0)" v-on:click="closeCart(openCart)">
               <i class="fa fa-times" aria-hidden="true"></i>
@@ -46,10 +46,10 @@
             <li>
               <div class="buttons">
                 <nuxt-link :to="{ path: '/page/account/cart' }" :class="'btn btn-solid btn-xs view-cart'">
-                  view cart
+                  Посмотреть корзину
                 </nuxt-link>
                 <nuxt-link :to="{ path: '/page/account/checkout' }" :class="'btn btn-solid btn-xs checkout'">
-                  checkout
+                  Заказать
                 </nuxt-link>
               </div>
             </li>

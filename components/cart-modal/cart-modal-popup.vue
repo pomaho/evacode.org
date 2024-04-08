@@ -13,7 +13,6 @@
                             <div class="row cart-modal">
                                 <div class="col-lg-12 position-relative">
                                     <div class="modal-bg addtocart">
-                                        <div class="modal-header"><h5 class="modal-title">Sheer Straight Kurta</h5><button type="button" class="btn-close" aria-label="Close"></button></div>trim dress
                                         <button class="close btn-close" type="button" @click="closeCart(openCart)">
                                             <span>x</span>
                                         </button>
@@ -25,28 +24,23 @@
                                             <div class="media-body align-self-center text-center">
                                                 <a href="#">
                                                     <h6>
-                                                        <i class="fa fa-check"></i>Item
+                                                        <i class="fa fa-check"></i>Товар
                                                         <span>{{ productData.title }}</span>
-                                                        <span> successfully added to your Cart.</span>
+                                                        <span> успешно добавлен в корзину.</span>
                                                     </h6>
                                                 </a>
                                                 <div class="buttons d-flex justify-content-center">
                                                     <nuxt-link :to="{ path: '/page/account/cart' }"
-                                                        class="btn-sm btn-solid mr-2">View Cart</nuxt-link>
+                                                        class="btn-sm btn-solid mr-2">Посмотреть корзину</nuxt-link>
                                                     <nuxt-link :to="{ path: '/page/account/checkout' }"
-                                                        class="btn-sm btn-solid mr-2">Checkout</nuxt-link>
-                                                    <nuxt-link :to="{ path: '/' }" class="btn-sm btn-solid">Continue
-                                                        Shopping</nuxt-link>
-                                                </div>
-                                                <div class="upsell_payment">
-                                                    <img alt="" class="img-fluid w-auto mt-3"
-                                                        src="/images/payment_cart.png">
+                                                        class="btn-sm btn-solid mr-2">Оформить заказ</nuxt-link>
+                                                    <nuxt-link :to="{ path: '/' }" class="btn-sm btn-solid">Продолжить покупки</nuxt-link>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="product-section">
                                             <div class="col-12 product-upsell text-center">
-                                                <h4>Customers who bought this item also.</h4>
+                                                <h4>Клиенты которые покупали этот товар.</h4>
                                             </div>
                                             <div class="row upsell_product">
                                                 <div v-for="(product, index) in cartRelatedProducts(productData.collection[0], productData.id).slice(0, 4)"
@@ -138,4 +132,4 @@ export default {
         }
     },
 }
-</script> 
+</script>
