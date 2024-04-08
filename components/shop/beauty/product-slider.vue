@@ -4,7 +4,7 @@
       <h4>{{ subtitle }}</h4>
       <h2 class="title-inner1">{{ title }}</h2>
     </div>
-    <section class="pt-0 ratio_asos">
+    <section class="pt-0 ratio_asos section-b-space">
       <div class="container">
         <div class="row">
           <div class="col">
