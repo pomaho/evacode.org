@@ -1,7 +1,7 @@
 <template>
 <Header/>
   <div>
-    <WidgetsBreadcrumbs title="collection"/>
+    <WidgetsBreadcrumbs title="Товары"/>
     <section class="section-b-space ratio_asos">
       <div class="collection-wrapper">
         <div class="container">
@@ -17,17 +17,6 @@
                       <a href="#">
                         <img src='/images/mega-menu/2.jpg' class="img-fluid" alt />
                       </a>
-                      <div class="top-banner-content small-section">
-                        <h4>BIGGEST DEALS ON TOP BRANDS</h4>
-                        <!-- <h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h5> -->
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                          been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                          galley of type and scrambled it to make a type specimen book. It has survived not only five
-                          centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It
-                          was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                          passages, and more recently with desktop publishing software like Aldus PageMaker including
-                          versions of Lorem Ipsum.</p>
-                      </div>
                     </div>
                     <ul class="product-filter-tags">
                       <li class="me-1" v-for="(tag, index) in allfilters" :key="index">
@@ -35,7 +24,7 @@
                             @click="removeTags(tag)"></i></a>
                       </li>
                       <li class="clear_filter" v-if="allfilters.length > 0"><a href="javascript:void(0)"
-                          class="clear_filter" @click="removeAllTags()">Clear all</a></li>
+                          class="clear_filter" @click="removeAllTags()">Очистить</a></li>
                     </ul>
                     <div class="collection-product-wrapper">
                       <div class="product-top-filter">
@@ -43,7 +32,7 @@
                           <div class="col-12">
                             <div class="product-filter-content">
                               <div class="search-count">
-                                <h5>Showing Products 1-12 of {{ filterProduct.length }} Result</h5>
+                                <h5>Отображены товары 1-12 из {{ filterProduct.length }}</h5>
                               </div>
                               <div class="collection-view">
                                 <ul>
@@ -73,11 +62,11 @@
                               </div>
                               <div class="product-page-filter">
                                 <select @change="onChangeSort($event)">
-                                  <option value="all">Sorting Items</option>
-                                  <option value="a-z">Alphabetically, A-Z</option>
-                                  <option value="z-a">Alphabetically, Z-A</option>
-                                  <option value="low">price, low to high</option>
-                                  <option value="high">price, high to low</option>
+                                  <option value="all">Сортировка</option>
+                                  <option value="a-z">По алфавиту, A-Z</option>
+                                  <option value="z-a">По алфавиту, Z-A</option>
+                                  <option value="low">Цена, низ до верх</option>
+                                  <option value="high">Цена, верх до низ</option>
                                 </select>
                               </div>
                             </div>
@@ -89,9 +78,9 @@
                           <div class="col-12">
                             <div class="text-center section-t-space section-b-space" v-if="filterProduct.length == 0">
                               <img src='/images/empty-search.jpg' class="img-fluid" alt />
-                              <h3 class="mt-3">Sorry! Couldn't find the product you were looking For!!!</h3>
+                              <h3 class="mt-3">Извините! Не найден товар который Вы искали!!!</h3>
                               <div class="col-12 mt-3">
-                                <nuxt-link :to="{ path: '/' }" class="btn btn-solid">continue shopping</nuxt-link>
+                                <nuxt-link :to="{ path: '/' }" class="btn btn-solid">Продолжить покупки</nuxt-link>
                               </div>
                             </div>
                           </div>
@@ -136,7 +125,7 @@
                             </div>
                             <div class="col-xl-6 col-md-6 col-sm-12">
                               <div class="product-search-count-bottom">
-                                <h5>Showing Products 1-12 of {{ filterProduct.length }} Result</h5>
+                                <h5>Отображены товары 1-12 из {{ filterProduct.length }}</h5>
                               </div>
                             </div>
                           </div>

@@ -18,13 +18,13 @@
                     </span>
                 </div>
                 <div class="collection-collapse-block open">
-                    <h3 class="collapse-block-title" @click="live = !live">Category</h3>
+                    <h3 class="collapse-block-title">Категории</h3>
 
-                    <div class="collection-collapse-block-content" :style="{ display: live ? 'block' : 'none' }">
+                    <div class="collection-collapse-block-content" :style="{ display: 'block'}">
                         <div class="collection-brand-filter">
                             <ul class="category-list">
                                 <li>
-                                    <nuxt-link :to="{ path: '/collection/leftsidebar/all' }">All products</nuxt-link>
+                                    <nuxt-link :to="{ path: '/collection/leftsidebar/all' }">Все товары</nuxt-link>
                                 </li>
                                 <li v-for="(category, index) in filterbyCategory" :key="index">
                                     <nuxt-link :to="{ path: '/collection/leftsidebar/' + category }"
@@ -36,72 +36,9 @@
 
                 </div>
             </div>
-            <!-- side-bar colleps block stat -->
-            <div class="collection-filter-block">
-                <!-- brand filter start -->
-                <div class="collection-collapse-block open" v-if="filterbyBrand.length">
-                    <h3 class="collapse-block-title" @click="live1 = !live1">brand</h3>
-                    <div class="collection-collapse-block-content" :style="{ display: live1 ? 'block' : 'none' }">
-                        <div class="collection-brand-filter">
-                            <div class="form-check collection-filter-checkbox" v-for="(brand, index) in filterbyBrand"
-                                :key="index">
-                                <input type="checkbox" class="form-check-input" :value="brand" :id="brand"
-                                    v-model="applyFilter" @change="appliedFilter(brand)">
-                                <label class="form-check-label" v-bind:for="brand">{{ brand }}</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- color filter start here -->
-                <div class="collection-collapse-block open" v-if="filterbycolor.length">
-                    <h3 class="collapse-block-title" @click="live2 = !live2">colors</h3>
-                    <div class="collection-collapse-block-content" :style="{ display: live2 ? 'block' : 'none' }">
-                        <div class="collection-brand-filter color-filter">
-                            <div class="custom-control custom-checkbox collection-filter-checkbox p-0"
-                                v-for="(color, index) in filterbycolor" :key="index">
-                                <input type="checkbox" class="custom-control-input form-check-input" :value="color"
-                                    :id="color" v-model="applyFilter" @change="appliedFilter(color)" />
-                                <span :class="color" v-bind:style="{ 'background-color': color }"></span>
-                                <label class="custom-control-label p-0" :class="{ selected: isActive(color) }"
-                                    v-bind:for="color">{{ color }}</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- size filter start here -->
-                <div class="collection-collapse-block border-0 open" v-if="filterbysize.length">
-                    <h3 class="collapse-block-title" @click="live3 = !live3">size</h3>
-                    <div class="collection-collapse-block-content" :style="{ display: live3 ? 'block' : 'none' }">
-                        <div class="color-selector">
-                            <div class="collection-brand-filter">
-                                <div class="custom-control p-0 custom-checkbox collection-filter-checkbox"
-                                    v-for="(size, index) in filterbysize" :key="index">
-                                    <input type="checkbox" class="custom-control-input form-check-input" :value="size"
-                                        :id="size" v-model="applyFilter" @change="appliedFilter(size)" />
-                                    <label class="custom-control-label" v-bind:for="size">{{ size }}</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- price filter start here -->
-                <div class="collection-collapse-block border-0 open">
-                    <h3 class="collapse-block-title" @click="live4 = !live4">price</h3>
-                    <div class="collection-collapse-block-content" :style="{ display: live4 ? 'block' : 'none' }">
-                        <div class="collection-brand-filter price-rangee-picker m-0 mt-3">
-                            <input type="range" :min="min" :max="max" v-model="start" class="w-100"
-                                @change="sliderChange([min, start])">
-                        </div>
-                    </div>
-                </div>
-
-            </div>
             <!-- side-bar single product slider start -->
             <div class="theme-card">
-                <h5 class="title-border">new products
+                <h5 class="title-border">Новые поступления
                 </h5>
                 <div class="offer-slider slide-1">
                     <swiper :loop="false" :navigation="true" :modules="modules" :slidesPerView="1" :spaceBetween="20"
@@ -115,13 +52,6 @@
                                         <img class="img-fluid" :src="getImgUrl(product.images[0].src)" alt>
                                     </nuxt-link>
                                     <div class="media-body align-self-center">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
                                         <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
                                             <h6>{{ product.title }}</h6>
                                         </nuxt-link>
@@ -146,13 +76,6 @@
                                         <img class="img-fluid" :src="getImgUrl(product.images[0].src)" alt>
                                     </nuxt-link>
                                     <div class="media-body align-self-center">
-                                        <div class="rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                        </div>
                                         <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
                                             <h6>{{ product.title }}</h6>
                                         </nuxt-link>
@@ -233,7 +156,7 @@ export default {
             live4: false
         }
     },
-   
+
     computed: {
         ...mapState(useProductStore, {
             currency: 'currency',
@@ -298,7 +221,7 @@ export default {
             useFilterStore().getCategoryFilter(category)
         }
     },
-   
+
      mounted() {
 
         var vm = this,
@@ -312,3 +235,8 @@ export default {
     },
 }
 </script>
+<style scoped>
+.collapse-block-title:after {
+  content: none;
+}
+</style>

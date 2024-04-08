@@ -37,30 +37,14 @@
             data-target="#modal-cart"
             title="Add to cart"
             @click="addToCart(product)"
-           
+
             variant="primary"
           >
             <i class="ti-shopping-cart"></i>
           </button>
-        <a href="javascript:void(0)" title="Wishlist">
-          <i class="ti-heart" aria-hidden="true" @click="addToWishlist(product)"></i>
-        </a>
-        <a href="javascript:void(0)" title="Quick View" @click="showQuickview(product)" variant="primary">
-          <i class="ti-search" aria-hidden="true"></i>
-        </a>
-        <a href="javascript:void(0)" title="Comapre" @click.prevent="addToCompare(product)"  variant="primary">
-          <i class="ti-reload" aria-hidden="true"></i>
-        </a>
       </div>
     </div>
     <div class="product-detail">
-      <div class="rating">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-      </div>
       <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
         <h6>{{ product.title }}</h6>
       </nuxt-link>
@@ -71,15 +55,6 @@
         <del>{{curr.symbol}}{{ (product.price * curr.curr).toFixed(2)  }}</del>
       </h4>
       <h4 v-else>{{curr.symbol}}{{ (product.price * curr.curr).toFixed(2) }}</h4>
-      <ul class="color-variant" v-if="product.variants[0].color">
-        <li v-for="(variant,variantIndex) in Color(product.variants)" :key="variantIndex">
-          <a
-            @click="productColorchange(variant, product)"
-            :class="[variant]"
-            v-bind:style="{ 'background-color' : variant}"
-          ></a>
-        </li>
-      </ul>
     </div>
 </template>
 
@@ -112,21 +87,21 @@ export default {
     ...mapState(useProductStore,{
       productslist: 'productslist'
     }),
-    curr(){  
+    curr(){
       return useProductStore().changeCurrency
     }
   },
   methods: {
     getImgUrl(path) {
-    
+
       return ('/images/'+ path)
     },
     addToCart: function (product) {
-      
+
       this.cartval = true
       this.cartProduct = product
       this.$emit('opencartmodel', this.cartval, this.cartProduct)
-     
+
       useCartStore().addToCart(product)
     },
     addToWishlist: function (product) {
@@ -143,7 +118,7 @@ export default {
       this.showCompareModal = true
       this.compareProduct = product
       this.$emit('showCompareModal', this.showCompareModal, this.compareProduct)
-    
+
       useProductStore().addToCompare(product)
     },
     Color(variants) {
@@ -176,9 +151,9 @@ export default {
     discountedPrice(product) {
       const price = (product.price - (product.price * product.discount / 100))* this.curr.curr
       return price
-      
+
     }
   },
- 
+
 }
 </script>
