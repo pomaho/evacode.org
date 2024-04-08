@@ -22,7 +22,7 @@
                     <h4>{{item.title}}</h4>
                   </nuxt-link>
                   <h4>
-                    <span>{{item.quantity}} x {{ item.price || currency }}</span>
+                    <span>{{item.quantity}} x {{ curr.symbol }}{{ item.price || currency }}</span>
                   </h4>
                 </div>
               </div>
@@ -36,7 +36,7 @@
               <div class="total">
                 <h5>
                   Итого :
-                  <span>{{ cartTotal || currency }}</span>
+                  <span>{{ curr.symbol }}{{ cartTotal || currency }}</span>
                 </h5>
               </div>
             </li>

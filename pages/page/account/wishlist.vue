@@ -70,7 +70,7 @@
         </div>
         <div class="row wishlist-buttons" v-if="wishlist.length">
           <div class="col-12">
-            <nuxt-link :to="{ path: '/' }" :class="'btn btn-solid'">continue shopping</nuxt-link>
+            <nuxt-link :to="{ path: '/' }" :class="'btn btn-solid'">продолжить покупки</nuxt-link>
           </div>
         </div>
         <div class="col-sm-12 empty-cart-cls text-center" v-if="!wishlist.length">
@@ -79,12 +79,12 @@
             <strong>Your Wishlist is Empty</strong>
           </h3>
           <div class="col-12">
-            <nuxt-link :to="{ path: '/' }" class="btn btn-solid">continue shopping</nuxt-link>
+            <nuxt-link :to="{ path: '/' }" class="btn btn-solid">продолжить покупки</nuxt-link>
           </div>
         </div>
       </div>
     </section>
-  
+
   </div>
   <Footer />
 </template>
@@ -103,9 +103,9 @@ export default {
       if(!useProductStore().wishlistItems.length)
       {
         this.whishItem.forEach(item=>{
-    useProductStore().addToWishlist(item)  
+    useProductStore().addToWishlist(item)
   })
- 
+
   return useProductStore().wishlistItems
       }
       else{
@@ -137,7 +137,7 @@ export default {
   },
   mounted(){
     this.whishItem = JSON.parse(localStorage.getItem('whish'))
-   
+
   }
 }
 </script>

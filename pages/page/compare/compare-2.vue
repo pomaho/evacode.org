@@ -1,16 +1,16 @@
 <template>
-<Header/> 
+<Header/>
   <div>
     <WidgetsBreadcrumbs title="Comapre" />
     <section class="compare-section section-b-space ratio_asos">
       <div class="container">
         <div class="row">
           <div class="col-12" v-if="compare.length">
-            <swiper 
+            <swiper
             :breakpoints="swiperOption.breakpoints"
             :slidesPerView="4"
              class="swiper-wrapper"
-            >       
+            >
                 <swiper-slide class="swiper-slide" v-for="(item,index) in compare" :key="index">
                   <div class="compare-part">
                     <button type="button" class="close-btn" @click="removeCompareItem(item)">
@@ -67,7 +67,7 @@
                   </div>
                 </swiper-slide>
                 </swiper>
-             
+
           </div>
           <div class="col-12 empty-cart-cls text-center" v-if="!compare.length">
               <img src='/images/empty-compare.png' class="img-fluid" alt="empty cart" />
@@ -75,7 +75,7 @@
                 <strong>Your Compare List is Empty</strong>
               </h3>
               <div class="col-12">
-                <nuxt-link :to="{ path: '/'}" class="btn btn-solid">continue shopping</nuxt-link>
+                <nuxt-link :to="{ path: '/'}" class="btn btn-solid">продолжить покупки</nuxt-link>
               </div>
             </div>
         </div>
@@ -99,7 +99,7 @@ export default {
   data() {
     return {
       swiperOption: {
-       
+
         freeMode: false,
         breakpoints: {
           1199: {

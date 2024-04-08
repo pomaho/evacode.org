@@ -1,7 +1,7 @@
 <template>
   <div>
   <Header/>
-    <WidgetsBreadcrumbs title="Cart" />
+    <WidgetsBreadcrumbs title="Корзина" />
     <section class="cart-section section-b-space">
       <div class="container">
         <div class="row">
@@ -9,12 +9,12 @@
             <table class="table cart-table table-responsive-xs" v-if="cart.length">
               <thead>
                 <tr class="table-head">
-                  <th scope="col">image</th>
-                  <th scope="col">product name</th>
-                  <th scope="col">price</th>
-                  <th scope="col">quantity</th>
-                  <th scope="col">action</th>
-                  <th scope="col">total</th>
+                  <th scope="col">Изображение</th>
+                  <th scope="col">Товар</th>
+                  <th scope="col">Цена</th>
+                  <th scope="col">Количество</th>
+                  <th scope="col">Удалить</th>
+                  <th scope="col">Сумма</th>
                 </tr>
               </thead>
               <tbody v-for="(item, index) in cart" :key="index">
@@ -96,7 +96,7 @@
             <table class="table cart-table table-responsive-md" v-if="cart.length">
               <tfoot>
                 <tr>
-                  <td>total price :</td>
+                  <td>Общая стоимость :</td>
                   <td>
                     <h2>{{ curr.symbol }}{{ cartTotal * curr.curr }}</h2>
                   </td>
@@ -106,21 +106,21 @@
             <div class="col-sm-12 empty-cart-cls text-center" v-if="!cart.length">
               <img src='/images/icon-empty-cart.png' class="img-fluid" alt="empty cart" />
               <h3 class="mt-3">
-                <strong>Your Cart is Empty</strong>
+                <strong>Ваша корзина пуста</strong>
               </h3>
               <h4 class="mb-3">Add something to make me happy :)</h4>
               <div class="col-12">
-                <nuxt-link :to="{ path: '/' }" class="btn btn-solid">continue shopping</nuxt-link>
+                <nuxt-link :to="{ path: '/' }" class="btn btn-solid">продолжить покупки</nuxt-link>
               </div>
             </div>
           </div>
         </div>
         <div class="row cart-buttons" v-if="cart.length">
           <div class="col-6">
-            <nuxt-link :to="{ path: '/' }" :class="'btn btn-solid'">continue shopping</nuxt-link>
+            <nuxt-link :to="{ path: '/' }" :class="'btn btn-solid'">продолжить покупки</nuxt-link>
           </div>
           <div class="col-6">
-            <nuxt-link :to="{ path: '/page/account/checkout' }" :class="'btn btn-solid'">check out</nuxt-link>
+            <nuxt-link :to="{ path: '/page/account/checkout' }" :class="'btn btn-solid'">заказать</nuxt-link>
           </div>
         </div>
       </div>

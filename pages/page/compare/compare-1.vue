@@ -61,7 +61,7 @@
                 <strong>Your Compare List is Empty</strong>
               </h3>
               <div class="col-12">
-                <nuxt-link :to="{ path: '/' }" class="btn btn-solid">continue shopping</nuxt-link>
+                <nuxt-link :to="{ path: '/' }" class="btn btn-solid">продолжить покупки</nuxt-link>
               </div>
             </div>
           </div>

@@ -57,9 +57,9 @@
         </div>
         <div class="col-sm-12 empty-cart-cls text-left" v-if="!cart.length">
           <h4 class="mt-3">
-            <strong>Your Cart is Empty</strong>
+            <strong>Ваша корзина пуста</strong>
           </h4>
-          <nuxt-link :to="{ path: '/' }" class="btn btn-solid">continue shopping</nuxt-link>
+          <nuxt-link :to="{ path: '/' }" class="btn btn-solid">продолжить покупки</nuxt-link>
         </div>
       </div>
     </div>

@@ -67,13 +67,13 @@
                     <ul class="qty" v-if="cart.length">
                       <li v-for="(item, index) in cart" :key="index">
                         {{ item.title || uppercase }} X {{ item.quantity }}
-                        <span>{{ (item.price * curr.curr) * item.quantity }}</span>
+                        <span>{{ curr.symbol }}{{ (item.price * curr.curr) * item.quantity }}</span>
                       </li>
                     </ul>
                     <ul class="sub-total">
                       <li>
                         Итого
-                        <span class="count">{{ cartTotal * curr.curr }}</span>
+                        <span class="count">{{ curr.symbol }}{{ cartTotal * curr.curr }}</span>
                       </li>
                       <li>Доставка
                         <div class="shipping">
@@ -91,7 +91,7 @@
                     <ul class="sub-total">
                       <li>
                         Общая стоимость
-                        <span class="count">{{ cartTotal * curr.curr }}</span>
+                        <span class="count">{{ curr.symbol }}{{ cartTotal * curr.curr }}</span>
                       </li>
                     </ul>
                   </div>
@@ -230,13 +230,6 @@ watch:{
   },
 
    mounted(){
-    window.paypal.Buttons({
-
-    }).render('#paypal-button-container')
-
-
-
-
     this.isLogin = true;
 
     if (this.isLogin && this.cart.length == 0) {
