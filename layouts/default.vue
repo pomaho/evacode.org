@@ -19,7 +19,7 @@
 export default {
   head() {
     return {
-      title: 'MultiKart Ecommerce | Vuejs Shopping Theme'
+      title: 'Evacode - интернет магазин корейской косметики'
     }
   },
   data(){
