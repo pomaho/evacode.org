@@ -86,12 +86,12 @@ export default {
   data() {
     return {
       imagepath: '/images/beauty/about-us.jpg',
-      title: 'about us',
+      title: 'О Evacode',
       desc:
-        'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.sit voluptatem accusantium doloremque laudantium,totam rem aperiam.',
-      service_1: 'free shipping',
-      service_2: '24 X 7 service',
-      service_3: 'festival offer'
+        'Погрузитесь в мир красоты с Evacode - вашим надежным партнером в косметических покупках. Наш интернет-магазин предлагает широкий ассортимент качественной корейской косметики, включая популярные бренды и новинки. Приобретайте продукты, которые подчеркнут вашу натуральную красоту и создадут неповторимый образ.',
+      service_1: 'доставка по миру',
+      service_2: '24 X 7 сервис',
+      service_3: 'акционные предложения'
     }
   }
 }

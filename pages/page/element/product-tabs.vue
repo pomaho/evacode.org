@@ -41,8 +41,8 @@
                                                     :key="index">
                                                     <div class="product-box">
                                                         <ProductBoxProductBox1 @opencartmodel="showCart"
-                                                            @showCompareModal="showCoampre"
-                                                            @openquickview="showQuickview"  
+                                                            @showCompareModal="showCompare"
+                                                            @openquickview="showQuickview"
                                                             @alertseconds="alert" :product="product" :index="index" />
                                                     </div>
                                                 </div>
@@ -57,8 +57,8 @@
                                                     :key="index">
                                                     <div class="product-box">
                                                         <ProductBoxProductBox1 @opencartmodel="showCart"
-                                                            @showCompareModal="showCoampre"
-                                                            @openquickview="showQuickview"  
+                                                            @showCompareModal="showCompare"
+                                                            @openquickview="showQuickview"
                                                             @alertseconds="alert" :product="product" :index="index" />
                                                     </div>
                                                 </div>
@@ -73,8 +73,8 @@
                                                     :key="index">
                                                     <div class="product-box">
                                                         <ProductBoxProductBox1 @opencartmodel="showCart"
-                                                            @showCompareModal="showCoampre"
-                                                            @openquickview="showQuickview"  
+                                                            @showCompareModal="showCompare"
+                                                            @openquickview="showQuickview"
                                                             @alertseconds="alert" :product="product" :index="index" />
                                                     </div>
                                                 </div>
@@ -89,8 +89,8 @@
                                                     :key="index">
                                                     <div class="product-box">
                                                         <ProductBoxProductBox1 @opencartmodel="showCart"
-                                                            @showCompareModal="showCoampre"
-                                                            @openquickview="showQuickview"  
+                                                            @showCompareModal="showCompare"
+                                                            @openquickview="showQuickview"
                                                             @alertseconds="alert" :product="product" :index="index" />
                                                     </div>
                                                 </div>
@@ -119,7 +119,7 @@ import {
 import { useProductStore } from '~~/store/products'
 
 export default {
-   
+
     data() {
         return {
             products: [],
@@ -142,7 +142,7 @@ export default {
             productslist: 'productslist'
         })
     },
- 
+
     methods: {
         productsArray: function () {
             this.productslist.map((item) => {
@@ -170,7 +170,7 @@ export default {
             this.showquickviewmodel = item
             this.quickviewproduct = productData
         },
-        showCoampre(item, productData) {
+        showCompare(item, productData) {
             this.showcomparemodal = item
             this.comapreproduct = productData
         },

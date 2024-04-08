@@ -1,5 +1,5 @@
 <template>
-  <Header/> 
+  <Header/>
   <div>
     <WidgetsBreadcrumbs title="collection"/>
     <section class="section-b-space ratio_asos">
@@ -100,7 +100,7 @@
                             :class="{ 'col-xl-3 col-md-4 col-6': col4 == true, 'col-md-4 col-6': col3 == true, 'col-6': col2 == true, 'col-xxl-2 col-xl-3 col-md-4 col-6': col6 == true, 'col-12': listview == true }"
                             v-for="(product, index) in filterProduct" :key="index" v-show="setPaginate(index)">
                             <div class="product-box">
-                              <ProductBoxProductBox1 @opencartmodel="showCart" @showCompareModal="showCoampre"
+                              <ProductBoxProductBox1 @opencartmodel="showCart" @showCompareModal="showCompare"
                                 @openquickview="showQuickview" @alertseconds="alert" :product="product"
                                 :index="index" />
                             </div>
@@ -157,7 +157,7 @@
     <WidgetsComparePopup :openCompare="showcomparemodal" :productData="comapreproduct" @closeCompare="closeCompareModal" />
     <cart-modal-popup :openCart="showcartmodal" :productData="cartproduct" @closeCart="closeCartModal"
       :products="filterProduct" />
-      
+
   </div>
   <Footer />
 </template>
@@ -317,7 +317,7 @@ export default {
       this.showquickviewmodel = item
       this.quickviewproduct = productData
     },
-    showCoampre(item, productData) {
+    showCompare(item, productData) {
       this.showcomparemodal = item
       this.comapreproduct = productData
     },

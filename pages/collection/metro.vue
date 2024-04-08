@@ -47,7 +47,7 @@
                                   variant="primary">
                                   <i class="ti-search" aria-hidden="true"></i>
                                 </a>
-                                <a href="javascript:void(0)" title="Comapre" @click="showCoampre(item)"
+                                <a href="javascript:void(0)" title="Comapre" @click="showCompare(item)"
                                   variant="primary">
                                   <i class="ti-reload" aria-hidden="true"></i>
                                 </a>
@@ -114,7 +114,7 @@ function showQuickview(productData) {
 function closeViewModal() {
   showquickviewmodel.value = false
 }
-function showCoampre(productData) {
+function showCompare(productData) {
   showcomparemodal.value = true
   comapreproduct = productData
 }
@@ -127,7 +127,7 @@ function addToWishlist(product) {
   useProductStore().addToWishlist(product)
 }
 function closeCartModal(item){
-  
+
 }
 function addToCart(product) {
 

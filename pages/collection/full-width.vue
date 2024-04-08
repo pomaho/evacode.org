@@ -28,7 +28,7 @@
                           data-target="#addtocart"
                           title="Add to cart"
                           @click="addToCart(item)"
-                         
+
                           variant="primary"
                         >
                           <i class="ti-shopping-cart"></i>
@@ -44,7 +44,7 @@
                           href="javascript:void(0)"
                           title="Quick View"
                           @click="showQuickview(item)"
-                         
+
                           variant="primary"
                         >
                           <i class="ti-search" aria-hidden="true"></i>
@@ -52,8 +52,8 @@
                         <a
                           href="javascript:void(0)"
                           title="Comapre"
-                          @click="showCoampre(item)"
-                          
+                          @click="showCompare(item)"
+
                           variant="primary"
                         >
                           <i class="ti-reload" aria-hidden="true"></i>
@@ -83,12 +83,12 @@
   </div>
   <Footer />
 </template>
-<script setup> 
+<script setup>
 import MasonryWall from '@yeger/vue-masonry-wall'
 import { useProductStore } from '~~/store/products';
 import { useCartStore } from '~~/store/cart';
 import { storeToRefs } from 'pinia'
- let {productslist,currency} = storeToRefs(useProductStore()) 
+ let {productslist,currency} = storeToRefs(useProductStore())
       let products= [],
       cartval= false,
       showquickviewmodel= ref(false),
@@ -97,11 +97,11 @@ import { storeToRefs } from 'pinia'
       comapreproduct= {};
 
     productsArray();
-  
+
     function getImgUrl(path) {
       return ('/images/' + path)
     }
-    
+
     function productsArray() {
       productslist.value.map((item) => {
         if (item.type === 'metro') {
@@ -117,7 +117,7 @@ import { storeToRefs } from 'pinia'
     function closeViewModal(){
       showquickviewmodel.value = false
     }
-    function showCoampre(productData) {
+    function showCompare(productData) {
       showcomparemodal.value = true
       comapreproduct = productData
     }

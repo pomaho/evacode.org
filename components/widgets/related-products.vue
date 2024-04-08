@@ -9,7 +9,7 @@
         <div class="row g-sm-4 g-3">
           <div class="col-xl-2 col-md-4 col-6" v-for="(product, index) in productslist.slice(1, 7)" :key="index">
             <div class="product-box">
-              <ProductBoxProductBox1 @opencartmodel="showCart" @showCompareModal="showCoampre" @openquickview="showQuickview"
+              <ProductBoxProductBox1 @opencartmodel="showCart" @showCompareModal="showCompare" @openquickview="showQuickview"
                 :product="product" :index="index" />
             </div>
           </div>
@@ -68,7 +68,7 @@ export default {
       this.showquickviewmodel = item
       this.quickviewproduct = productData
     },
-    showCoampre(item, productData) {
+    showCompare(item, productData) {
       this.showcomparemodal = item
       this.comapreproduct = productData
     },

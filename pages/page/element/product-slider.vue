@@ -8,7 +8,7 @@
                     <swiper  :slidesPerView="4" :spaceBetween="20" :breakpoints="swiperOption.breakpoints" class="swiper-wrapper">
                         <swiper-slide class="swiper-slide" v-for="(product,index) in productslist" :key="index">
                             <div class="product-box">
-                                <ProductBoxProductBox1 @opencartmodel="showCart" @showCompareModal="showCoampre" @openquickview="showQuickview"   @alertseconds="alert" :product="product" :index="index" />
+                                <ProductBoxProductBox1 @opencartmodel="showCart" @showCompareModal="showCompare" @openquickview="showQuickview"   @alertseconds="alert" :product="product" :index="index" />
                             </div>
                         </swiper-slide>
                     </swiper>
@@ -55,7 +55,7 @@ export default {
             dismissCountDown: 0,
             description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s.',
             swiperOption: {
-             
+
                 breakpoints: {
                     1199: {
                         slidesPerView: 3,
@@ -86,7 +86,7 @@ export default {
             this.showquickviewmodel = item
             this.quickviewproduct = productData
         },
-        showCoampre(item, productData) {
+        showCompare(item, productData) {
             this.showcomparemodal = item
             this.comapreproduct = productData
         },

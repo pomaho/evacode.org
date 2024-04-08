@@ -3,9 +3,7 @@
     <Header/>
     <ShopBeautySlider />
     <ShopBeautyAbout />
-    <ShopBeautyProductSlider :products="products" :category="category" @openQuickview="showQuickview" @openCompare="showCoampre"
-      @openCart="showCart" />
-    <ShopBeautyTopProductSlider :products="products" @openQuickview="showQuickview" @openCompare="showCoampre"
+    <ShopBeautyProductSlider :products="products" :category="category" @openQuickview="showQuickview" @openCompare="showCompare"
       @openCart="showCart" />
     <CartModalCartRightModel :openCart="showcartmodal" @closeCart="closeCart" />
     <WidgetsNewsletterPopup />
@@ -51,7 +49,7 @@ export default {
       this.showquickviewmodel = item
       this.quickviewproduct = productData
     },
-    showCoampre(item, productData) {
+    showCompare(item, productData) {
       this.showcomparemodal = item
       this.comapreproduct = productData
     },
