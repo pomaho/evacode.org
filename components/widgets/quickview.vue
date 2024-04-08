@@ -44,7 +44,7 @@
                     </div>
                   </div>
                   <div class="border-product">
-                    <h6 class="product-title">product details</h6>
+                    <h6 class="product-title"> описание товара</h6>
                     <p>{{ productData.description.substring(0, 250) + "...." }}</p>
                   </div>
                   <div class="product-buttons">
@@ -84,7 +84,7 @@ export default {
       }
     }
   },
- 
+
   computed: {
     curr() {
       return useProductStore().currency

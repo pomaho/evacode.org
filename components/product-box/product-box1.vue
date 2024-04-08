@@ -35,7 +35,7 @@
           <button
             data-toggle="modal"
             data-target="#modal-cart"
-            title="Add to cart"
+            title="Добавить в корзину"
             @click="addToCart(product)"
 
             variant="primary"

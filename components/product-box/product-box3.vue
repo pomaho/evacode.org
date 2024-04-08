@@ -25,7 +25,7 @@
         <a href="javascript:void(0)" title="Quick View" @click="showQuickview(product)"  variant="primary">
           <i class="ti-search" aria-hidden="true"></i>
         </a>
-        <a href="javascript:void(0)" title="Comapre" @click="addToCompare(product)" 
+        <a href="javascript:void(0)" title="Comapre" @click="addToCompare(product)"
           variant="primary">
           <i class="ti-reload" aria-hidden="true"></i>
         </a>
@@ -55,7 +55,7 @@
         </li>
       </ul>
       <div class="add-btn">
-        <button data-toggle="modal" data-target="#addtocart" title="Add to cart" class="btn btn-outline"
+        <button data-toggle="modal" data-target="#addtocart" title="Добавить в корзину" class="btn btn-outline"
           @click="addToCart(product)">
           <i class="ti-shopping-cart"></i> add to cart
         </button>

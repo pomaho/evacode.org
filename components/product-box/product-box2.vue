@@ -18,7 +18,7 @@
         </nuxt-link>
       </div>
       <div class="cart-info">
-        <button title="Add to cart" @click="addToCart(product)">
+        <button title="Добавить в корзину" @click="addToCart(product)">
           <i class="ti-shopping-cart"></i>
         </button>
         <a href="javascript:void(0)" title="Wishlist">

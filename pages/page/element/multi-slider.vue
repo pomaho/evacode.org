@@ -213,7 +213,7 @@
 }}</h4>
                                                     <div class="add-btn">
                                                         <button data-toggle="modal" data-target="#addtocart"
-                                                            title="Add to cart" class="btn btn-outline">
+                                                            title="Добавить в корзину" class="btn btn-outline">
                                                             <i class="ti-shopping-cart"></i> add to cart
                                                         </button>
                                                     </div>
@@ -344,7 +344,7 @@ export default {
             return useProductStore().changeCurrency
         }
     },
-  
+
     methods: {
         getImgUrl(path) {
             return ('/images/' + path)
@@ -372,7 +372,7 @@ export default {
             return price
         }
     },
-  
+
       mounted() {
         this.productsArray()
     },

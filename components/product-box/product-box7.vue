@@ -12,11 +12,11 @@
         <a href="javascript:void(0)" title="Add to Wishlist" tabindex="0">
           <i class="fa fa-heart" aria-hidden="true" @click="addToWishlist(product)"></i>
         </a>
-        <button data-toggle="modal" data-target="#addtocart" title="Add to cart" @click="addToCart(product)"
+        <button data-toggle="modal" data-target="#addtocart" title="Добавить в корзину" @click="addToCart(product)"
           variant="primary">
-          <i class="ti-shopping-cart"></i> Add to cart
+          <i class="ti-shopping-cart"></i> Добавить в корзину
         </button>
-        <a href="javascript:void(0)" title="Comapre" @click="addToCompare(product)" 
+        <a href="javascript:void(0)" title="Comapre" @click="addToCompare(product)"
           variant="primary">
           <i class="fa fa-refresh" aria-hidden="true"></i>
         </a>
@@ -25,7 +25,7 @@
         </a>
       </div>
       <div class="quick-view-part">
-        <a href="javascript:void(0)" title="Quick View" @click="showQuickview(product)" 
+        <a href="javascript:void(0)" title="Quick View" @click="showQuickview(product)"
           variant="primary">
           <i class="ti-search" aria-hidden="true"></i>
         </a>

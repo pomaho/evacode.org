@@ -141,13 +141,6 @@
                     <img class="img-fluid" :src="getImgUrl(product.images[0].src)" alt>
                   </nuxt-link>
                   <div class="media-body align-self-center">
-                    <div class="rating">
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                    </div>
                     <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
                       <h6>{{ product.title }}</h6>
                     </nuxt-link>

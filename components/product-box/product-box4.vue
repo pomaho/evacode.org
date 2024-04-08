@@ -18,7 +18,7 @@
         </nuxt-link>
       </div>
       <div class="cart-box">
-        <button data-toggle="modal" data-target="#addtocart" title="Add to cart" @click="addToCart(product)">
+        <button data-toggle="modal" data-target="#addtocart" title="Добавить в корзину" @click="addToCart(product)">
           <i class="ti-shopping-cart"></i>
         </button>
         <a href="javascript:void(0)" title="Wishlist">
@@ -27,7 +27,7 @@
         <a href="javascript:void(0)" title="Quick View" @click="showQuickview(product)" variant="primary">
           <i class="ti-search" aria-hidden="true"></i>
         </a>
-        <a href="javascript:void(0)" title="Comapre" @click="addToCompare(product)" 
+        <a href="javascript:void(0)" title="Comapre" @click="addToCompare(product)"
           variant="primary">
           <i class="ti-reload" aria-hidden="true"></i>
         </a>

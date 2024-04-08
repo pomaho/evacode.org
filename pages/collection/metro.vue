@@ -37,7 +37,7 @@
                                 </nuxt-link>
                               </div>
                               <div class="cart-info cart-wrap">
-                                <button title="Add to cart" @click="addToCart(item)" variant="primary">
+                                <button title="Добавить в корзину" @click="addToCart(item)" variant="primary">
                                   <i class="ti-shopping-cart"></i>
                                 </button>
                                 <nuxt-link :to="{ path: '/page/account/wishlist' }">
