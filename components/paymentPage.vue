@@ -38,14 +38,14 @@
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
                     <div class="field-label">Telegram</div>
-                    <input type="tel" v-model="user.phone.value" name="Phone" />
-                    <span class="validate-error" v-if="user.phone.value.length === 0">{{ user.phone.errormsg }}</span>
+                    <input type="tel" v-model="user.telegram.value" name="Phone" />
+                    <span class="validate-error" v-if="user.telegram.value.length === 0">{{ user.telegram.errormsg }}</span>
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
                     <div class="field-label">Instagram</div>
-                    <input type="email" v-model="user.email.value" name="Email Address" />
-                    <span class="validate-error" v-if="!user.email.value || !validEmail(user.email.value)">{{
-                      user.email.errormsg
+                    <input type="email" v-model="user.instagram.value" name="Email Address" />
+                    <span class="validate-error" v-if="!user.instagram.value || !validEmail(user.instagram.value)">{{
+                      user.instagram.errormsg
                     }}</span>
                   </div>
                   <div class="form-group col-md-12 col-sm-12">
@@ -136,6 +136,8 @@ import { useProductStore } from '~~/store/products'
         firstName: { value: '', errormsg: '' },
         lastName: { value: '', errormsg: '' },
         phone: { value: '', errormsg: '' },
+        telegram: { value: '', errormsg: '' },
+        instagram: { value: '', errormsg: '' },
         email: { value: '', errormsg: '' },
         address: { value: '', errormsg: '' },
         city: { value: '', errormsg: '' },
