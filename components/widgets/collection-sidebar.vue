@@ -192,7 +192,7 @@ export default {
 
         getCategoryProduct(collection) {
             return this.productslist.filter((item) => {
-                if (item.collection.find(i => i === collection)) {
+                if (item.collection && item.collection.find(i => i === collection)) {
                     return item
                 }
             })
@@ -230,7 +230,7 @@ export default {
         vm.start = max
         vm.min = min,
             vm.max = max
-        vm.value = [this.min, this.max]
+        vm.value = [0, Infinity]
         this.$emit('priceVal', this.value)
     },
 }

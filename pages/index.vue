@@ -36,8 +36,8 @@ export default {
   methods: {
     productsArray: function () {
       this.productslist.map((item) => {
-        if (item.type === 'beauty') {
-          this.products.push(item)
+        this.products.push(item)
+        if (item.collection) {
           item.collection.map((i) => {
             const index = this.category.indexOf(i)
             if (index === -1) this.category.push(i)

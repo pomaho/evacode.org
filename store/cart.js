@@ -1,3 +1,4 @@
+// import products from '../data/products_1.json'
 import products from '../data/products.json'
 import { useStorage } from '@vueuse/core'
 
