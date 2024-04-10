@@ -1,67 +1,70 @@
 <template>
-    <div class="img-wrapper">
-      <div class="lable-block">
-        <span class="lable3" v-if="product.new">new</span>
-        <span class="lable4" v-if="product.sale">on sale</span>
-      </div>
-      <div class="front">
-        <nuxt-link :to="{ path: '/product/sidebar/'+product.id}" >
-          <img
-            :src='getImgUrl(imageSrc ? imageSrc : product.images[0].src )'
+  <div class="img-wrapper">
+    <div class="lable-block">
+      <span class="lable3" v-if="product.new">new</span>
+      <span class="lable4" v-if="product.sale">on sale</span>
+    </div>
+    <div class="front">
+      <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+        <img
+            :src='getImgUrl(imageSrc ? imageSrc : product.images[0].url )'
             :id="product.id"
             class="img-fluid bg-img media "
             :alt="product.title"
             :key="index"
-          />
-        </nuxt-link>
-      </div>
-      <div class="back" v-if="product.images.length>1">
-        <nuxt-link :to="{ path: '/product/sidebar/'+product.id}" >
-        <img :src='getImgUrl(imageSrc ? imageSrc : product.images[1].src )'  :key="index"  :id="product.id" alt="" class="img-fluid  m-auto media"> </nuxt-link></div>
-      <ul class="product-thumb-list">
-        <li
+        />
+      </nuxt-link>
+    </div>
+    <div class="back" v-if="product.images.length>1">
+      <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+        <img :src='getImgUrl(imageSrc ? imageSrc : product.images[1].url )' :key="index" :id="product.id" alt=""
+             class="img-fluid  m-auto media"></nuxt-link>
+    </div>
+    <ul class="product-thumb-list">
+      <li
           class="grid_thumb_img"
-          :class="{active: imageSrc === image.src}"
+          :class="{active: imageSrc === image.url}"
           v-for="(image,index) in product.images"
           :key="index"
-          @click="productVariantChange(image.src)"
-        >
-          <a href="javascript:void(0);">
-            <img :src="getImgUrl(image.src)" />
-          </a>
-        </li>
-      </ul>
-      <div class="cart-info cart-wrap">
-          <button
-            data-toggle="modal"
-            data-target="#modal-cart"
-            title="Добавить в корзину"
-            @click="addToCart(product)"
+          @click="productVariantChange(image.url)"
+      >
+        <a href="javascript:void(0);">
+          <img :src="getImgUrl(image.url)"/>
+        </a>
+      </li>
+    </ul>
+    <div class="cart-info cart-wrap">
+      <button
+          data-toggle="modal"
+          data-target="#modal-cart"
+          title="Добавить в корзину"
+          @click="addToCart(product)"
 
-            variant="primary"
-          >
-            <i class="ti-shopping-cart"></i>
-          </button>
-      </div>
+          variant="primary"
+      >
+        <i class="ti-shopping-cart"></i>
+      </button>
     </div>
-    <div class="product-detail">
-      <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
-        <h6>{{ product.title }}</h6>
-      </nuxt-link>
-      <p>{{ product.description }}</p>
-      <h4 v-if="product.sale">
-       {{curr.symbol}}{{ discountedPrice(product)}}
+  </div>
+  <div class="product-detail">
+    <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+      <h6>{{ product.title }}</h6>
+    </nuxt-link>
+    <p>{{ product.description }}</p>
+    <h4 v-if="product.sale">
+      {{ curr.symbol }}{{ discountedPrice(product) }}
 
-        <del>{{curr.symbol}}{{ (product.price * curr.curr).toFixed(2)  }}</del>
-      </h4>
-      <h4 v-else>{{curr.symbol}}{{ (product.price * curr.curr).toFixed(2) }}</h4>
-    </div>
+      <del>{{ curr.symbol }}{{ (product.retail_price * curr.curr).toFixed(2) }}</del>
+    </h4>
+    <h4 v-else>{{ curr.symbol }}{{ (product.retail_price * curr.curr).toFixed(2) }}</h4>
+  </div>
 </template>
 
 <script>
-import { mapState } from 'pinia'
-import { useProductStore } from '~~/store/products'
-import { useCartStore } from '~~/store/cart'
+import {mapState} from 'pinia'
+import {useProductStore} from '~~/store/products'
+import {useCartStore} from '~~/store/cart'
+
 export default {
   props: ['product', 'index'],
   data() {
@@ -82,19 +85,19 @@ export default {
       dismissCountDown: 0
     }
   },
-  emits:['opencartmodel','openquickview','alertseconds','showCompareModal'],
+  emits: ['opencartmodel', 'openquickview', 'alertseconds', 'showCompareModal'],
   computed: {
-    ...mapState(useProductStore,{
+    ...mapState(useProductStore, {
       productslist: 'productslist'
     }),
-    curr(){
+    curr() {
       return useProductStore().changeCurrency
     }
   },
   methods: {
     getImgUrl(path) {
-
-      return ('/images/'+ path)
+      return path;
+      // return ('/images/' + path)
     },
     addToCart: function (product) {
 
@@ -106,7 +109,7 @@ export default {
     },
     addToWishlist: function (product) {
       this.dismissCountDown = this.dismissSecs
-      useNuxtApp().$showToast({msg:"Product Is successfully added to your wishlist.",type:"info"})
+      useNuxtApp().$showToast({msg: 'Product Is successfully added to your wishlist.', type: 'info'})
       useProductStore().addToWishlist(product)
     },
     showQuickview: function (productData) {
@@ -135,7 +138,7 @@ export default {
         if (item.color === color) {
           product.images.map((img) => {
             if (img.image_id === item.image_id) {
-              this.imageSrc = img.src
+              this.imageSrc = img.url
             }
           })
         }
@@ -149,7 +152,7 @@ export default {
       this.$emit('alertseconds', this.dismissCountDown)
     },
     discountedPrice(product) {
-      const price = (product.price - (product.price * product.discount / 100))* this.curr.curr
+      const price = (product.retail_price - (product.retail_price * product.discount / 100)) * this.curr.curr
       return price
 
     }

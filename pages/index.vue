@@ -3,8 +3,6 @@
     <Header/>
     <ShopBeautySlider />
     <ShopBeautyAbout />
-    <ShopBeautyProductSlider :products="products" :category="category" @openQuickview="showQuickview" @openCompare="showCompare"
-      @openCart="showCart" />
     <CartModalCartRightModel :openCart="showcartmodal" @closeCart="closeCart" />
     <WidgetsNewsletterPopup />
     <Footer />

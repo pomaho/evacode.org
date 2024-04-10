@@ -1,13 +1,14 @@
 <template>
-<Header/>
+  <Header/>
   <div>
-    <WidgetsBreadcrumbs title="Магазин" />
+    <WidgetsBreadcrumbs title="Магазин"/>
     <section class="section-b-space ratio_asos">
       <div class="collection-wrapper">
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <WidgetsCollectionSidebar @allFilters="allfilter" @priceVal="pricefilterArray" @categoryfilter="getCategoryFilter" />
+              <WidgetsCollectionSidebar @allFilters="allfilter" @priceVal="pricefilterArray"
+                                        @categoryfilter="getCategoryFilter"/>
             </div>
             <div class="collection-content col">
               <div class="page-main-content">
@@ -15,16 +16,18 @@
                   <div class="col-12">
                     <div class="top-banner-wrapper">
                       <a href="#">
-                        <img src='/images/mega-menu/2.jpg' class="img-fluid" alt />
+                        <img src='/images/mega-menu/2.jpg' class="img-fluid" alt/>
                       </a>
                     </div>
                     <ul class="product-filter-tags">
                       <li class="me-1" v-for="(tag, index) in allfilters" :key="index">
                         <a href="javascript:void(0)" class="filter_tag">{{ tag }}<i class="ti-close"
-                            @click="removeTags(tag)"></i></a>
+                                                                                    @click="removeTags(tag)"></i></a>
                       </li>
                       <li class="clear_filter" v-if="allfilters.length > 0"><a href="javascript:void(0)"
-                          class="clear_filter" @click="removeAllTags()">Очистить</a></li>
+                                                                               class="clear_filter"
+                                                                               @click="removeAllTags()">Очистить</a>
+                      </li>
                     </ul>
                     <div class="collection-product-wrapper">
                       <div class="product-top-filter">
@@ -32,7 +35,11 @@
                           <div class="col-12">
                             <div class="product-filter-content">
                               <div class="search-count">
-                                <h5>Отображены товары 1-12 из {{ filterProduct.length }}</h5>
+                                <WidgetsShowedProductsLabel
+                                  :from="current === 1 ? 1 : paginate * (current - 1) + 1"
+                                  :to="current === 1 ? paginate : paginate * current"
+                                  :total="totalProductsCount"
+                                />
                               </div>
                               <div class="collection-view">
                                 <ul>
@@ -48,25 +55,25 @@
                                 <ul>
                                   <li>
                                     <img src='/images/icon/2.png' @click="grid2()"
-                                      class="product-2-layout-view" />
+                                         class="product-2-layout-view"/>
                                   </li>
                                   <li>
                                     <img src='/images/icon/3.png' @click="grid3()"
-                                      class="product-3-layout-view" />
+                                         class="product-3-layout-view"/>
                                   </li>
                                   <li>
                                     <img src='/images/icon/4.png' @click="grid4()"
-                                      class="product-4-layout-view" />
+                                         class="product-4-layout-view"/>
                                   </li>
                                   <li>
                                     <img src='/images/icon/6.png' @click="grid6()"
-                                      class="product-6-layout-view" />
+                                         class="product-6-layout-view"/>
                                   </li>
                                 </ul>
                               </div>
                               <div class="product-page-filter">
                                 <select @change="onChangeSort($event)">
-ё                                  <option value="all">Сортировка</option>
+                                  <option value="all">Сортировка</option>
                                   <option value="a-z">По алфавиту, A-Z</option>
                                   <option value="z-a">По алфавиту, Z-A</option>
                                   <option value="low">Цена, низ до верх</option>
@@ -80,8 +87,8 @@
                       <div class="product-wrapper-grid" :class="{ 'list-view': listview == true }">
                         <div class="row">
                           <div class="col-12">
-                            <div class="text-center section-t-space section-b-space" v-if="filterProduct.length == 0">
-                              <img :src='"/images/empty-search.jpg"' class="img-fluid" alt />
+                            <div class="text-center section-t-space section-b-space" v-if="totalProductsCount == 0">
+                              <img :src='"/images/empty-search.jpg"' class="img-fluid" alt/>
                               <h3 class="mt-3">Извините! Не найден товар который Вы искали!!!</h3>
                               <div class="col-12 mt-3">
                                 <nuxt-link :to="{ path: '/' }" class="btn btn-solid">Продолжить покупки</nuxt-link>
@@ -89,36 +96,48 @@
                             </div>
                           </div>
                           <div class="col-grid-box"
-                            :class="{ 'col-xl-3 col-md-4 col-6': col4 == true, 'col-md-4 col-6': col3 == true, 'col-6': col2 == true, 'col-xxl-2 col-xl-3 col-md-4 col-6': col6 == true, 'col-12': listview == true }"
-                            v-for="(product, index) in filterProduct" :key="index" v-show="setPaginate(index)">
+                               :class="{ 'col-xl-3 col-md-4 col-6': col4 == true, 'col-md-4 col-6': col3 == true, 'col-6': col2 == true, 'col-xxl-2 col-xl-3 col-md-4 col-6': col6 == true, 'col-12': listview == true }"
+                               v-for="(product, index) in products" :key="index">
                             <div class="product-box">
                               <ProductBoxProductBox1 @opencartmodel="showCart" @showCompareModal="showCompare"
-                                @openquickview="showQuickview" @alertseconds="alert" :product="product"
-                                :index="index" />
+                                                     @openquickview="showQuickview" @alertseconds="alert"
+                                                     :product="product"
+                                                     :index="index"/>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="product-pagination mb-0" v-if="filterProduct.length > paginate">
+                      <div class="product-pagination mb-0" v-if="totalProductsCount > paginate">
                         <div class="theme-paggination-block">
                           <div class="row">
                             <div class="col-xl-6 col-md-6 col-sm-12">
                               <nav aria-label="Page navigation">
                                 <ul class="pagination">
                                   <li class="page-item">
-                                    <a class="page-link" href="javascript:void(0)" @click="updatePaginate(current - 1)">
+                                    <nuxt-link v-if="previous != null" class="page-link" :to="previous" tabindex="-1">
+                                      <span aria-hidden="true">
+                                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                                      </span>
+                                    </nuxt-link>
+                                    <a v-else class="page-link" href="#">
                                       <span aria-hidden="true">
                                         <i class="fa fa-chevron-left" aria-hidden="true"></i>
                                       </span>
                                     </a>
                                   </li>
                                   <li class="page-item" v-for="(page_index, index) in this.pages" :key="index"
-                                    :class="{ 'active': page_index == current }">
-                                    <a class="page-link" href="javascrip:void(0)"
-                                      @click.prevent="updatePaginate(page_index)">{{ page_index }}</a>
+                                      :class="{ 'active': page_index == current }">
+                                    <nuxt-link class="page-link" :to="`?page=${ page_index }`" tabindex="-1">
+                                      {{ page_index }}
+                                    </nuxt-link>
                                   </li>
                                   <li class="page-item">
-                                    <a class="page-link" href="javascript:void(0)" @click="updatePaginate(current + 1)">
+                                    <nuxt-link v-if="next != null" class="page-link" :to="next" tabindex="-1">
+                                      <span aria-hidden="true">
+                                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                      </span>
+                                    </nuxt-link>
+                                    <a v-else class="page-link" href="#">
                                       <span aria-hidden="true">
                                         <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                       </span>
@@ -129,7 +148,11 @@
                             </div>
                             <div class="col-xl-6 col-md-6 col-sm-12">
                               <div class="product-search-count-bottom">
-                                <h5>Отображены товары 1-12 из {{ filterProduct.length }}</h5>
+                                <WidgetsShowedProductsLabel
+                                    :from="current === 1 ? 1 : paginate * (current - 1) + 1"
+                                    :to="current === 1 ? paginate : paginate * current"
+                                    :total="totalProductsCount"
+                                />
                               </div>
                             </div>
                           </div>
@@ -145,21 +168,26 @@
       </div>
     </section>
 
-    <WidgetsQuickview :openModal="showquickviewmodel" :productData="quickviewproduct" @closeView="closeViewModal" />
-    <WidgetsComparePopup :openCompare="showcomparemodal" :productData="comapreproduct" @closeCompare="closeCompareModal" />
+    <WidgetsQuickview :openModal="showquickviewmodel" :productData="quickviewproduct" @closeView="closeViewModal"/>
+    <WidgetsComparePopup :openCompare="showcomparemodal" :productData="comapreproduct"
+                         @closeCompare="closeCompareModal"/>
     <cart-modal-popup :openCart="showcartmodal" :productData="cartproduct" @closeCart="closeCartModal"
-      :products="filterProduct" />
-    <Footer />
+                      :products="filterProduct"/>
+    <Footer/>
   </div>
 </template>
 <script>
-import { useProductStore } from '~~/store/products'
-import { useFilterStore } from '~~/store/filter'
-import { mapState } from 'pinia'
+import {useProductStore} from '~~/store/products'
+import {useFilterStore} from '~~/store/filter'
+import {mapState} from 'pinia'
+import axios from 'axios';
 export default {
-
   data() {
+    debugger;
     return {
+      productsResponse: {},
+      products: [],
+      totalProductsCount: 0,
       bannerimagepath: '/images/side-banner.png',
       col2: false,
       col3: true,
@@ -169,11 +197,11 @@ export default {
       priceArray: [],
       allfilters: [],
       items: [],
-      current: 1,
+      current: parseFloat(this.$route.query.page) || 1,
+      previous: '',
+      next: '',
       paginate: 12,
       paginateRange: 3,
-      pages: [],
-      paginates: '',
       showquickviewmodel: false,
       showcomparemodal: false,
       showcartmodal: false,
@@ -195,23 +223,16 @@ export default {
     tags() {
       return useFilterStore().setTags
     },
-    curr() { return useProductStore().changeCurrency }
+    curr() {
+      return useProductStore().changeCurrency
+    }
   },
 
   methods: {
-    getCategoryProduct(collection) {
-      return this.productslist.filter((item) => {
-        if (item.collection.find(i => i === collection)) {
-          return item
-        }
-      })
-    },
-    getImgUrl(path) {
-      return ('/images/' + path)
-    },
-    discountedPrice(product) {
-      const price = product.price - (product.price * product.discount / 100)
-      return price
+    async setProductsResponse() {
+      let page = this.current ? `?page=${this.current}` : '';
+      const {data} = await axios.get(`http://127.0.0.1:8000/market/goods/${page}`);
+      this.productsResponse = data;
     },
     onChangeSort(event) {
       useFilterStore().sortProducts(event.target.value)
@@ -287,15 +308,7 @@ export default {
         this.pages.push(i + 1)
       }
     },
-    setPaginate(i) {
-      if (this.current === 1) {
-        return i < this.paginate
-      } else {
-        return (i >= (this.paginate * (this.current - 1)) && i < (this.current * this.paginate))
-      }
-    },
-    updatePaginate(i) {
-      this.current = i
+    updatePaginate() {
       let start = 0
       let end = 0
       if (this.current < this.paginateRange - 1) {
@@ -340,10 +353,28 @@ export default {
     },
     closeViewModal(item) {
       this.showquickviewmodel = item
+    },
+    async updateProducts() {
+      this.current = parseFloat(this.$route.query.page) || 1
+
+      await this.setProductsResponse();
+
+      this.products = this.productsResponse.results;
+      this.totalProductsCount = this.productsResponse.count;
+      this.next = this.productsResponse.next ? `?${this.productsResponse.next.split('?')[1]}` : null;
+      this.previous = this.productsResponse.previous ? `?${this.productsResponse.previous.split('?')[1]}` : null;
+
+      this.paginates = Math.round(this.totalProductsCount / this.paginate);
+
+      this.updatePaginate();
     }
   },
-    mounted() {
-    this.updatePaginate(1)
-  },
+  async mounted() {
+    await this.updateProducts();
+    this.$watch(() => this.$route.query.page, async () => {
+      debugger;
+      await this.updateProducts();
+    });
+  }
 }
 </script>
