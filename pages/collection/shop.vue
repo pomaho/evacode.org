@@ -95,14 +95,23 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-grid-box"
-                               :class="{ 'col-xl-3 col-md-4 col-6': col4 == true, 'col-md-4 col-6': col3 == true, 'col-6': col2 == true, 'col-xxl-2 col-xl-3 col-md-4 col-6': col6 == true, 'col-12': listview == true }"
+                          <div
+                              :class="{
+                                'col-grid-box': true,
+                                'col-xl-3 col-md-4 col-6': col4 == true,
+                                'col-md-4 col-6': col3 == true,
+                                'col-6': col2 == true,
+                                'col-xxl-2 col-xl-3 col-md-4 col-6': col6 == true,
+                                'col-12': listview == true
+                              }"
                                v-for="(product, index) in products" :key="index">
                             <div class="product-box">
-                              <ProductBoxProductBox1 @opencartmodel="showCart" @showCompareModal="showCompare"
-                                                     @openquickview="showQuickview" @alertseconds="alert"
-                                                     :product="product"
-                                                     :index="index"/>
+                              <ProductBoxProductBox1
+                                  @opencartmodel="showCart"
+                                  @alertseconds="alert"
+                                  :product="product"
+                                  :index="index"
+                              />
                             </div>
                           </div>
                         </div>
@@ -111,40 +120,12 @@
                         <div class="theme-paggination-block">
                           <div class="row">
                             <div class="col-xl-6 col-md-6 col-sm-12">
-                              <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                  <li class="page-item">
-                                    <nuxt-link v-if="previous != null" class="page-link" :to="previous" tabindex="-1">
-                                      <span aria-hidden="true">
-                                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                                      </span>
-                                    </nuxt-link>
-                                    <a v-else class="page-link" href="#">
-                                      <span aria-hidden="true">
-                                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                                      </span>
-                                    </a>
-                                  </li>
-                                  <li class="page-item" v-for="(page_index, index) in this.pages" :key="index"
-                                      :class="{ 'active': page_index == current }">
-                                    <nuxt-link class="page-link" :to="`?page=${ page_index }`" tabindex="-1">
-                                      {{ page_index }}
-                                    </nuxt-link>
-                                  </li>
-                                  <li class="page-item">
-                                    <nuxt-link v-if="next != null" class="page-link" :to="next" tabindex="-1">
-                                      <span aria-hidden="true">
-                                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                      </span>
-                                    </nuxt-link>
-                                    <a v-else class="page-link" href="#">
-                                      <span aria-hidden="true">
-                                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                      </span>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </nav>
+                              <WidgetsShopProductsPagination
+                                  :previous="previous"
+                                  :next="next"
+                                  :current="current"
+                                  :pages="pages"
+                              />
                             </div>
                             <div class="col-xl-6 col-md-6 col-sm-12">
                               <div class="product-search-count-bottom">
@@ -187,6 +168,7 @@ export default {
     return {
       productsResponse: {},
       products: [],
+      pages:[],
       totalProductsCount: 0,
       bannerimagepath: '/images/side-banner.png',
       col2: false,
