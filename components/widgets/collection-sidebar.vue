@@ -4,7 +4,7 @@
             <div class="col-xl-12">
                 <div class="filter-main-btn" @click="filter = !filter">
                     <button class="filter-btn btn btn-theme">
-                        <i class="fa fa-filter" aria-hidden="true"></i> Filter
+                        <i class="fa fa-filter" aria-hidden="true"></i> Фильтр
                     </button>
                 </div>
             </div>

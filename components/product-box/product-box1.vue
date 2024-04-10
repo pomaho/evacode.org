@@ -7,7 +7,7 @@
     <div class="front">
       <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
         <img
-            :src='getImgUrl(imageSrc ? imageSrc : product.images[0].url )'
+            :src='imageSrc ? imageSrc : product.images[0].url'
             :id="product.id"
             class="img-fluid bg-img media "
             :alt="product.title"
@@ -17,7 +17,7 @@
     </div>
     <div class="back" v-if="product.images.length>1">
       <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
-        <img :src='getImgUrl(imageSrc ? imageSrc : product.images[1].url )' :key="index" :id="product.id" alt=""
+        <img :src='imageSrc ? imageSrc : product.images[1].url' :key="index" :id="product.id" alt=""
              class="img-fluid  m-auto media"></nuxt-link>
     </div>
     <ul class="product-thumb-list">
@@ -29,7 +29,7 @@
           @click="productVariantChange(image.url)"
       >
         <a href="javascript:void(0);">
-          <img :src="getImgUrl(image.url)"/>
+          <img :src="image.url"/>
         </a>
       </li>
     </ul>
@@ -66,36 +66,28 @@ export default {
   props: ['product', 'index'],
   data() {
     return {
-      symbol: '$',
-      imageSrc: '',
-      quickviewProduct: {},
-      compareProduct: {},
+      _imageSrc: '',
       cartProduct: {},
-      showquickview: false,
-      showCompareModal: false,
       cartval: false,
-      variants: {
-        productId: '',
-        image: ''
-      },
-      dismissSecs: 5,
-      dismissCountDown: 0
     }
   },
-  emits: ['opencartmodel', 'openquickview', 'alertseconds', 'showCompareModal'],
+  emits: ['opencartmodel'],
   computed: {
     ...mapState(useProductStore, {
       productslist: 'productslist'
     }),
     curr() {
       return useProductStore().changeCurrency
+    },
+    imageSrc() {
+      const isImageFromProduct =
+          this.product.images &&
+          this.product.images.length &&
+          this.product.images.map((image)=>image.url).indexOf(this._imageSrc) !== -1;
+      return isImageFromProduct ? this._imageSrc : '';
     }
   },
   methods: {
-    getImgUrl(path) {
-      return path;
-      // return ('/images/' + path)
-    },
     addToCart: function (product) {
 
       this.cartval = true
@@ -104,27 +96,12 @@ export default {
 
       useCartStore().addToCart(product)
     },
-    addToWishlist: function (product) {
-      this.dismissCountDown = this.dismissSecs
-      useNuxtApp().$showToast({msg: 'Product Is successfully added to your wishlist.', type: 'info'})
-      useProductStore().addToWishlist(product)
-    },
-    Color(variants) {
-      const uniqColor = []
-      for (let i = 0; i < Object.keys(variants).length; i++) {
-        if (uniqColor.indexOf(variants[i].color) === -1) {
-          uniqColor.push(variants[i].color)
-        }
-      }
-      return uniqColor
-    },
     productVariantChange(imgsrc) {
-      this.imageSrc = imgsrc
+      this._imageSrc = imgsrc
     },
     discountedPrice(product) {
       const price = (product.retail_price - (product.retail_price * product.discount / 100)) * this.curr.curr
       return price
-
     }
   },
 
@@ -144,5 +121,9 @@ export default {
 }
 .product-detail h6 {
   height: 70px;
+  overflow: hidden;
+}
+.product-detail h4 {
+  margin-top: 5px;
 }
 </style>
