@@ -130,3 +130,19 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.img-wrapper {
+  outline: 1px solid #c1b6b626;
+}
+.img-wrapper .front {
+  width: 238px;
+  height: 318px;
+}
+.product-detail {
+  padding-top: 5px;
+}
+.product-detail h6 {
+  height: 70px;
+}
+</style>
