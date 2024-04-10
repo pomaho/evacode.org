@@ -36,64 +36,6 @@
 
                 </div>
             </div>
-            <!-- side-bar single product slider start -->
-            <div class="theme-card">
-                <h5 class="title-border">Новые поступления
-                </h5>
-                <div class="offer-slider slide-1">
-                    <swiper :loop="false" :navigation="true" :modules="modules" :slidesPerView="1" :spaceBetween="20"
-                        @swiper="onSwiper" class="swiper-wrapper">
-                        <swiper-slide class="swiper-slide">
-                            <div>
-                                <div class="media"
-                                    v-for="(product, index) in getCategoryProduct('new products').splice(0, 3)"
-                                    :key="index">
-                                    <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
-                                        <img class="img-fluid" :src="getImgUrl(product.images[0].src)" alt>
-                                    </nuxt-link>
-                                    <div class="media-body align-self-center">
-                                        <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
-                                            <h6>{{ product.title }}</h6>
-                                        </nuxt-link>
-                                        <h4 v-if="product.sale">
-                                            {{ curr.symbol }}{{ discountedPrice(product) }}
-                                            <del>{{ curr.symbol }}{{
-                                                product.price * currency.curr ||
-                                                    currency(currency.symbol)
-                                            }}</del>
-                                        </h4>
-                                        <h4 v-else>{{ product.price * currency.curr || currency(currency.symbol) }}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </swiper-slide>
-                        <swiper-slide class="swiper-slide" v-if="getCategoryProduct('new products').length >= 4">
-                            <div>
-                                <div class="media"
-                                    v-for="(product, index) in getCategoryProduct('new products').splice(3, 3)"
-                                    :key="index">
-                                    <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
-                                        <img class="img-fluid" :src="getImgUrl(product.images[0].src)" alt>
-                                    </nuxt-link>
-                                    <div class="media-body align-self-center">
-                                        <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
-                                            <h6>{{ product.title }}</h6>
-                                        </nuxt-link>
-                                        <h4 v-if="product.sale">
-                                            {{ curr.symbol }}{{ discountedPrice(product) }} <del>{{
-                                                product.price *
-                                                    currency.curr || currency(currency.symbol)
-                                            }}</del>
-                                        </h4>
-                                        <h4 v-else>{{ curr.symbol }}{{ (product.price * curr.curr).toFixed(2) }}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </swiper-slide>
-                    </swiper>
-                </div>
-            </div>
-            <!-- side-bar single product slider end -->
             <!-- side-bar banner start here -->
             <div class="collection-sidebar-banner">
                 <a href="#">
@@ -169,15 +111,6 @@ export default {
         filterbyCategory() {
             return useFilterStore().filterbyCategory
         },
-        filterbyBrand() {
-            return useFilterStore().filterbyBrand
-        },
-        filterbycolor() {
-            return useFilterStore().filterbycolor
-        },
-        filterbysize() {
-            return useFilterStore().filterbysize
-        },
         price() {
             return useProductStore().price
         }
@@ -186,18 +119,6 @@ export default {
         onSwiper(swiper) {
             this.swiper = swiper;
         },
-        handleSlideTo() {
-            this.swiper.slideNext();
-        },
-
-        getCategoryProduct(collection) {
-            return this.productslist.filter((item) => {
-                if (item.collection && item.collection.find(i => i === collection)) {
-                    return item
-                }
-            })
-        },
-
         getImgUrl(path) {
             return ('/images/' + path)
         },
@@ -207,15 +128,6 @@ export default {
         },
         isActive(filterItem) {
             return this.applyFilter.indexOf(filterItem) > -1
-        },
-        appliedFilter(val) {
-            this.$emit('allFilters', this.applyFilter)
-        },
-        sliderChange(event) {
-            this.$emit('priceVal', event)
-        },
-        toggleSidebarBlock() {
-            this.openBlock = !this.openBlock
         },
         getCategoryFilter(category) {
             useFilterStore().getCategoryFilter(category)

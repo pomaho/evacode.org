@@ -7,8 +7,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <WidgetsCollectionSidebar @allFilters="allfilter" @priceVal="pricefilterArray"
-                                        @categoryfilter="getCategoryFilter"/>
+              <WidgetsCollectionSidebar @categoryfilter="getCategoryFilter"/>
             </div>
             <div class="collection-content col">
               <div class="page-main-content">
@@ -19,16 +18,6 @@
                         <img src='/images/mega-menu/2.jpg' class="img-fluid" alt/>
                       </a>
                     </div>
-                    <ul class="product-filter-tags">
-                      <li class="me-1" v-for="(tag, index) in allfilters" :key="index">
-                        <a href="javascript:void(0)" class="filter_tag">{{ tag }}<i class="ti-close"
-                                                                                    @click="removeTags(tag)"></i></a>
-                      </li>
-                      <li class="clear_filter" v-if="allfilters.length > 0"><a href="javascript:void(0)"
-                                                                               class="clear_filter"
-                                                                               @click="removeAllTags()">Очистить</a>
-                      </li>
-                    </ul>
                     <div class="collection-product-wrapper">
                       <div class="product-top-filter">
                         <div class="row">
@@ -99,7 +88,6 @@
                             <div class="product-box">
                               <ProductBoxProductBox1
                                   @opencartmodel="showCart"
-                                  @alertseconds="alert"
                                   :product="product"
                                   :index="index"
                               />
@@ -155,34 +143,23 @@ import {mapState} from 'pinia'
 import axios from 'axios';
 export default {
   data() {
-    debugger;
     return {
       productsResponse: {},
       products: [],
       pages:[],
       totalProductsCount: 0,
-      bannerimagepath: '/images/side-banner.png',
       col2: false,
       col3: true,
       col4: false,
       col6: false,
       listview: false,
-      priceArray: [],
-      allfilters: [],
-      items: [],
       current: parseFloat(this.$route.query.page) || 1,
       previous: '',
       next: '',
       paginate: 12,
       paginateRange: 3,
-      showquickviewmodel: false,
-      showcomparemodal: false,
       showcartmodal: false,
-      quickviewproduct: {},
-      comapreproduct: {},
       cartproduct: {},
-      dismissSecs: 5,
-      dismissCountDown: 0,
     }
   },
   computed: {
@@ -190,12 +167,6 @@ export default {
       productslist: 'productslist',
       currency: 'currency'
     }),
-    filterProduct() {
-      return useFilterStore().filterProducts
-    },
-    tags() {
-      return useFilterStore().setTags
-    },
     curr() {
       return useProductStore().changeCurrency
     }
@@ -206,9 +177,6 @@ export default {
       let page = this.current ? `?page=${this.current}` : '';
       const {data} = await axios.get(`http://127.0.0.1:8000/market/goods/${page}`);
       this.productsResponse = data;
-    },
-    onChangeSort(event) {
-      useFilterStore().sortProducts(event.target.value)
     },
     gridView() {
       this.col4 = true
@@ -252,70 +220,23 @@ export default {
       this.col4 = false
       this.listview = false
     },
-    removeTags(val) {
-      this.allfilters.splice(this.allfilters.indexOf(val), 1)
-    },
-    removeAllTags() {
-      this.allfilters.splice(0, this.allfilters.length)
-    },
     getCategoryFilter() {
       this.updatePaginate(1)
       useFilterStore().getCategoryFilter(this.$route.params.id)
     },
-    allfilter(selectedVal) {
-      this.allfilters = selectedVal
-      useFilterStore().setTags(selectedVal)
-      this.getPaginate()
-      this.updatePaginate(1)
-    },
-    pricefilterArray(item) {
-      this.getCategoryFilter()
-      useFilterStore().priceFilter(item)
-      this.getPaginate()
-      this.updatePaginate(1)
-    },
-    getPaginate() {
-      this.paginates = Math.round(this.filterProduct.length / this.paginate)
-      this.pages = []
-      for (let i = 0; i < this.paginates; i++) {
-        this.pages.push(i + 1)
-      }
-    },
     updatePaginate() {
-      let start = 0
-      let end = 0
-      if (this.current < this.paginateRange - 1) {
-        start = 1
-        end = start + this.paginateRange - 1
-      } else {
-        start = this.current - 1
-        end = this.current + 1
-      }
-      if (start < 1) {
-        start = 1
-      }
-      if (end > this.paginates) {
-        end = this.paginates
-      }
+      let start = this.current < this.paginateRange - 1 ? 1 : this.current - 1
+      let end = this.current < this.paginateRange - 1 ? start + this.paginateRange - 1 : this.current + 1;
+
+      start = Math.max(1, start);
+      end = Math.min(end, this.paginates);
+
       this.pages = []
       for (let i = start; i <= end; i++) {
         this.pages.push(i)
       }
+
       return this.pages
-    },
-    alert(item) {
-      this.dismissCountDown = item
-    },
-    showQuickview(item, productData) {
-      this.showquickviewmodel = item
-      this.quickviewproduct = productData
-    },
-    showCompare(item, productData) {
-      this.showcomparemodal = item
-      this.comapreproduct = productData
-    },
-    closeCompareModal(item) {
-      this.showcomparemodal = item
     },
     showCart(item, product) {
       this.showcartmodal = item
@@ -323,9 +244,6 @@ export default {
     },
     closeCartModal(item) {
       this.showcartmodal = item
-    },
-    closeViewModal(item) {
-      this.showquickviewmodel = item
     },
     async updateProducts() {
       this.current = parseFloat(this.$route.query.page) || 1
@@ -345,7 +263,6 @@ export default {
   async mounted() {
     await this.updateProducts();
     this.$watch(() => this.$route.query.page, async () => {
-      debugger;
       await this.updateProducts();
     });
   }

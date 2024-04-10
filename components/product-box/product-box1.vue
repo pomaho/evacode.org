@@ -147,10 +147,6 @@ export default {
     productVariantChange(imgsrc) {
       this.imageSrc = imgsrc
     },
-    countDownChanged(dismissCountDown) {
-      this.dismissCountDown = dismissCountDown
-      this.$emit('alertseconds', this.dismissCountDown)
-    },
     discountedPrice(product) {
       const price = (product.retail_price - (product.retail_price * product.discount / 100)) * this.curr.curr
       return price
