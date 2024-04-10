@@ -30,41 +30,11 @@
                                     :total="totalProductsCount"
                                 />
                               </div>
-                              <div class="collection-view">
-                                <ul>
-                                  <li @click="gridView()">
-                                    <i class="fa fa-th grid-layout-view"></i>
-                                  </li>
-                                  <li @click="listView()">
-                                    <i class="fa fa-list-ul list-layout-view"></i>
-                                  </li>
-                                </ul>
-                              </div>
-                              <div class="collection-grid-view">
-                                <ul>
-                                  <li>
-                                    <img src='/images/icon/2.png' @click="grid2()"
-                                         class="product-2-layout-view"/>
-                                  </li>
-                                  <li>
-                                    <img src='/images/icon/3.png' @click="grid3()"
-                                         class="product-3-layout-view"/>
-                                  </li>
-                                  <li>
-                                    <img src='/images/icon/4.png' @click="grid4()"
-                                         class="product-4-layout-view"/>
-                                  </li>
-                                  <li>
-                                    <img src='/images/icon/6.png' @click="grid6()"
-                                         class="product-6-layout-view"/>
-                                  </li>
-                                </ul>
-                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="product-wrapper-grid" :class="{ 'list-view': listview == true }">
+                      <div class="product-wrapper-grid">
                         <div class="row">
                           <div class="col-12">
                             <div class="text-center section-t-space section-b-space" v-if="totalProductsCount == 0">
@@ -75,16 +45,7 @@
                               </div>
                             </div>
                           </div>
-                          <div
-                              :class="{
-                                'col-grid-box': true,
-                                'col-xl-3 col-md-4 col-6': col4 == true,
-                                'col-md-4 col-6': col3 == true,
-                                'col-6': col2 == true,
-                                'col-xxl-2 col-xl-3 col-md-4 col-6': col6 == true,
-                                'col-12': listview == true
-                              }"
-                              v-for="(product, index) in products" :key="index">
+                          <div class="col-grid-box col-xl-3 col-md-4 col-6" v-for="(product, index) in products" :key="index">
                             <div class="product-box">
                               <ProductBoxProductBox1
                                   @opencartmodel="showCart"
@@ -178,11 +139,6 @@ const pages = computed(() => {
   return _pages;
 });
 
-const col2 = ref(false);
-const col3 = ref(true);
-const col4 = ref(false);
-const col6 = ref(false);
-const listview = ref(false);
 const showcartmodal = ref(false);
 const cartproduct = ref({});
 
@@ -191,54 +147,6 @@ const curr = computed(() => productStore.changeCurrency);
 
 const productslist = computed(() => productStore.productslist);
 const currency = computed(() => productStore.currency);
-
-const gridView = () => {
-  col4.value = true;
-  col2.value = false;
-  col3.value = false;
-  col6.value = false;
-  listview.value = false;
-};
-
-const listView = () => {
-  listview.value = true;
-  col4.value = false;
-  col2.value = false;
-  col3.value = false;
-  col6.value = false;
-};
-
-const grid2 = () => {
-  col2.value = true;
-  col3.value = false;
-  col4.value = false;
-  col6.value = false;
-  listview.value = false;
-};
-
-const grid3 = () => {
-  col3.value = true;
-  col2.value = false;
-  col4.value = false;
-  col6.value = false;
-  listview.value = false;
-};
-
-const grid4 = () => {
-  col4.value = true;
-  col2.value = false;
-  col3.value = false;
-  col6.value = false;
-  listview.value = false;
-};
-
-const grid6 = () => {
-  col6.value = true;
-  col2.value = false;
-  col3.value = false;
-  col4.value = false;
-  listview.value = false;
-};
 
 const getCategoryFilter = () => {
   updatePaginate(1);

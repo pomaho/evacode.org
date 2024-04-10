@@ -50,7 +50,6 @@
     <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
       <h6>{{ product.title }}</h6>
     </nuxt-link>
-    <p>{{ product.description }}</p>
     <h4 v-if="product.sale">
       {{ curr.symbol }}{{ discountedPrice(product) }}
 
@@ -112,18 +111,6 @@ export default {
       useNuxtApp().$showToast({msg: 'Product Is successfully added to your wishlist.', type: 'info'})
       useProductStore().addToWishlist(product)
     },
-    showQuickview: function (productData) {
-      this.showquickview = true
-      this.quickviewProduct = productData
-      this.$emit('openquickview', this.showquickview, this.quickviewProduct)
-    },
-    addToCompare: function (product) {
-      this.showCompareModal = true
-      this.compareProduct = product
-      this.$emit('showCompareModal', this.showCompareModal, this.compareProduct)
-
-      useProductStore().addToCompare(product)
-    },
     Color(variants) {
       const uniqColor = []
       for (let i = 0; i < Object.keys(variants).length; i++) {
@@ -132,17 +119,6 @@ export default {
         }
       }
       return uniqColor
-    },
-    productColorchange(color, product) {
-      product.variants.map((item) => {
-        if (item.color === color) {
-          product.images.map((img) => {
-            if (img.image_id === item.image_id) {
-              this.imageSrc = img.url
-            }
-          })
-        }
-      })
     },
     productVariantChange(imgsrc) {
       this.imageSrc = imgsrc
