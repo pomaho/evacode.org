@@ -50,12 +50,10 @@
     <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
       <h6>{{ product.title }}</h6>
     </nuxt-link>
-    <h4 v-if="product.sale">
-      {{ curr.symbol }}{{ discountedPrice(product) }}
-
-      <del>{{ curr.symbol }}{{ (product.retail_price * curr.curr).toFixed(2) }}</del>
+    <h4>
+      <del>{{ curr.symbol }}{{ (product.official_price * curr.curr) }}</del>
+     {{ curr.symbol }}{{ (product.retail_price * curr.curr) }}
     </h4>
-    <h4 v-else>{{ curr.symbol }}{{ (product.retail_price * curr.curr).toFixed(2) }}</h4>
   </div>
 </template>
 
