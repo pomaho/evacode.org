@@ -71,15 +71,6 @@
                                   </li>
                                 </ul>
                               </div>
-                              <div class="product-page-filter">
-                                <select @change="onChangeSort($event)">
-                                  <option value="all">Сортировка</option>
-                                  <option value="a-z">По алфавиту, A-Z</option>
-                                  <option value="z-a">По алфавиту, Z-A</option>
-                                  <option value="low">Цена, низ до верх</option>
-                                  <option value="high">Цена, верх до низ</option>
-                                </select>
-                              </div>
                             </div>
                           </div>
                         </div>
@@ -148,12 +139,12 @@
         </div>
       </div>
     </section>
-
-    <WidgetsQuickview :openModal="showquickviewmodel" :productData="quickviewproduct" @closeView="closeViewModal"/>
-    <WidgetsComparePopup :openCompare="showcomparemodal" :productData="comapreproduct"
-                         @closeCompare="closeCompareModal"/>
-    <cart-modal-popup :openCart="showcartmodal" :productData="cartproduct" @closeCart="closeCartModal"
-                      :products="filterProduct"/>
+    <cart-modal-popup
+        :openCart="showcartmodal"
+        :product="cartproduct"
+        @closeCart="closeCartModal"
+        :products="products"
+    />
     <Footer/>
   </div>
 </template>
@@ -326,9 +317,9 @@ export default {
     closeCompareModal(item) {
       this.showcomparemodal = item
     },
-    showCart(item, productData) {
+    showCart(item, product) {
       this.showcartmodal = item
-      this.cartproduct = productData
+      this.cartproduct = product
     },
     closeCartModal(item) {
       this.showcartmodal = item
