@@ -116,6 +116,18 @@ export default {
   width: 238px;
   height: 318px;
 }
+.img-wrapper .back {
+  width: auto;
+  height: 100%;
+  background: white;
+}
+.img-wrapper .front img,
+.img-wrapper .back img {
+  left: 50%;
+  top: 50%;
+  position: relative;
+  transform: translate(-50%, -50%);
+}
 .product-detail {
   padding-top: 5px;
 }
