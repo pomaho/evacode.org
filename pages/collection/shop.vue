@@ -25,9 +25,9 @@
                             <div class="product-filter-content">
                               <div class="search-count">
                                 <WidgetsShowedProductsLabel
-                                  :from="current === 1 ? 1 : paginate * (current - 1) + 1"
-                                  :to="current === 1 ? paginate : paginate * current"
-                                  :total="totalProductsCount"
+                                    :from="current === 1 ? 1 : itemsPerPage * (current - 1) + 1"
+                                    :to="current === 1 ? itemsPerPage : itemsPerPage * current"
+                                    :total="totalProductsCount"
                                 />
                               </div>
                               <div class="collection-view">
@@ -84,7 +84,7 @@
                                 'col-xxl-2 col-xl-3 col-md-4 col-6': col6 == true,
                                 'col-12': listview == true
                               }"
-                               v-for="(product, index) in products" :key="index">
+                              v-for="(product, index) in products" :key="index">
                             <div class="product-box">
                               <ProductBoxProductBox1
                                   @opencartmodel="showCart"
@@ -95,7 +95,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="product-pagination mb-0" v-if="totalProductsCount > paginate">
+                      <div class="product-pagination mb-0" v-if="totalProductsCount > itemsPerPage">
                         <div class="theme-paggination-block">
                           <div class="row">
                             <div class="col-xl-6 col-md-6 col-sm-12">
@@ -109,8 +109,8 @@
                             <div class="col-xl-6 col-md-6 col-sm-12">
                               <div class="product-search-count-bottom">
                                 <WidgetsShowedProductsLabel
-                                    :from="current === 1 ? 1 : paginate * (current - 1) + 1"
-                                    :to="current === 1 ? paginate : paginate * current"
+                                    :from="current === 1 ? 1 : itemsPerPage * (current - 1) + 1"
+                                    :to="current === 1 ? itemsPerPage : itemsPerPage * current"
                                     :total="totalProductsCount"
                                 />
                               </div>
@@ -131,140 +131,146 @@
         :openCart="showcartmodal"
         :product="cartproduct"
         @closeCart="closeCartModal"
-        :products="products"
     />
     <Footer/>
   </div>
 </template>
-<script>
+<script setup>
 import {useProductStore} from '~~/store/products'
 import {useFilterStore} from '~~/store/filter'
-import {mapState} from 'pinia'
-import axios from 'axios';
-export default {
-  data() {
-    return {
-      productsResponse: {},
-      products: [],
-      pages:[],
-      totalProductsCount: 0,
-      col2: false,
-      col3: true,
-      col4: false,
-      col6: false,
-      listview: false,
-      current: parseFloat(this.$route.query.page) || 1,
-      previous: '',
-      next: '',
-      paginate: 12,
-      paginateRange: 3,
-      showcartmodal: false,
-      cartproduct: {},
-    }
-  },
-  computed: {
-    ...mapState(useProductStore, {
-      productslist: 'productslist',
-      currency: 'currency'
-    }),
-    curr() {
-      return useProductStore().changeCurrency
-    }
-  },
+import {useRoute} from 'vue-router';
 
-  methods: {
-    async setProductsResponse() {
-      let page = this.current ? `?page=${this.current}` : '';
-      const {data} = await axios.get(`http://127.0.0.1:8000/market/goods/${page}`);
-      this.productsResponse = data;
-    },
-    gridView() {
-      this.col4 = true
-      this.col2 = false
-      this.col3 = false
-      this.col6 = false
-      this.listview = false
-    },
-    listView() {
-      this.listview = true
-      this.col4 = false
-      this.col2 = false
-      this.col3 = false
-      this.col6 = false
-    },
-    grid2() {
-      this.col2 = true
-      this.col3 = false
-      this.col4 = false
-      this.col6 = false
-      this.listview = false
-    },
-    grid3() {
-      this.col3 = true
-      this.col2 = false
-      this.col4 = false
-      this.col6 = false
-      this.listview = false
-    },
-    grid4() {
-      this.col4 = true
-      this.col2 = false
-      this.col3 = false
-      this.col6 = false
-      this.listview = false
-    },
-    grid6() {
-      this.col6 = true
-      this.col2 = false
-      this.col3 = false
-      this.col4 = false
-      this.listview = false
-    },
-    getCategoryFilter() {
-      this.updatePaginate(1)
-      useFilterStore().getCategoryFilter(this.$route.params.id)
-    },
-    updatePaginate() {
-      let start = this.current < this.paginateRange - 1 ? 1 : this.current - 1
-      let end = this.current < this.paginateRange - 1 ? start + this.paginateRange - 1 : this.current + 1;
+const route = useRoute();
+const current = ref(parseFloat(route.query.page) || 1);
 
-      start = Math.max(1, start);
-      end = Math.min(end, this.paginates);
-
-      this.pages = []
-      for (let i = start; i <= end; i++) {
-        this.pages.push(i)
+const {data: productsResponse} = await useAsyncData(
+    'productsResponse',
+    () => $fetch(`http://127.0.0.1:8000/market/goods`, {
+      query: {
+        page: current.value
       }
-
-      return this.pages
-    },
-    showCart(item, product) {
-      this.showcartmodal = item
-      this.cartproduct = product
-    },
-    closeCartModal(item) {
-      this.showcartmodal = item
-    },
-    async updateProducts() {
-      this.current = parseFloat(this.$route.query.page) || 1
-
-      await this.setProductsResponse();
-
-      this.products = this.productsResponse.results;
-      this.totalProductsCount = this.productsResponse.count;
-      this.next = this.productsResponse.next ? `?${this.productsResponse.next.split('?')[1]}` : null;
-      this.previous = this.productsResponse.previous ? `?${this.productsResponse.previous.split('?')[1]}` : null;
-
-      this.paginates = Math.round(this.totalProductsCount / this.paginate);
-
-      this.updatePaginate();
+    }),
+    {
+      watch: [current]
     }
-  },
-  async mounted() {
-    await this.updateProducts();
-    this.$watch(() => this.$route.query.page, async () => {
-      await this.updateProducts();
-    });
+);
+
+const products = computed(() => productsResponse.value.results);
+const totalProductsCount = computed(() => productsResponse.value.count);
+const previous = computed(() => productsResponse.value.previous ? `?${productsResponse.value.previous.split('?')[1]}` : null);
+const next = computed(() => productsResponse.value.next ? `?${productsResponse.value.next.split('?')[1]}` : null);
+const paginates = computed(() => Math.round(totalProductsCount.value / itemsPerPage.value));
+
+const itemsPerPage = ref(12);
+const paginateRange = ref(3);
+
+const pages = computed(() => {
+  let start = current.value < paginateRange.value - 1 ? 1 : current.value - 1
+  let end = current.value < paginateRange.value - 1 ? start + paginateRange.value - 1 : current.value + 1;
+
+  start = Math.max(1, start);
+  end = Math.min(end, paginates.value);
+
+  const _pages = []
+  for (let i = start; i <= end; i++) {
+    _pages.push(i)
   }
-}
+  return _pages;
+});
+
+const col2 = ref(false);
+const col3 = ref(true);
+const col4 = ref(false);
+const col6 = ref(false);
+const listview = ref(false);
+const showcartmodal = ref(false);
+const cartproduct = ref({});
+
+const productStore = useProductStore();
+const curr = computed(() => productStore.changeCurrency);
+
+const productslist = computed(() => productStore.productslist);
+const currency = computed(() => productStore.currency);
+
+const gridView = () => {
+  col4.value = true;
+  col2.value = false;
+  col3.value = false;
+  col6.value = false;
+  listview.value = false;
+};
+
+const listView = () => {
+  listview.value = true;
+  col4.value = false;
+  col2.value = false;
+  col3.value = false;
+  col6.value = false;
+};
+
+const grid2 = () => {
+  col2.value = true;
+  col3.value = false;
+  col4.value = false;
+  col6.value = false;
+  listview.value = false;
+};
+
+const grid3 = () => {
+  col3.value = true;
+  col2.value = false;
+  col4.value = false;
+  col6.value = false;
+  listview.value = false;
+};
+
+const grid4 = () => {
+  col4.value = true;
+  col2.value = false;
+  col3.value = false;
+  col6.value = false;
+  listview.value = false;
+};
+
+const grid6 = () => {
+  col6.value = true;
+  col2.value = false;
+  col3.value = false;
+  col4.value = false;
+  listview.value = false;
+};
+
+const getCategoryFilter = () => {
+  updatePaginate(1);
+  useFilterStore().getCategoryFilter(route.params.id)
+};
+
+const updatePaginate = () => {
+  let start = current.value < paginateRange.value - 1 ? 1 : current.value - 1
+  let end = current.value < paginateRange.value - 1 ? start + paginateRange.value - 1 : current.value + 1;
+
+  start = Math.max(1, start);
+  end = Math.min(end, paginates.value);
+
+  pages.value = []
+  for (let i = start; i <= end; i++) {
+    pages.value.push(i)
+  }
+};
+
+const showCart = (item, product) => {
+  showcartmodal.value = item
+  cartproduct.value = product
+};
+
+const closeCartModal = (item) => {
+  showcartmodal.value = item
+};
+
+watch(
+    () => route.query.page,
+    async () => {
+      current.value = parseFloat(route.query.page) || 1;
+    }
+);
 </script>
