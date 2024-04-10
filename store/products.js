@@ -7,19 +7,15 @@ import axios from 'axios';
 export const useProductStore = defineStore({
     id: 'product-store',
     state: () => {
-        // debugger;
-        // const products = await axios.get('http://127.0.0.1:8000/market/get_all_goods/');
         return {
-            // productslist: products.result,
-            // products: products.result,
             productslist: products.data,
             products: products.data,
             wishlist: [],
             compare: [],
             currency: {
-                value: 'usd',
+                value: 'KRW',
                 curr: 1,
-                symbol: '$'
+                symbol: '₩'
             },
             order: [],
             locale: 'en',
