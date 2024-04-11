@@ -24,10 +24,10 @@
                         <div class="collection-brand-filter">
                             <ul class="category-list">
                                 <li>
-                                    <nuxt-link :to="{ path: '/collection/leftsidebar/all' }">Все товары</nuxt-link>
+                                    <nuxt-link :to="{ path: '/collection/shop' }">Все товары</nuxt-link>
                                 </li>
                                 <li v-for="(category, index) in filterbyCategory" :key="index">
-                                    <nuxt-link :to="{ path: '/collection/leftsidebar/' + category }"
+                                    <nuxt-link :to="{ path: '/collection/shop/' + category }"
                                         @click="getCategoryFilter(category)">{{ category }}</nuxt-link>
                                 </li>
                             </ul>
@@ -51,13 +51,6 @@
 <script>
 
 import {
-    Swiper,
-    SwiperSlide
-} from "swiper/vue";
-import 'swiper/css';
-import "swiper/css/navigation";
-import { Navigation } from "swiper";
-import {
     mapState
 } from 'pinia'
 import {
@@ -69,18 +62,9 @@ import {
 
 export default {
      setup() {
-        return {
-            modules: [Navigation],
-        };
-    },
-     components: {
-        Swiper,
-        SwiperSlide
     },
     data() {
         return {
-            min: 0,
-            max: 0,
             start: 0,
             bannerimagepath: '/images/side-banner.png',
             selectedcolor: [],
@@ -116,16 +100,6 @@ export default {
         }
     },
     methods: {
-        onSwiper(swiper) {
-            this.swiper = swiper;
-        },
-        getImgUrl(path) {
-            return ('/images/' + path)
-        },
-        discountedPrice(product) {
-            const price = (product.price - (product.price * product.discount / 100)) * this.curr.curr
-            return price
-        },
         isActive(filterItem) {
             return this.applyFilter.indexOf(filterItem) > -1
         },
@@ -133,20 +107,9 @@ export default {
             useFilterStore().getCategoryFilter(category)
         }
     },
-
-     mounted() {
-
-        var vm = this,
-            max = Math.max(...this.price),
-            min = Math.min(...this.price)
-        vm.start = max
-        vm.min = min,
-            vm.max = max
-        vm.value = [0, Infinity]
-        this.$emit('priceVal', this.value)
-    },
 }
 </script>
+
 <style scoped>
 .collapse-block-title:after {
   content: none;

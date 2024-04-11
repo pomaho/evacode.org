@@ -223,7 +223,14 @@ watch:{
       } else {
         this.user.email.errormsg = ''
       }
+      useProductStore().createOrder({
+        product: this.cart,
+        userDetail: this.user,
+        token: 12312,
+        amt: this.cartTotal
+      });
 
+      this.$router.push('/page/order-success')
     },
     validEmail: function (email) {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/

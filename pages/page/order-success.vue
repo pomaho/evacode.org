@@ -106,7 +106,7 @@
     </section>
     <!-- Section ends -->
   </div>
-  <Footer /> 
+  <Footer />
 </template>
 <script>
 import { useProductStore } from '~~/store/products';
@@ -124,7 +124,7 @@ export default {
     cartTotal(){
       return useCartStore().cartTotalAmount
     },
-    cur(){
+    curr(){
       return useProductStore().changeCurrency
     }
   },
