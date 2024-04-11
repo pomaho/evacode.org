@@ -13,21 +13,21 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-lg-6">
-                    <swiper @swiper="onSwiper" :slidesPerView="1" :spaceBetween="20" class="swiper-wrapper h-auto">
-                      <swiper-slide class="swiper-slide" v-for="(image, index) in product.images" :key="index">
+                    <Swiper @swiper="onSwiper" :slidesPerView="1" :spaceBetween="20" class="swiper-wrapper h-auto">
+                      <SwiperSlide class="swiper-slide" v-for="(image, index) in product.images" :key="index">
                         <img :src="image.url" :id="image.image_id" class="img-fluid bg-img"
                              :alt="image.alt"/>
-                      </swiper-slide>
-                    </swiper>
+                      </SwiperSlide>
+                    </Swiper>
                     <div class="row">
                       <div class="col-12 slider-nav-images">
-                        <swiper :slidesPerView="3" slide-active-class="true" :spaceBetween="20" class="swiper-wrapper">
-                          <swiper-slide class="swiper-slide" v-for="(image, index) in product.images" :key="index"
+                        <Swiper :slidesPerView="3" slide-active-class="true" :spaceBetween="20" class="swiper-wrapper">
+                          <SwiperSlide class="swiper-slide" v-for="(image, index) in product.images" :key="index"
                                         :class="slideId == index ? 'product-slider-active' : ''">
                             <img :src="image.url" :id="image.image_id" class="img-fluid bg-img"
                                  alt="image.alt" @click="slideTo(index)"/>
-                          </swiper-slide>
-                        </swiper>
+                          </SwiperSlide>
+                        </Swiper>
                       </div>
                     </div>
                   </div>
@@ -143,7 +143,6 @@ const {data: productResponse} = await useAsyncData(
       }
     }),
 );
-debugger;
 
 const onSwiper = (_swiper) => swiper.value = _swiper;
 
