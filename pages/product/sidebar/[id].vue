@@ -1,7 +1,7 @@
 <template>
   <Header/>
   <div>
-    <WidgetsBreadcrumbs :title="getDetail.title"/>
+    <WidgetsBreadcrumbs :title="product.title"/>
     <section class="section-b-space">
       <div class="collection-wrapper">
         <div class="container">
@@ -14,18 +14,18 @@
                 <div class="row">
                   <div class="col-lg-6">
                     <swiper @swiper="onSwiper" :slidesPerView="1" :spaceBetween="20" class="swiper-wrapper h-auto">
-                      <swiper-slide class="swiper-slide" v-for="(product, index) in getDetail.images" :key="index">
-                        <img :src="getImgUrl(product.src)" :id="product.image_id" class="img-fluid bg-img"
-                             :alt="product.alt"/>
+                      <swiper-slide class="swiper-slide" v-for="(image, index) in product.images" :key="index">
+                        <img :src="image.url" :id="image.image_id" class="img-fluid bg-img"
+                             :alt="image.alt"/>
                       </swiper-slide>
                     </swiper>
                     <div class="row">
                       <div class="col-12 slider-nav-images">
                         <swiper :slidesPerView="3" slide-active-class="true" :spaceBetween="20" class="swiper-wrapper">
-                          <swiper-slide class="swiper-slide" v-for="(product, index) in getDetail.images" :key="index"
+                          <swiper-slide class="swiper-slide" v-for="(image, index) in product.images" :key="index"
                                         :class="slideId == index ? 'product-slider-active' : ''">
-                            <img :src="getImgUrl(product.src)" :id="product.image_id" class="img-fluid bg-img"
-                                 alt="product.alt" @click="slideTo(index)"/>
+                            <img :src="image.url" :id="image.image_id" class="img-fluid bg-img"
+                                 alt="image.alt" @click="slideTo(index)"/>
                           </swiper-slide>
                         </swiper>
                       </div>
@@ -33,21 +33,21 @@
                   </div>
                   <div class="col-lg-6 rtl-text">
                     <div class="product-right">
-                      <h2>{{ getDetail.title }}</h2>
-                      <h4 v-if="getDetail.sale">
-                        <del>{{ curr.symbol }}{{ (getDetail.price * curr.curr).toFixed(2) }}</del>
-                        <span>{{ getDetail.discount }}% off</span>
+                      <h2>{{ product.title }}</h2>
+                      <h4 v-if="product.sale">
+                        <del>{{ curr.symbol }}{{ (product.retail_price * curr.curr).toFixed(2) }}</del>
+                        <span>{{ product.discount }}% off</span>
                       </h4>
-                      <h3 v-if="getDetail.sale">{{ curr.symbol }}{{ discountedPrice(getDetail) }}</h3>
-                      <h3 v-else>{{ curr.symbol }}{{ (getDetail.price * curr.curr).toFixed(2) }}</h3>
-                      <div class="pro_inventory" v-if="getDetail.stock < 8">
-                        <p class="active"> Поспешите! У нас осталось всего {{ getDetail.stock }} шт. на складе. </p>
+                      <h3 v-if="product.sale">{{ curr.symbol }}{{ discountedPrice(product) }}</h3>
+                      <h3 v-else>{{ curr.symbol }}{{ (product.retail_price * curr.curr).toFixed(2) }}</h3>
+                      <div class="pro_inventory" v-if="product.stock < 8">
+                        <p class="active"> Поспешите! У нас осталось всего {{ product.stock }} шт. на складе. </p>
                       </div>
                       <div class="product-description border-product">
-                        <h5 class="avalibility" v-if="counter <= getDetail.stock">
+                        <h5 class="avalibility" v-if="counter <= product.stock">
                           <span>В наличии</span>
                         </h5>
-                        <h5 class="avalibility" v-if="counter > getDetail.stock">
+                        <h5 class="avalibility" v-if="counter > product.stock">
                           <span>Отсутствует</span>
                         </h5>
                         <h6 class="product-title">количество</h6>
@@ -60,7 +60,7 @@
                               </button>
                             </span>
                             <input type="text" name="quantity" class="form-control input-number"
-                                   :disabled="counter > getDetail.stock" v-model="counter"/>
+                                   :disabled="counter > product.stock" v-model="counter"/>
                             <span class="input-group-prepend">
                               <button type="button" class="btn quantity-right-plus" data-type="plus" data-field
                                       @click="increment()">
@@ -73,14 +73,14 @@
                       <div class="product-buttons">
                         <nuxt-link :to="{ path: '/page/account/cart' }">
                           <button class="btn btn-solid" title="Добавить в корзину"
-                                  @click="addToCart(getDetail, counter)"
-                                  :disabled="counter > getDetail.stock">Добавить в корзину
+                                  @click="addToCart(product, counter)"
+                                  :disabled="counter > product.stock">Добавить в корзину
                           </button>
                         </nuxt-link>
                       </div>
                       <div class="border-product">
                         <h6 class="product-title"> описание товара</h6>
-                        <p>{{ getDetail.description.substring(0, 200) + '....' }}</p>
+                        <p>{{ product.description.substring(0, 200) + '....' }}</p>
                       </div>
                     </div>
                   </div>
@@ -100,8 +100,8 @@
                 <!-- <button class="close" type="button" data-bs-dismiss="modal">
                   <span>×</span>
                 </button>
-                {{ getDetail.title }} -->
-                <div class="modal-header"><h5 class="modal-title">{{ getDetail.title }}</h5>
+                {{ product.title }} -->
+                <div class="modal-header"><h5 class="modal-title">{{ product.title }}</h5>
                   <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
               </div>
@@ -113,76 +113,66 @@
   </div>
   <Footer/>
 </template>
-<script>
 
+<script setup>
 
-import {
-  Swiper,
-  SwiperSlide
-} from 'swiper/vue';
+import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 import {mapState} from 'pinia'
 import {useProductStore} from '~~/store/products';
 import {useCartStore} from '~~/store/cart';
+import {useRoute} from 'vue-router';
 
-export default {
-  components: {
-    Swiper, SwiperSlide,
-  },
+const route = useRoute();
 
-  data() {
-    return {
-      slideId: 0,
-      counter: 1,
-      qty: '',
-    }
-  },
-  computed: {
-    ...mapState(useProductStore, {
-      currency: 'currency'
+const slideId = ref(0);
+const counter = ref(1);
+const qty = ref('');
+const swiper = ref({});
+
+
+const curr = computed(() => useProductStore().changeCurrency);
+const product = computed(() => productResponse.value.results[0]);
+// const product = computed(() => useProductStore().getProductById(route.params.id));
+
+const {data: productResponse} = await useAsyncData(
+    'productResponse',
+    () => $fetch(`http://127.0.0.1:8000/market/goods`, {
+      query: {
+        id: route.params.id,
+      }
     }),
+);
+debugger;
 
-    curr() {
-      return useProductStore().changeCurrency
-    },
-    getDetail: function () {
-      return useProductStore().getProductById(this.$route.params.id)
-    },
+const onSwiper = (_swiper) => swiper.value = _swiper;
 
-  },
+const priceCurrency = () => useProductStore().changeCurrency();
 
-  methods: {
-    onSwiper(swiper) {
-      this.swiper = swiper;
-    },
-    priceCurrency: function () {
-      useProductStore().changeCurrency()
-    },
-    discountedPrice(product) {
-      const price = (product.price - (product.price * product.discount / 100)) * this.curr.curr
-      return price
+const discountedPrice = (product) => {
+  const price = (product.retail_price - (product.retail_price * product.discount / 100)) * this.curr.curr
+  return price
+};
 
-    },
-    // add to cart
-    addToCart: function (product, qty) {
-      product.quantity = qty || 1
-      useCartStore().addToCart(product)
-    },
-    // Item Count
-    increment() {
-      this.counter++
-    },
-    decrement() {
-      if (this.counter > 1) this.counter--
-    },
-    getImgUrl(path) {
-      return ('/images/' + path)
-    },
-    slideTo(id) {
-      this.swiper.slideTo(id)
+// add to cart
+const addToCart = (product, qty) => {
+  product.quantity = qty || 1
+  useCartStore().addToCart(product)
+};
 
-      this.slideId = id
-    },
-  },
-}
+// Item Count
+const increment = () => counter.value++;
+const decrement= () => {
+  if (counter.value > 1) counter.value--
+};
+
+const getImgUrl = (path) => {
+  return ('/images/' + path)
+};
+
+const slideTo = (id) => {
+  swiper.value.slideTo(id)
+
+  slideId.value = id
+};
 </script>
