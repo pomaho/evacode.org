@@ -34,12 +34,10 @@
                   <div class="col-lg-6 rtl-text">
                     <div class="product-right">
                       <h2>{{ product.title }}</h2>
-                      <h4 v-if="product.sale">
-                        <del>{{ curr.symbol }}{{ (product.retail_price * curr.curr).toFixed(2) }}</del>
-                        <span>{{ product.discount }}% off</span>
+                      <h4>
+                        <del>{{ curr.symbol }}{{ (product.official_price * curr.curr).toFixed(0) }}</del>
+                          {{ curr.symbol }}{{ (product.retail_price * curr.curr) }}
                       </h4>
-                      <h3 v-if="product.sale">{{ curr.symbol }}{{ discountedPrice(product) }}</h3>
-                      <h3 v-else>{{ curr.symbol }}{{ (product.retail_price * curr.curr).toFixed(2) }}</h3>
                       <div class="pro_inventory" v-if="product.stock < 8">
                         <p class="active"> Поспешите! У нас осталось всего {{ product.stock }} шт. на складе. </p>
                       </div>
@@ -80,7 +78,7 @@
                       </div>
                       <div class="border-product">
                         <h6 class="product-title"> описание товара</h6>
-                        <p>{{ product.description.substring(0, 200) + '....' }}</p>
+                        <p v-html="product.description"></p>
                       </div>
                     </div>
                   </div>
@@ -118,7 +116,6 @@
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
-import {mapState} from 'pinia'
 import {useProductStore} from '~~/store/products';
 import {useCartStore} from '~~/store/cart';
 import {useRoute} from 'vue-router';
@@ -133,7 +130,6 @@ const swiper = ref({});
 
 const curr = computed(() => useProductStore().changeCurrency);
 const product = computed(() => productResponse.value.results[0]);
-// const product = computed(() => useProductStore().getProductById(route.params.id));
 
 const {data: productResponse} = await useAsyncData(
     'productResponse',
@@ -145,12 +141,8 @@ const {data: productResponse} = await useAsyncData(
 );
 
 const onSwiper = (_swiper) => swiper.value = _swiper;
-
-const priceCurrency = () => useProductStore().changeCurrency();
-
 const discountedPrice = (product) => {
-  const price = (product.retail_price - (product.retail_price * product.discount / 100)) * this.curr.curr
-  return price
+  return (product.retail_price - (product.retail_price * product.discount / 100)) * this.curr.curr
 };
 
 // add to cart
