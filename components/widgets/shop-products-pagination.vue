@@ -14,7 +14,7 @@
         </a>
       </li>
       <li class="page-item" v-for="(page_index, index) in pages" :key="index" :class="{ 'active': page_index == current }">
-        <nuxt-link class="page-link" :to="`?page=${ page_index }`" tabindex="-1">
+        <nuxt-link class="page-link" :to="formatPageUrl(page_index)" tabindex="-1">
           {{ page_index }}
         </nuxt-link>
       </li>
@@ -35,6 +35,8 @@
 </template>
 
 <script setup>
+import {useRoute} from 'vue-router';
+
 const props = defineProps({
   previous: {
     type: String,
@@ -53,4 +55,14 @@ const props = defineProps({
     default: 0,
   },
 });
+
+const route = useRoute();
+const formatPageUrl = (pageIndex) => {
+  const query = Object.assign({}, route.query);
+  query.page = pageIndex;
+
+  const queryKeys = Object.keys(query);
+  const queryPath = queryKeys.map((key) => `${key}=${query[key]}`).join('&');
+  return `?${queryPath}`
+}
 </script>

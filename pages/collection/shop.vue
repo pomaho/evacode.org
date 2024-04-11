@@ -25,8 +25,8 @@
                             <div class="product-filter-content">
                               <div class="search-count">
                                 <WidgetsShowedProductsLabel
-                                    :from="current === 1 ? 1 : itemsPerPage * (current - 1) + 1"
-                                    :to="current === 1 ? itemsPerPage : itemsPerPage * current"
+                                    :from="currentPage === 1 ? 1 : itemsPerPage * (currentPage - 1) + 1"
+                                    :to="currentPage === 1 ? itemsPerPage : itemsPerPage * currentPage"
                                     :total="totalProductsCount"
                                 />
                               </div>
@@ -63,15 +63,15 @@
                               <WidgetsShopProductsPagination
                                   :previous="previous"
                                   :next="next"
-                                  :current="current"
+                                  :current="currentPage"
                                   :pages="pages"
                               />
                             </div>
                             <div class="col-xl-6 col-md-6 col-sm-12">
                               <div class="product-search-count-bottom">
                                 <WidgetsShowedProductsLabel
-                                    :from="current === 1 ? 1 : itemsPerPage * (current - 1) + 1"
-                                    :to="current === 1 ? itemsPerPage : itemsPerPage * current"
+                                    :from="currentPage === 1 ? 1 : itemsPerPage * (currentPage - 1) + 1"
+                                    :to="currentPage === 1 ? itemsPerPage : itemsPerPage * currentPage"
                                     :total="totalProductsCount"
                                 />
                               </div>
@@ -102,17 +102,19 @@ import {useFilterStore} from '~~/store/filter'
 import {useRoute} from 'vue-router';
 
 const route = useRoute();
-const current = ref(parseFloat(route.query.page) || 1);
+const currentPage = ref(parseFloat(route.query.page) || 1);
+const currentCategory = ref(parseFloat(route.query.category) || null);
 
 const {data: productsResponse} = await useAsyncData(
     'productsResponse',
     () => $fetch(`http://127.0.0.1:8000/market/goods`, {
       query: {
-        page: current.value
+        page: currentPage.value,
+        category: currentCategory.value
       }
     }),
     {
-      watch: [current]
+      watch: [currentPage, currentCategory]
     }
 );
 
@@ -126,8 +128,8 @@ const itemsPerPage = ref(12);
 const paginateRange = ref(3);
 
 const pages = computed(() => {
-  let start = current.value < paginateRange.value - 1 ? 1 : current.value - 1
-  let end = current.value < paginateRange.value - 1 ? start + paginateRange.value - 1 : current.value + 1;
+  let start = currentPage.value < paginateRange.value - 1 ? 1 : currentPage.value - 1
+  let end = currentPage.value < paginateRange.value - 1 ? start + paginateRange.value - 1 : currentPage.value + 1;
 
   start = Math.max(1, start);
   end = Math.min(end, paginates.value);
@@ -154,8 +156,8 @@ const getCategoryFilter = () => {
 };
 
 const updatePaginate = () => {
-  let start = current.value < paginateRange.value - 1 ? 1 : current.value - 1
-  let end = current.value < paginateRange.value - 1 ? start + paginateRange.value - 1 : current.value + 1;
+  let start = currentPage.value < paginateRange.value - 1 ? 1 : currentPage.value - 1
+  let end = currentPage.value < paginateRange.value - 1 ? start + paginateRange.value - 1 : currentPage.value + 1;
 
   start = Math.max(1, start);
   end = Math.min(end, paginates.value);
@@ -177,8 +179,15 @@ const closeCartModal = (item) => {
 
 watch(
     () => route.query.page,
-    async () => {
-      current.value = parseFloat(route.query.page) || 1;
+    () => {
+      currentPage.value = parseFloat(route.query.page) || 1;
+    }
+);
+
+watch(
+    () => route.query.category,
+    () => {
+      currentCategory.value = parseFloat(route.query.category) || null;
     }
 );
 </script>
