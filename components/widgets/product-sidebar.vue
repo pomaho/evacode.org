@@ -10,32 +10,7 @@
       </div>
     </div>
     <div class="collection-filter" :class="{ 'openFilterbar': filter }">
-      <div class="collection-filter-block">
-        <!-- brand filter start -->
-        <div class="collection-mobile-back">
-                    <span class="filter-back" @click="filter = !filter">
-                        <i class="fa fa-angle-left" aria-hidden="true"></i> back
-                    </span>
-        </div>
-        <div class="collection-collapse-block open">
-          <h3 class="collapse-block-title">Категории</h3>
-
-          <div class="collection-collapse-block-content" :style="{ display: 'block'}">
-            <div class="collection-brand-filter">
-              <ul class="category-list">
-                <li>
-                  <nuxt-link :to="{ path: '/collection/leftsidebar/all' }">Все товары</nuxt-link>
-                </li>
-                <li v-for="(category, index) in filterbyCategory" :key="index">
-                  <nuxt-link :to="{ path: '/collection/leftsidebar/' + category }"
-                             @click="getCategoryFilter(category)">{{ category }}</nuxt-link>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <sidebar-categories />
       <div class="collection-filter-block">
         <div class="product-service">
           <div class="media">
@@ -118,6 +93,7 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { useProductStore } from '~~/store/products'
 import { useFilterStore } from '~~/store/filter'
+import SidebarCategories from '~/components/widgets/sidebar-categories.vue';
 export default {
    setup() {
     return {
@@ -125,6 +101,7 @@ export default {
     };
   },
   components: {
+    SidebarCategories,
     Swiper, SwiperSlide,
   },
   data() {
