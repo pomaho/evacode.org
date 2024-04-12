@@ -8,7 +8,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "3.8.0"
+    "nuxt": "3.9.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.1",
@@ -18,6 +18,7 @@
     "@nuxt/image": "^0.7.1",
     "@nuxt/image-edge": "1.0.0-27827328.bc9ddc0",
     "@nuxtjs/i18n": "^8.0.0-beta.7",
+    "@nuxtjs/sitemap": "^5.1.4",
     "@nuxtjs/toast": "^3.3.1",
     "@pinia/nuxt": "^0.4.6",
     "@popperjs/core": "^2.11.6",
@@ -37,12 +38,15 @@
     "vee-validate": "^4.7.3",
     "vue": "^3.2.45",
     "vue-easy-lightbox": "^1.11.0",
+    "vue-i18n": "^9.2.2",
     "vue-masonry": "^0.16.0",
     "vue-no-ssr": "^1.1.1",
     "vue-paypal-checkout": "^3.2.0",
     "vue-router": "^4.1.6",
     "vue-scrollto": "^2.20.0",
-    "vue-toastification": "2.0.0-rc.5",
-    "vue-i18n": "^9.2.2"
+    "vue-toastification": "2.0.0-rc.5"
+  },
+  "resolutions": {
+    "string-width": "4.2.3"
   }
 }
