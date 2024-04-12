@@ -10,7 +10,7 @@
           <div class="col-lg-6">
             <div class="subscribe">
               <div>
-                <span><h4>Запросите консультацию в Telegram!</h4><a href="#"><i class="fa fa-telegram"></i></a></span>
+                <span class="request-tg-consult"><h4>Запросите консультацию в Telegram!</h4><a href="#"><i class="fa fa-telegram"></i></a></span>
 
                 <p>Получите персональный подбор косметического ухода от наших консультантов в Telegram</p>
               </div>
@@ -35,5 +35,7 @@
 </template>
 
 <style scoped>
-
+.request-tg-consult {
+  display: flex;
+}
 </style>
