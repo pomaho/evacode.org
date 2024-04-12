@@ -12,45 +12,47 @@
                 <div class="row check-out">
                   <div class="form-group col-md-6 col-sm-6">
                     <div class="field-label">Имя</div>
-                    <input type="text" v-model="user.firstName.value" name="First name" />
+                    <input type="text" v-model="user.firstName.value" name="First name"/>
                     <span class="validate-error" v-if="user.firstName.value.length === 0">{{
-                      user.firstName.errormsg
-                    }}</span>
+                        user.firstName.errormsg
+                      }}</span>
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
                     <div class="field-label">Фамилия</div>
-                    <input type="text" v-model="user.lastName.value" name="Last name" />
+                    <input type="text" v-model="user.lastName.value" name="Last name"/>
                     <span class="validate-error" v-if="user.lastName.value.length === 0">{{
-                      user.lastName.errormsg
-                    }}</span>
+                        user.lastName.errormsg
+                      }}</span>
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
                     <div class="field-label">Телефон</div>
-                    <input type="tel" v-model="user.phone.value" name="Phone" />
+                    <input type="tel" v-model="user.phone.value" name="Phone"/>
                     <span class="validate-error" v-if="user.phone.value.length === 0">{{ user.phone.errormsg }}</span>
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
                     <div class="field-label">Email</div>
-                    <input type="email" v-model="user.email.value" name="Email Address" />
+                    <input type="email" v-model="user.email.value" name="Email Address"/>
                     <span class="validate-error" v-if="!user.email.value || !validEmail(user.email.value)">{{
-                      user.email.errormsg
-                    }}</span>
+                        user.email.errormsg
+                      }}</span>
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
                     <div class="field-label">Telegram</div>
-                    <input type="tel" v-model="user.telegram.value" name="Phone" />
-                    <span class="validate-error" v-if="user.telegram.value.length === 0">{{ user.telegram.errormsg }}</span>
+                    <input type="tel" v-model="user.telegram.value" name="Phone"/>
+                    <span class="validate-error" v-if="user.telegram.value.length === 0">{{
+                        user.telegram.errormsg
+                      }}</span>
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
                     <div class="field-label">Instagram</div>
-                    <input type="email" v-model="user.instagram.value" name="Email Address" />
+                    <input type="email" v-model="user.instagram.value" name="Email Address"/>
                     <span class="validate-error" v-if="!user.instagram.value || !validEmail(user.instagram.value)">{{
-                      user.instagram.errormsg
-                    }}</span>
+                        user.instagram.errormsg
+                      }}</span>
                   </div>
                   <div class="form-group col-md-12 col-sm-12">
                     <div class="field-label">Город</div>
-                    <input type="text" v-model="user.city.value" name="City" />
+                    <input type="text" v-model="user.city.value" name="City"/>
                     <span class="validate-error" v-if="user.city.value.length === 0">{{ user.city.errormsg }}</span>
                   </div>
                 </div>
@@ -66,7 +68,7 @@
                     </div>
                     <ul class="qty" v-if="cart.length">
                       <li v-for="(item, index) in cart" :key="index">
-                        {{ item.title || uppercase }} X {{ item.quantity }}
+                        {{ item.title }} X {{ item.quantity }}
                         <span>{{ curr.symbol }}{{ (item.price * curr.curr) * item.quantity }}</span>
                       </li>
                     </ul>
@@ -110,17 +112,18 @@
   </section>
 </template>
 <script>
-import { useCartStore } from '~~/store/cart'
-import { useProductStore } from '~~/store/products'
-  export default {
+import {useCartStore} from '~~/store/cart'
+import {useProductStore} from '~~/store/products'
+
+export default {
   computed: {
-    cart(){
+    cart() {
       return useCartStore().cartItems
     },
-    cartTotal(){
+    cartTotal() {
       return useCartStore().cartTotalAmount
     },
-    curr(){
+    curr() {
       return useProductStore().changeCurrency
     }
   },
@@ -133,16 +136,16 @@ import { useProductStore } from '~~/store/products'
       selectedPayment: 'paypal',
       errors: [],
       user: {
-        firstName: { value: '', errormsg: '' },
-        lastName: { value: '', errormsg: '' },
-        phone: { value: '', errormsg: '' },
-        telegram: { value: '', errormsg: '' },
-        instagram: { value: '', errormsg: '' },
-        email: { value: '', errormsg: '' },
-        address: { value: '', errormsg: '' },
-        city: { value: '', errormsg: '' },
-        state: { value: '', errormsg: '' },
-        pincode: { value: '', errormsg: '' }
+        firstName: {value: '', errormsg: ''},
+        lastName: {value: '', errormsg: ''},
+        phone: {value: '', errormsg: ''},
+        telegram: {value: '', errormsg: ''},
+        instagram: {value: '', errormsg: ''},
+        email: {value: '', errormsg: ''},
+        address: {value: '', errormsg: ''},
+        city: {value: '', errormsg: ''},
+        state: {value: '', errormsg: ''},
+        pincode: {value: '', errormsg: ''}
       },
       isLogin: false,
       paypal: {
@@ -160,77 +163,91 @@ import { useProductStore } from '~~/store/products'
     }
   },
 
-watch:{
-    cart:{
-      handler(value){
-        if(value.length==0){
-          useNuxtApp().$showToast({ msg: "Cart is Empty.", type: "error" })
+  watch: {
+    cart: {
+      handler(value) {
+        if (value.length == 0) {
+          useNuxtApp().$showToast({msg: 'Cart is Empty.', type: 'error'})
           this.$router.replace('/page/account/cart')
         }
 
-      },deep:true
+      }, deep: true
     }
   },
 
 
   methods: {
-    onSubmit() {
-
+    validateFields() {
+      let isValidForm = true;
       if (this.user.firstName.value.length <= 1 || this.user.firstName.value.length > 10) {
         this.user.firstName.errormsg = 'empty not allowed'
+        isValidForm = false;
       } else {
         this.user.firstName.errormsg = ''
       }
 
       if (this.user.lastName.value.length <= 1 || this.user.lastName.value.length > 10) {
         this.user.lastName.errormsg = 'empty not allowed'
+        isValidForm = false;
       } else {
         this.user.lastName.errormsg = ''
       }
 
       if (this.user.city.value.length < 3 || this.user.city.value.length > 10) {
         this.user.city.errormsg = 'empty not allowed'
+        isValidForm = false;
       } else {
         this.user.city.errormsg = ''
       }
-      if (this.user.pincode.value.length < 4) {
 
+      if (this.user.pincode.value.length < 4) {
         this.user.pincode.errormsg = 'empty not  allowed'
+        isValidForm = false;
       } else {
         this.user.pincode.errormsg = ''
       }
+
       if (!this.user.state.value) {
         this.user.state.errormsg = 'empty not allowed'
+        isValidForm = false;
       } else {
         this.user.state.errormsg = ''
       }
       if (!this.user.phone.value) {
         this.user.phone.errormsg = 'empty not allowed'
+        isValidForm = false;
       } else {
         this.user.phone.errormsg = ''
       }
       if (!this.user.address.value) {
         this.user.address.errormsg = 'empty not allowed'
+        isValidForm = false;
       } else {
         this.user.address.errormsg = ''
       }
       if (!this.user.email.value) {
         this.user.email.errormsg = 'empty not allowed'
+        isValidForm = false;
       } else if (!this.validEmail(this.user.email.value)) {
-
         this.user.email.errormsg = 'Valid email required.'
-
+        isValidForm = false;
       } else {
         this.user.email.errormsg = ''
       }
-      useProductStore().createOrder({
-        product: this.cart,
-        userDetail: this.user,
-        token: 12312,
-        amt: this.cartTotal
-      });
 
-      this.$router.push('/page/order-success')
+      return isValidForm;
+    },
+    onSubmit() {
+      if (this.validateFields()) {
+        useProductStore().createOrder({
+          product: this.cart,
+          userDetail: this.user,
+          token: 12312,
+          amt: this.cartTotal
+        });
+
+        this.$router.push('/page/order-success')
+      }
     },
     validEmail: function (email) {
       const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -238,11 +255,11 @@ watch:{
     }
   },
 
-   mounted(){
+  mounted() {
     this.isLogin = true;
 
     if (this.isLogin && this.cart.length == 0) {
-      useNuxtApp().$showToast({ msg: "Cart is Empty.", type: "error" })
+      useNuxtApp().$showToast({msg: 'Cart is Empty.', type: 'error'})
       this.$router.replace('/page/account/cart')
     }
 
