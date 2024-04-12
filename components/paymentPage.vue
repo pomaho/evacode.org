@@ -77,15 +77,15 @@
                         Итого
                         <span class="count">{{ curr.symbol }}{{ cartTotal * curr.curr }}</span>
                       </li>
-                      <li>Доставка
+                      <li>Способ оплаты
                         <div class="shipping">
                           <div class="shopping-option">
-                            <input type="checkbox" name="free-shipping" id="free-shipping">
-                            <label for="free-shipping">Free Shipping</label>
+                            <input type="radio" id="phys" value=1 v-model="payment_ratio" />
+                            <label for="phys">Физическое лицо</label>
                           </div>
                           <div class="shopping-option">
-                            <input type="checkbox" name="local-pickup" id="local-pickup">
-                            <label for="local-pickup">Local Pickup</label>
+                            <input type="radio" id="yur" value=1.2 v-model="payment_ratio" />
+                            <label for="yur">Юридическое лицо</label>
                           </div>
                         </div>
                       </li>
@@ -121,14 +121,15 @@ export default {
       return useCartStore().cartItems
     },
     cartTotal() {
-      return useCartStore().cartTotalAmount
+      return useCartStore().cartTotalAmount * this.payment_ratio
     },
     curr() {
       return useProductStore().changeCurrency
-    }
+    },
   },
   data() {
     return {
+      payment_ratio: 1,
       items: [{
         stripePriceId: '1',
         quantity: 5
@@ -142,10 +143,7 @@ export default {
         telegram: {value: '', errormsg: ''},
         instagram: {value: '', errormsg: ''},
         email: {value: '', errormsg: ''},
-        address: {value: '', errormsg: ''},
         city: {value: '', errormsg: ''},
-        state: {value: '', errormsg: ''},
-        pincode: {value: '', errormsg: ''}
       },
       isLogin: false,
       paypal: {
@@ -201,31 +199,13 @@ export default {
         this.user.city.errormsg = ''
       }
 
-      if (this.user.pincode.value.length < 4) {
-        this.user.pincode.errormsg = 'empty not  allowed'
-        isValidForm = false;
-      } else {
-        this.user.pincode.errormsg = ''
-      }
-
-      if (!this.user.state.value) {
-        this.user.state.errormsg = empty_error_msg;
-        isValidForm = false;
-      } else {
-        this.user.state.errormsg = ''
-      }
       if (!this.user.phone.value) {
         this.user.phone.errormsg = empty_error_msg;
         isValidForm = false;
       } else {
         this.user.phone.errormsg = ''
       }
-      if (!this.user.address.value) {
-        this.user.address.errormsg = empty_error_msg;
-        isValidForm = false;
-      } else {
-        this.user.address.errormsg = ''
-      }
+
       if (!this.user.email.value) {
         this.user.email.errormsg = empty_error_msg;
         isValidForm = false;
@@ -243,7 +223,7 @@ export default {
         useProductStore().createOrder({
           product: this.cart,
           userDetail: this.user,
-          token: 12312,
+          payment_ratio: this.payment_ratio,
           amt: this.cartTotal
         });
 
