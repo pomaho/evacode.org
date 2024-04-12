@@ -179,22 +179,23 @@ export default {
   methods: {
     validateFields() {
       let isValidForm = true;
+      const empty_error_msg = 'Обязательное поле'
       if (this.user.firstName.value.length <= 1 || this.user.firstName.value.length > 10) {
-        this.user.firstName.errormsg = 'empty not allowed'
+        this.user.firstName.errormsg = empty_error_msg;
         isValidForm = false;
       } else {
         this.user.firstName.errormsg = ''
       }
 
       if (this.user.lastName.value.length <= 1 || this.user.lastName.value.length > 10) {
-        this.user.lastName.errormsg = 'empty not allowed'
+        this.user.lastName.errormsg = empty_error_msg;
         isValidForm = false;
       } else {
         this.user.lastName.errormsg = ''
       }
 
       if (this.user.city.value.length < 3 || this.user.city.value.length > 10) {
-        this.user.city.errormsg = 'empty not allowed'
+        this.user.city.errormsg = empty_error_msg;
         isValidForm = false;
       } else {
         this.user.city.errormsg = ''
@@ -208,28 +209,28 @@ export default {
       }
 
       if (!this.user.state.value) {
-        this.user.state.errormsg = 'empty not allowed'
+        this.user.state.errormsg = empty_error_msg;
         isValidForm = false;
       } else {
         this.user.state.errormsg = ''
       }
       if (!this.user.phone.value) {
-        this.user.phone.errormsg = 'empty not allowed'
+        this.user.phone.errormsg = empty_error_msg;
         isValidForm = false;
       } else {
         this.user.phone.errormsg = ''
       }
       if (!this.user.address.value) {
-        this.user.address.errormsg = 'empty not allowed'
+        this.user.address.errormsg = empty_error_msg;
         isValidForm = false;
       } else {
         this.user.address.errormsg = ''
       }
       if (!this.user.email.value) {
-        this.user.email.errormsg = 'empty not allowed'
+        this.user.email.errormsg = empty_error_msg;
         isValidForm = false;
       } else if (!this.validEmail(this.user.email.value)) {
-        this.user.email.errormsg = 'Valid email required.'
+        this.user.email.errormsg = 'Введите корректную почту.'
         isValidForm = false;
       } else {
         this.user.email.errormsg = ''
