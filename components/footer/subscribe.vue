@@ -10,8 +10,9 @@
           <div class="col-lg-6">
             <div class="subscribe">
               <div>
-                <h4>Узнавайте о новинках первыми!</h4>
-                <p>Не пропустите ничего от Evacode, подписавшись на нашу рассылку</p>
+                <span><h4>Запросите консультацию в Telegram!</h4><a href="#"><i class="fa fa-telegram"></i></a></span>
+
+                <p>Получите персональный подбор косметического ухода от наших консультантов в Telegram</p>
               </div>
             </div>
           </div>
@@ -21,10 +22,10 @@
                 class="form-inline subscribe-form auth-form needs-validation" method="post"
                 id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
               <div class="form-group mx-sm-3">
-                <input type="text" class="form-control" name="EMAIL" id="mce-EMAIL" placeholder="Введите свой email"
+                <input type="text" class="form-control" name="telegram-nickname" id="mce-telegram" placeholder="Введите свой ник в Telegram"
                        required="required">
               </div>
-              <button type="submit" class="btn btn-solid" id="mc-submit">Подписаться</button>
+              <button type="submit" class="btn btn-solid" id="mc-submit">Получить</button>
             </form>
           </div>
         </div>
