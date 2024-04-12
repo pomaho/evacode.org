@@ -36,7 +36,7 @@
                       <h2>{{ product.title }}</h2>
                       <h4>
                         <del>{{ curr.symbol }}{{ (product.official_price * curr.curr).toFixed(0) }}</del>
-                          {{ curr.symbol }}{{ (product.retail_price * curr.curr) }}
+                          &nbsp;&nbsp;{{ curr.symbol }}{{ (product.retail_price * curr.curr) }}
                       </h4>
                       <div class="pro_inventory" v-if="product.stock < 8">
                         <p class="active"> Поспешите! У нас осталось всего {{ product.stock }} шт. на складе. </p>
