@@ -57,8 +57,6 @@ export const useCartStore = defineStore({
         },
         removeCartItem(payload) {
             this.cart = this.cart.filter((item) => item.id != payload.id)
-
-
         },
         setInitialCart(payload) {
             this.cart = payload
