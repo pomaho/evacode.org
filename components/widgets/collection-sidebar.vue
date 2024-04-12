@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="collection-filter" :class="filter ? 'openFilterbar' : ''">
-      <sidebar-categories :current-category="currentCategory"/>
+      <sidebar-categories @clickBack="filter = !filter" :current-category="currentCategory"/>
       <!-- side-bar banner start here -->
       <div class="collection-sidebar-banner">
         <a href="#">

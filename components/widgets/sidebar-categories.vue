@@ -2,9 +2,9 @@
   <div class="collection-filter-block">
     <!-- brand filter start -->
     <div class="collection-mobile-back">
-                    <span class="filter-back" @click="filter = !filter">
-                        <i class="fa fa-angle-left" aria-hidden="true"></i> Назад
-                    </span>
+        <span class="filter-back" @click="this.$emit('clickBack')">
+            <i class="fa fa-angle-left" aria-hidden="true"></i> Назад
+        </span>
     </div>
     <div class="collection-collapse-block open">
       <h3 class="collapse-block-title">Категории</h3>
@@ -39,13 +39,11 @@
 </template>
 
 <script setup>
-import {useRoute} from 'vue-router';
-
 const props = defineProps({
   currentCategory:{
     type: Number,
     default: 0,
-  },
+  }
 });
 
 const {data: categoriesResponse} = await useAsyncData(
@@ -54,7 +52,6 @@ const {data: categoriesResponse} = await useAsyncData(
 );
 
 const categories = computed(() => categoriesResponse.value.result);
-const filter = ref(false);
 </script>
 
 <style scoped>

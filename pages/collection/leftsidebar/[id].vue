@@ -7,7 +7,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <WidgetsCollectionSidebar @categoryfilter="getCategoryFilter" :current-category="currentCategory"/>
+              <WidgetsCollectionSidebar :current-category="currentCategory"/>
             </div>
             <div class="collection-content col">
               <div class="page-main-content">
