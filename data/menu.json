@@ -3,35 +3,36 @@
     {
       "title": "Главная",
       "type": "sub",
-      "badgeValue": "new",
       "active": false,
       "path": "/"
     },
     {
       "title": "Магазин",
       "type": "sub",
-      "badgeValue": "new",
       "active": false,
       "path": "/collection/leftsidebar/0"
     },
     {
+      "title": "Категории",
+      "type": "sub",
+      "active": false,
+      "path": "/page/collection"
+    },
+    {
       "title": "Доставка",
       "type": "sub",
-      "badgeValue": "new",
       "active": false,
       "path": "/page/faq"
     },
     {
       "title": "Контакты",
       "type": "sub",
-      "badgeValue": "new",
       "active": false,
       "path": "/page/account/contact"
     },
     {
       "title": "О нас",
       "type": "sub",
-      "badgeValue": "new",
       "active": false,
       "path": "/page/about"
     }
