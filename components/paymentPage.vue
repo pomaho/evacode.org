@@ -80,11 +80,11 @@
                       <li>Способ оплаты
                         <div class="shipping">
                           <div class="shopping-option">
-                            <input type="radio" id="phys" value=1 v-model="payment_ratio" />
+                            <input type="radio" id="individual" value="individual" v-model="paymentType" />
                             <label for="phys">Физическое лицо</label>
                           </div>
                           <div class="shopping-option">
-                            <input type="radio" id="yur" value=1.2 v-model="payment_ratio" />
+                            <input type="radio" id="entity" value="entity" v-model="paymentType" />
                             <label for="yur">Юридическое лицо</label>
                           </div>
                         </div>
@@ -120,8 +120,11 @@ export default {
     cart() {
       return useCartStore().cartItems
     },
+    paymentRatios() {
+      return useCartStore().$state.paymentRatios;
+    },
     cartTotal() {
-      return useCartStore().cartTotalAmount * this.payment_ratio
+      return useCartStore().cartTotalAmount * this.paymentRatios[this.paymentType]
     },
     curr() {
       return useProductStore().changeCurrency
@@ -129,7 +132,7 @@ export default {
   },
   data() {
     return {
-      payment_ratio: 1,
+      paymentType: 'individual',
       items: [{
         stripePriceId: '1',
         quantity: 5
@@ -223,7 +226,7 @@ export default {
         useProductStore().createOrder({
           product: this.cart,
           userDetail: this.user,
-          payment_ratio: this.payment_ratio,
+          paymentType: this.paymentType,
           amt: this.cartTotal
         });
 

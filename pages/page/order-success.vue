@@ -59,11 +59,19 @@
                   </div>
                 </div>
               </div>
+              <div v-if="order.paymentType === 'entity'" class="total-sec">
+                <ul>
+                  <li>
+                    Оплата юр. лицо
+                    <span>+{{ Math.round((paymentRatios[order.paymentType] - 1) * 100) }}%</span>
+                  </li>
+                </ul>
+              </div>
               <div class="total-sec">
                 <ul>
                   <li>
                     Итого
-                    <span>{{curr.symbol}}{{ cartTotal * curr.curr}}</span>
+                    <span>{{ curr.symbol }}{{ cartTotal * curr.curr }}</span>
                   </li>
                 </ul>
               </div>
@@ -85,12 +93,14 @@ export default {
 
   },
   computed: {
-
     order(){
       return useProductStore().getOrder
     },
-    cartTotal(){
-      return useCartStore().cartTotalAmount
+    paymentRatios() {
+      return useCartStore().$state.paymentRatios;
+    },
+    cartTotal() {
+      return useCartStore().cartTotalAmount * this.paymentRatios[this.order.paymentType]
     },
     curr(){
       return useProductStore().changeCurrency

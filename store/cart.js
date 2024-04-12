@@ -10,7 +10,11 @@ export const useCartStore = defineStore({
         return {
             products: products.data,
             cart: [],
-            abc: {}
+            abc: {},
+            paymentRatios: {
+                individual: 1,
+                entity: 1.05,
+            }
         }
     },
     actions: {
