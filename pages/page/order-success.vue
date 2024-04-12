@@ -40,15 +40,15 @@
                 <div class="col-3">
                   <img :src="item.images[0].url" alt class="img-fluid" />
                 </div>
-                <div class="col-3 order_detail">
+                <div class="col-4 order_detail">
                   <div>
                     <h4>Товар</h4>
                     <h5>{{item.title}}</h5>
                   </div>
                 </div>
-                <div class="col-3 order_detail">
+                <div class="col-2 order_detail">
                   <div>
-                    <h4>Количество</h4>
+                    <h4>Кол.</h4>
                     <h5>{{item.quantity}}</h5>
                   </div>
                 </div>
