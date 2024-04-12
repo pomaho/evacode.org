@@ -30,7 +30,7 @@
 <script setup>
 const {data: categoriesResponse} = await useAsyncData(
     'categoriesResponse',
-    () => $fetch(`http://127.0.0.1:8000/market/categories/`),
+    () => $fetch(`http://127.0.0.1:8000/api/market/categories/`),
 );
 
 const categories = computed(() => categoriesResponse.value.result.slice(1));
