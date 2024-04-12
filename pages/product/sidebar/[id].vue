@@ -77,8 +77,8 @@
                         </nuxt-link>
                       </div>
                       <div class="border-product">
-                        <h6 class="product-title"> описание товара</h6>
-                        <p v-html="product.description"></p>
+                        <h6 class="product-title">Описание товара</h6>
+                        <div class="product-detail-description" v-html="product.description"></div>
                       </div>
                     </div>
                   </div>
