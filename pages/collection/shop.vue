@@ -41,7 +41,7 @@
                               <img :src='"/images/empty-search.jpg"' class="img-fluid" alt/>
                               <h3 class="mt-3">Извините! Не найден товар который Вы искали!!!</h3>
                               <div class="col-12 mt-3">
-                                <nuxt-link :to="{ path: '/' }" class="btn btn-solid">Продолжить покупки</nuxt-link>
+                                <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn btn-solid">Продолжить покупки</nuxt-link>
                               </div>
                             </div>
                           </div>

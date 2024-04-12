@@ -70,7 +70,7 @@
         </div>
         <div class="row wishlist-buttons" v-if="wishlist.length">
           <div class="col-12">
-            <nuxt-link :to="{ path: '/' }" :class="'btn btn-solid'">продолжить покупки</nuxt-link>
+            <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" :class="'btn btn-solid'">продолжить покупки</nuxt-link>
           </div>
         </div>
         <div class="col-sm-12 empty-cart-cls text-center" v-if="!wishlist.length">
@@ -79,7 +79,7 @@
             <strong>Your Wishlist is Empty</strong>
           </h3>
           <div class="col-12">
-            <nuxt-link :to="{ path: '/' }" class="btn btn-solid">продолжить покупки</nuxt-link>
+            <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn btn-solid">продолжить покупки</nuxt-link>
           </div>
         </div>
       </div>

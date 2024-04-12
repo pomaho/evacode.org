@@ -92,7 +92,7 @@
                               <img :src='"/images/empty-search.jpg"' class="img-fluid" alt />
                               <h3 class="mt-3">Sorry! Couldn't find the product you were looking For!!!</h3>
                               <div class="col-12 mt-3">
-                                <nuxt-link :to="{ path: '/' }" class="btn btn-solid">продолжить покупки</nuxt-link>
+                                <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn btn-solid">продолжить покупки</nuxt-link>
                               </div>
                             </div>
                           </div>

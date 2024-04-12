@@ -36,7 +36,7 @@
                           <nuxt-link :to="{ path: '/page/account/checkout' }"
                                      class="btn-sm btn-solid mr-2">Оформить заказ
                           </nuxt-link>
-                          <nuxt-link :to="{ path: '/' }" class="btn-sm btn-solid">Продолжить покупки</nuxt-link>
+                          <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn-sm btn-solid">Продолжить покупки</nuxt-link>
                         </div>
                       </div>
                     </div>

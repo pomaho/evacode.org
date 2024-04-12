@@ -59,7 +59,7 @@
           <h4 class="mt-3">
             <strong>Ваша корзина пуста</strong>
           </h4>
-          <nuxt-link :to="{ path: '/' }" class="btn btn-solid">продолжить покупки</nuxt-link>
+          <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn btn-solid">продолжить покупки</nuxt-link>
         </div>
       </div>
     </div>
