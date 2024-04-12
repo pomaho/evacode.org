@@ -1,13 +1,13 @@
 <template>
-<Header/>
+  <Header/>
   <div>
-    <WidgetsBreadcrumbs title="Товары"/>
+    <WidgetsBreadcrumbs title="Магазин"/>
     <section class="section-b-space ratio_asos">
       <div class="collection-wrapper">
         <div class="container">
           <div class="row">
             <div class="col-lg-3">
-              <WidgetsCollectionSidebar @allFilters="allfilter" @priceVal="pricefilterArray" @categoryfilter="getCategoryFilter" />
+              <WidgetsCollectionSidebar @categoryfilter="getCategoryFilter" :current-category="currentCategory"/>
             </div>
             <div class="collection-content col">
               <div class="page-main-content">
@@ -15,117 +15,65 @@
                   <div class="col-12">
                     <div class="top-banner-wrapper">
                       <a href="#">
-                        <img src='/images/mega-menu/2.jpg' class="img-fluid" alt />
+                        <img src='/images/mega-menu/2.jpg' class="img-fluid" alt/>
                       </a>
                     </div>
-                    <ul class="product-filter-tags">
-                      <li class="me-1" v-for="(tag, index) in allfilters" :key="index">
-                        <a href="javascript:void(0)" class="filter_tag">{{ tag }}<i class="ti-close"
-                            @click="removeTags(tag)"></i></a>
-                      </li>
-                      <li class="clear_filter" v-if="allfilters.length > 0"><a href="javascript:void(0)"
-                          class="clear_filter" @click="removeAllTags()">Очистить</a></li>
-                    </ul>
                     <div class="collection-product-wrapper">
                       <div class="product-top-filter">
                         <div class="row">
                           <div class="col-12">
                             <div class="product-filter-content">
                               <div class="search-count">
-                                <h5>Отображены товары 1-12 из {{ filterProduct.length }}</h5>
-                              </div>
-                              <div class="collection-view">
-                                <ul>
-                                  <li @click="gridView()">
-                                    <i class="fa fa-th grid-layout-view"></i>
-                                  </li>
-                                  <li @click="listView()">
-                                    <i class="fa fa-list-ul list-layout-view"></i>
-                                  </li>
-                                </ul>
-                              </div>
-                              <div class="collection-grid-view">
-                                <ul>
-                                  <li>
-                                    <img src='/images/icon/2.png' @click="grid2()" class="product-2-layout-view" />
-                                  </li>
-                                  <li>
-                                    <img src='/images/icon/3.png' @click="grid3()" class="product-3-layout-view" />
-                                  </li>
-                                  <li>
-                                    <img src='/images/icon/4.png' @click="grid4()" class="product-4-layout-view" />
-                                  </li>
-                                  <li>
-                                    <img src='/images/icon/6.png' @click="grid6()" class="product-6-layout-view" />
-                                  </li>
-                                </ul>
-                              </div>
-                              <div class="product-page-filter">
-                                <select @change="onChangeSort($event)">
-                                  <option value="all">Сортировка</option>
-                                  <option value="a-z">По алфавиту, A-Z</option>
-                                  <option value="z-a">По алфавиту, Z-A</option>
-                                  <option value="low">Цена, низ до верх</option>
-                                  <option value="high">Цена, верх до низ</option>
-                                </select>
+                                <WidgetsShowedProductsLabel
+                                    :from="currentPage === 1 ? 1 : itemsPerPage * (currentPage - 1) + 1"
+                                    :to="currentPage === 1 ? itemsPerPage : itemsPerPage * currentPage"
+                                    :total="totalProductsCount"
+                                />
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="product-wrapper-grid" :class="{ 'list-view': listview == true }">
+                      <div class="product-wrapper-grid">
                         <div class="row">
                           <div class="col-12">
-                            <div class="text-center section-t-space section-b-space" v-if="filterProduct.length == 0">
-                              <img src='/images/empty-search.jpg' class="img-fluid" alt />
+                            <div class="text-center section-t-space section-b-space" v-if="totalProductsCount == 0">
+                              <img :src='"/images/empty-search.jpg"' class="img-fluid" alt/>
                               <h3 class="mt-3">Извините! Не найден товар который Вы искали!!!</h3>
                               <div class="col-12 mt-3">
                                 <nuxt-link :to="{ path: '/' }" class="btn btn-solid">Продолжить покупки</nuxt-link>
                               </div>
                             </div>
                           </div>
-                          <div class="col-grid-box"
-                            :class="{ 'col-xl-3 col-md-4 col-6': col4 == true, 'col-md-4 col-6': col3 == true, 'col-6': col2 == true, 'col-xxl-2 col-xl-3 col-md-4 col-6': col6 == true, 'col-12': listview == true }"
-                            v-for="(product, index) in filterProduct" :key="index" v-show="setPaginate(index)">
+                          <div class="col-grid-box col-xl-3 col-md-4 col-6" v-for="(product, index) in products" :key="index">
                             <div class="product-box">
-                              <ProductBoxProductBox1 @opencartmodel="showCart" @showCompareModal="showCompare"
-                                @openquickview="showQuickview" @alertseconds="alert" :product="product"
-                                :index="index" />
+                              <ProductBoxProductBox1
+                                  @opencartmodel="showCart"
+                                  :product="product"
+                                  :index="index"
+                              />
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="product-pagination mb-0" v-if="filterProduct.length > paginate">
+                      <div class="product-pagination mb-0" v-if="totalProductsCount > itemsPerPage">
                         <div class="theme-paggination-block">
                           <div class="row">
                             <div class="col-xl-6 col-md-6 col-sm-12">
-                              <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                  <li class="page-item" :class="{ 'disable': current == 1 }">
-                                    <a class="page-link" href="javascript:void(0)" @click="updatePaginate(current - 1)">
-                                      <span aria-hidden="true">
-                                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
-                                      </span>
-                                    </a>
-                                  </li>
-                                  <li class="page-item" v-for="(page_index, index) in this.pages" :key="index"
-                                    :class="{ 'active': page_index == current }">
-                                    <a class="page-link" href="javascrip:void(0)"
-                                      @click.prevent="updatePaginate(page_index)">{{ page_index }}</a>
-                                  </li>
-                                  <li class="page-item" :class="{ 'disable': current == this.paginates }">
-                                    <a class="page-link" href="javascript:void(0)" @click="updatePaginate(current + 1)">
-                                      <span aria-hidden="true">
-                                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                                      </span>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </nav>
+                              <WidgetsShopProductsPagination
+                                  :previous="previous"
+                                  :next="next"
+                                  :current="currentPage"
+                                  :pages="pages"
+                              />
                             </div>
                             <div class="col-xl-6 col-md-6 col-sm-12">
                               <div class="product-search-count-bottom">
-                                <h5>Отображены товары 1-12 из {{ filterProduct.length }}</h5>
+                                <WidgetsShowedProductsLabel
+                                    :from="currentPage === 1 ? 1 : itemsPerPage * (currentPage - 1) + 1"
+                                    :to="currentPage === 1 ? itemsPerPage : itemsPerPage * currentPage"
+                                    :total="totalProductsCount"
+                                />
                               </div>
                             </div>
                           </div>
@@ -140,189 +88,106 @@
         </div>
       </div>
     </section>
-    <WidgetsQuickview :openModal="showquickviewmodel" :productData="quickviewproduct" @closeView="closeViewModal" />
-    <WidgetsComparePopup :openCompare="showcomparemodal" :productData="comapreproduct" @closeCompare="closeCompareModal" />
-    <cart-modal-popup :openCart="showcartmodal" :productData="cartproduct" @closeCart="closeCartModal"
-      :products="filterProduct" />
+    <cart-modal-popup
+        :openCart="showcartmodal"
+        :product="cartproduct"
+        @closeCart="closeCartModal"
+    />
+    <Footer/>
   </div>
-  <Footer />
 </template>
-<script>
-import { useProductStore } from '~~/store/products'
-import { useFilterStore } from '~~/store/filter'
-export default {
-  data() {
-    return {
+<script setup>
+import {useProductStore} from '~~/store/products'
+import {useFilterStore} from '~~/store/filter'
+import {useRoute} from 'vue-router';
 
-      bannerimagepath: '/images/side-banner.png',
-      col2: false,
-      col3: false,
-      col4: true,
-      col6: false,
-      listview: false,
-      priceArray: [],
-      allfilters: [],
-      items: [],
-      current: 1,
-      paginate: 12,
-      paginateRange: 3,
-      pages: [],
-      paginates: '',
-      showquickviewmodel: false,
-      showcomparemodal: false,
-      showcartmodal: false,
-      quickviewproduct: {},
-      comapreproduct: {},
-      cartproduct: {},
-      dismissSecs: 5,
-      dismissCountDown: 0,
+const route = useRoute();
+const currentPage = ref(parseFloat(route.query.page) || 1);
+const currentCategory = ref(parseFloat(route.params.id) || null);
 
+const {data: productsResponse} = await useAsyncData(
+    'productsResponse',
+    () => $fetch(`http://127.0.0.1:8000/market/goods`, {
+      query: {
+        page: currentPage.value,
+        category: currentCategory.value
+      }
+    }),
+    {
+      watch: [currentPage, currentCategory]
     }
-  },
-  computed: {
+);
 
-    filterProduct() {
-      return useFilterStore().filterProducts
-    },
-    tags() {
-      return useFilterStore().setTags
-    },
-    curr() { return useProductStore().changeCurrency }
-  },
+const products = computed(() => productsResponse.value.results);
+const totalProductsCount = computed(() => productsResponse.value.count);
+const previous = computed(() => productsResponse.value.previous ? `?${productsResponse.value.previous.split('?')[1]}` : null);
+const next = computed(() => productsResponse.value.next ? `?${productsResponse.value.next.split('?')[1]}` : null);
+const paginates = computed(() => Math.round(totalProductsCount.value / itemsPerPage.value));
 
-  methods: {
-    onChangeSort(event) {
-      useFilterStore().sortProducts(event.target.value)
-    },
-    gridView() {
-      this.col4 = true
-      this.col2 = false
-      this.col3 = false
-      this.col6 = false
-      this.listview = false
-    },
-    listView() {
-      this.listview = true
-      this.col4 = false
-      this.col2 = false
-      this.col3 = false
-      this.col6 = false
-    },
-    grid2() {
-      this.col2 = true
-      this.col3 = false
-      this.col4 = false
-      this.col6 = false
-      this.listview = false
-    },
-    grid3() {
-      this.col3 = true
-      this.col2 = false
-      this.col4 = false
-      this.col6 = false
-      this.listview = false
-    },
-    grid4() {
-      this.col4 = true
-      this.col2 = false
-      this.col3 = false
-      this.col6 = false
-      this.listview = false
-    },
-    grid6() {
-      this.col6 = true
-      this.col2 = false
-      this.col3 = false
-      this.col4 = false
-      this.listview = false
-    },
-    removeTags(val) {
-      this.allfilters.splice(this.allfilters.indexOf(val), 1)
-    },
-    removeAllTags() {
-      this.allfilters.splice(0, this.allfilters.length)
-    },
-    getCategoryFilter() {
-      this.updatePaginate(1)
-      useFilterStore().getCategoryFilter(this.$route.params.id)
-    },
-    allfilter(selectedVal) {
-      this.allfilters = selectedVal
-      useFilterStore().setTags(selectedVal)
-      this.getPaginate()
-      this.updatePaginate(1)
-    },
-    pricefilterArray(item) {
-      this.getCategoryFilter()
-      useFilterStore().priceFilter(item)
-      this.getPaginate()
-      this.updatePaginate(1)
-    },
-    getPaginate() {
-      this.paginates = Math.round(this.filterProduct.length / this.paginate)
-      this.pages = []
-      for (let i = 0; i < this.paginates; i++) {
-        this.pages.push(i + 1)
-      }
-    },
-    setPaginate(i) {
-      if (this.current === 1) {
-        return i < this.paginate
-      } else {
-        return (i >= (this.paginate * (this.current - 1)) && i < (this.current * this.paginate))
-      }
-    },
-    updatePaginate(i) {
-      this.current = i
-      let start = 0
-      let end = 0
-      if (this.current < this.paginateRange - 1) {
-        start = 1
-        end = start + this.paginateRange - 1
-      } else {
-        start = this.current - 1
-        end = this.current + 1
-      }
-      if (start < 1) {
-        start = 1
-      }
-      if (end > this.paginates) {
-        end = this.paginates
-      }
-      this.pages = []
-      for (let i = start; i <= end; i++) {
-        this.pages.push(i)
-      }
-      return this.pages
-    },
-    alert(item) {
-      this.dismissCountDown = item
-    },
-    showQuickview(item, productData) {
-      this.showquickviewmodel = item
-      this.quickviewproduct = productData
-    },
-    showCompare(item, productData) {
-      this.showcomparemodal = item
-      this.comapreproduct = productData
-    },
-    closeCompareModal(item) {
-      this.showcomparemodal = item
-    },
-    showCart(item, productData) {
-      this.showcartmodal = item
-      this.cartproduct = productData
-    },
-    closeCartModal(item) {
-      this.showcartmodal = item
-    },
-    closeViewModal(item) {
-      this.showquickviewmodel = item
+const itemsPerPage = ref(12);
+const paginateRange = ref(3);
+
+const pages = computed(() => {
+  let start = currentPage.value < paginateRange.value - 1 ? 1 : currentPage.value - 1
+  let end = currentPage.value < paginateRange.value - 1 ? start + paginateRange.value - 1 : currentPage.value + 1;
+
+  start = Math.max(1, start);
+  end = Math.min(end, paginates.value);
+
+  const _pages = []
+  for (let i = start; i <= end; i++) {
+    _pages.push(i)
+  }
+  return _pages;
+});
+
+const showcartmodal = ref(false);
+const cartproduct = ref({});
+
+const productStore = useProductStore();
+const curr = computed(() => productStore.changeCurrency);
+
+const productslist = computed(() => productStore.productslist);
+const currency = computed(() => productStore.currency);
+
+const getCategoryFilter = () => {
+  updatePaginate(1);
+  useFilterStore().getCategoryFilter(route.params.id)
+};
+
+const updatePaginate = () => {
+  let start = currentPage.value < paginateRange.value - 1 ? 1 : currentPage.value - 1
+  let end = currentPage.value < paginateRange.value - 1 ? start + paginateRange.value - 1 : currentPage.value + 1;
+
+  start = Math.max(1, start);
+  end = Math.min(end, paginates.value);
+
+  pages.value = []
+  for (let i = start; i <= end; i++) {
+    pages.value.push(i)
+  }
+};
+
+const showCart = (item, product) => {
+  showcartmodal.value = item
+  cartproduct.value = product
+};
+
+const closeCartModal = (item) => {
+  showcartmodal.value = item
+};
+
+watch(
+    () => route.query.page,
+    () => {
+      currentPage.value = parseFloat(route.query.page) || 1;
     }
-  },
-   mounted() {
-    this.updatePaginate(1)
-  },
+);
 
-}
+watch(
+    () => route.query.category,
+    () => {
+      currentCategory.value = parseFloat(route.query.category) || null;
+    }
+);
 </script>

@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="collection-filter" :class="filter ? 'openFilterbar' : ''">
-      <sidebar-categories />
+      <sidebar-categories :current-category="currentCategory"/>
       <!-- side-bar banner start here -->
       <div class="collection-sidebar-banner">
         <a href="#">
@@ -27,6 +27,12 @@
 import SidebarCategories from '~/components/widgets/sidebar-categories.vue';
 const bannerimagepath = ref('/images/side-banner.png');
 const filter = ref(false);
+const props = defineProps({
+  currentCategory: {
+    type: Number,
+    default: 0,
+  }
+})
 </script>
 
 <style scoped>

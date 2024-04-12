@@ -17,7 +17,7 @@
                   :class="{
                         active: !currentCategory
                       }"
-                  :to="{ path: '/collection/shop' }">Все товары</nuxt-link>
+                  :to="{ path: '/collection/leftsidebar/0' }">Все товары</nuxt-link>
             </li>
             <li v-for="(category, index) in categories" :key="index">
               <nuxt-link
@@ -25,7 +25,7 @@
                         active: category.id === currentCategory
                       }"
                   v-if="category.id !== 1"
-                  :to="`/collection/shop/?category=${category.id}`"
+                  :to="`/collection/leftsidebar/${category.id}`"
               >
                 {{ category.name }}
               </nuxt-link>
@@ -41,8 +41,12 @@
 <script setup>
 import {useRoute} from 'vue-router';
 
-const route = useRoute();
-const currentCategory = ref(parseFloat(route.query.category) || null);
+const props = defineProps({
+  currentCategory:{
+    type: Number,
+    default: 0,
+  },
+});
 
 const {data: categoriesResponse} = await useAsyncData(
     'categoriesResponse',
@@ -51,13 +55,6 @@ const {data: categoriesResponse} = await useAsyncData(
 
 const categories = computed(() => categoriesResponse.value.result);
 const filter = ref(false);
-
-watch(
-    () => route.query.category,
-    () => {
-      currentCategory.value = parseFloat(route.query.category) || null;
-    }
-);
 </script>
 
 <style scoped>
