@@ -18,16 +18,15 @@ export const useCartStore = defineStore({
         }
     },
     actions: {
-        addToCart(payload) {
+        addToCart(payloadProduct) {
             console.log('jemin')
-            const product = this.products.find(item => item.id === payload.id)
-            const cartItems = this.cart.find(item => item.id === payload.id)
-            const qty = payload.quantity ? payload.quantity : 1
+            const cartItems = this.cart.find(item => item.id === payloadProduct.id)
+            const qty = payloadProduct.quantity ? payloadProduct.quantity : 1
             if (cartItems) {
-                cartItems.quantity = qty
+                cartItems.quantity += qty
             } else {
                 this.cart.push({
-                    ...product,
+                    ...payloadProduct,
                     quantity: qty
                 })
             }
@@ -72,7 +71,7 @@ export const useCartStore = defineStore({
         },
         cartTotalAmount: (state) => {
             return state.cart.reduce((total, product) => {
-                return total + (product.price * product.quantity)
+                return total + (product.retail_price * product.quantity)
             }, 0)
         }
     }
