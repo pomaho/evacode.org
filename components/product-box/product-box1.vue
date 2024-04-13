@@ -73,9 +73,6 @@ export default {
   },
   emits: ['opencartmodel'],
   computed: {
-    ...mapState(useProductStore, {
-      productslist: 'productslist'
-    }),
     curr() {
       return useProductStore().changeCurrency
     },

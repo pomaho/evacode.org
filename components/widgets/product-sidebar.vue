@@ -4,13 +4,13 @@
       <div class="col-xl-12">
         <div class="filter-main-btn mb-2 ms-3">
           <button class="filter-btn btn btn-theme" @click="filter = !filter">
-            <i class="fa fa-filter" aria-hidden="true"></i> filter
+            <i class="fa fa-filter" aria-hidden="true"></i> Фильтр
           </button>
         </div>
       </div>
     </div>
     <div class="collection-filter" :class="{ 'openFilterbar': filter }">
-      <sidebar-categories />
+      <WidgetsSidebarCategories @clickBack="filter = !filter" />
       <div class="collection-filter-block">
         <div class="product-service">
           <div class="media">
@@ -83,71 +83,7 @@
     </div>
   </div>
 </template>
-<script>
-import {
-  Swiper,
-  SwiperSlide
-} from "swiper/vue";
-import 'swiper/css';
-import "swiper/css/navigation";
-import { Navigation } from "swiper";
-import { useProductStore } from '~~/store/products'
-import { useFilterStore } from '~~/store/filter'
-import SidebarCategories from '~/components/widgets/sidebar-categories.vue';
-export default {
-   setup() {
-    return {
-      modules: [Navigation],
-    };
-  },
-  components: {
-    SidebarCategories,
-    Swiper, SwiperSlide,
-  },
-  data() {
-    return {
-      openBlock: true,
-      filter: false,
 
-    }
-  },
-  computed: {
-
-    productslist: () => useProductStore().productslist,
-    currency: () => useProductStore().currency,
-
-    filterbyCategory() {
-      return useFilterStore().filterbyCategory
-    },
-    curr() {
-      return useProductStore().changeCurrency
-    }
-  },
-  methods: {
-    getCategoryProduct(collection) {
-      return this.productslist.filter((item) => {
-        if (item.collection && item.collection.find(i => i === collection)) {
-          return item
-        }
-      })
-    },
-    getImgUrl(path) {
-      return ('/images/' + path)
-    },
-    discountedPrice(product) {
-      const price = (product.price - (product.price * product.discount / 100)) * this.curr.curr
-      return price
-    },
-    isActive(filterItem) {
-      return this.applyFilter.indexOf(filterItem) > -1
-    },
-    getCategoryFilter(category) {
-      useFilterStore().getCategoryFilter(category)
-    },
-    toggleSidebarBlock() {
-      this.openBlock = !this.openBlock
-    }
-  },
-
-}
+<script setup>
+const filter = ref(false);
 </script>
