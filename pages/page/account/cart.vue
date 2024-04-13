@@ -17,15 +17,15 @@
                 <th scope="col">Сумма</th>
               </tr>
               </thead>
-              <tbody v-for="(item, index) in cart" :key="index">
+              <tbody v-for="(product, index) in cart" :key="index">
               <tr>
                 <td>
-                  <nuxt-link :to="{ path: '/product/sidebar/' + item.id }">
-                    <img :src="item.images[0].url" alt/>
+                  <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">
+                    <img :src="product.images[0].url" alt/>
                   </nuxt-link>
                 </td>
                 <td>
-                  <nuxt-link :to="{ path: '/product/sidebar/' + item.id }">{{ item.title }}</nuxt-link>
+                  <nuxt-link :to="{ path: '/product/sidebar/' + product.id }">{{ product.title }}</nuxt-link>
                   <div class="mobile-cart-content row">
                     <div class="col-xs-3">
                       <div class="qty-box">
@@ -47,7 +47,7 @@
                       </div>
                     </div>
                     <div class="col-xs-3">
-                      <h2 class="td-color">{{ curr.symbol }}{{ item.price * curr.curr }}</h2>
+                      <h2 class="td-color">{{ curr.symbol }}{{ product.retail_price * curr.curr }}</h2>
                     </div>
                     <div class="col-xs-3">
                       <h2 class="td-color">
@@ -59,22 +59,22 @@
                   </div>
                 </td>
                 <td>
-                  <h2>{{ curr.symbol }} {{ item.price * curr.curr }}</h2>
+                  <h2>{{ curr.symbol }} {{ product.retail_price * curr.curr }}</h2>
                 </td>
                 <td>
                   <div class="qty-box">
                     <div class="input-group">
                         <span class="input-group-prepend">
                           <button type="button" class="btn quantity-left-minus" data-type="minus" data-field
-                                  @click="decrement(item)">
+                                  @click="decrement(product)">
                             <i class="ti-angle-left"></i>
                           </button>
                         </span>
                       <input type="text" name="quantity" class="form-control input-number"
-                             :disabled="item.quantity > item.stock" v-model="item.quantity"/>
+                             :disabled="product.quantity > product.stock" v-model="product.quantity"/>
                       <span class="input-group-prepend">
                           <button type="button" class="btn quantity-right-plus" data-type="plus" data-field
-                                  @click="increment(item)">
+                                  @click="increment(product)">
                             <i class="ti-angle-right"></i>
                           </button>
                         </span>
@@ -82,13 +82,13 @@
                   </div>
                 </td>
                 <td>
-                  <a class="icon" href="#" @click.prevent="removeCartItem(item)">
+                  <a class="icon" href="#" @click.prevent="removeCartItem(product)">
                     <i class="ti-close"></i>
                   </a>
                 </td>
                 <td>
                   <h2 class="td-color">
-                    {{ curr.symbol }} {{ (item.price * curr.curr) * item.quantity }}</h2>
+                    {{ curr.symbol }} {{ (product.retail_price * curr.curr) * product.quantity }}</h2>
                 </td>
               </tr>
               </tbody>
