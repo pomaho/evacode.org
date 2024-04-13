@@ -9,11 +9,11 @@
         <ul class="nav-menu" :class="{ opennav: openmobilenav }">
           <li class="back-btn">
             <div class="mobile-back text-end">
-              <span @click="openmobilenav = false">Back</span>
+              <span @click="openmobilenav = false">Назад</span>
               <i class="fa fa-angle-right ps-2" aria-hidden="true"></i>
             </div>
           </li>
-          <li v-for="(menuItem, index) in menulist" :key="index" :class="menuItem.megamenu ? 'mega-menu' : 'dropdown'">
+          <li v-for="(menuItem, index) in menulist" :key="index" class="'dropdown'">
             <nuxt-link :to="menuItem.path"> {{menuItem.title}} </nuxt-link>
           </li>
         </ul>
