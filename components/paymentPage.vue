@@ -69,7 +69,7 @@
                     <ul class="qty" v-if="cart.length">
                       <li v-for="(item, index) in cart" :key="index">
                         {{ item.title }} X {{ item.quantity }}
-                        <span>{{ curr.symbol }}{{ (item.price * curr.curr) * item.quantity }}</span>
+                        <span>{{ curr.symbol }}{{ (item.retail_price * curr.curr) * item.quantity }}</span>
                       </li>
                     </ul>
                     <ul class="sub-total">

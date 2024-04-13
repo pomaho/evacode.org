@@ -55,7 +55,7 @@
                 <div class="col-3 order_detail">
                   <div>
                     <h4>Цена</h4>
-                    <h5>{{curr.symbol}}{{ (item.price * curr.curr) * item.quantity}}</h5>
+                    <h5>{{curr.symbol}}{{ (item.retail_price * curr.curr) * item.quantity}}</h5>
                   </div>
                 </div>
               </div>

@@ -22,7 +22,7 @@
                     <h4>{{ item.title }}</h4>
                   </nuxt-link>
                   <h4>
-                    <span>{{ item.quantity }} x {{ curr.symbol }}{{ item.price }}</span>
+                    <span>{{ item.quantity }} x {{ curr.symbol }}{{ item.retail_price }}</span>
                   </h4>
                 </div>
               </div>
