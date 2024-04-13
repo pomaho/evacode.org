@@ -1,4 +1,3 @@
-import products from '../data/products.json'
 import {defineStore} from 'pinia'
 
 export const useProductStore = defineStore({
