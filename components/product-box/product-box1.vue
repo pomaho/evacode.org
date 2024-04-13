@@ -96,12 +96,7 @@ export default {
     productVariantChange(imgsrc) {
       this._imageSrc = imgsrc
     },
-    discountedPrice(product) {
-      const price = (product.retail_price - (product.retail_price * product.discount / 100)) * this.curr.curr
-      return price
-    }
   },
-
 }
 </script>
 
