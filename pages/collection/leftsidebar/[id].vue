@@ -97,8 +97,6 @@
   </div>
 </template>
 <script setup>
-import {useProductStore} from '~~/store/products'
-import {useFilterStore} from '~~/store/filter'
 import {useRoute} from 'vue-router';
 
 const route = useRoute();
@@ -143,31 +141,6 @@ const pages = computed(() => {
 
 const showcartmodal = ref(false);
 const cartproduct = ref({});
-
-const productStore = useProductStore();
-const curr = computed(() => productStore.changeCurrency);
-
-const productslist = computed(() => productStore.productslist);
-const currency = computed(() => productStore.currency);
-
-const getCategoryFilter = () => {
-  updatePaginate(1);
-  useFilterStore().getCategoryFilter(route.params.id)
-};
-
-const updatePaginate = () => {
-  let start = currentPage.value < paginateRange.value - 1 ? 1 : currentPage.value - 1
-  let end = currentPage.value < paginateRange.value - 1 ? start + paginateRange.value - 1 : currentPage.value + 1;
-
-  start = Math.max(1, start);
-  end = Math.min(end, paginates.value);
-
-  pages.value = []
-  for (let i = start; i <= end; i++) {
-    pages.value.push(i)
-  }
-};
-
 const showCart = (item, product) => {
   showcartmodal.value = item
   cartproduct.value = product
