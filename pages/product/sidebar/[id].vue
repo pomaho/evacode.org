@@ -36,8 +36,9 @@
                       <h2>{{ product.title }}</h2>
                       <h4>
                         <del>{{ curr.symbol }}{{ (product.official_price * curr.curr).toFixed(0) }}</del>
-                          &nbsp;&nbsp;{{ curr.symbol }}{{ (product.retail_price * curr.curr) }}
+                        <span>{{ getDiscountPercentages(product) }}% off</span>
                       </h4>
+                      <h3>{{ curr.symbol }}{{ (product.retail_price * curr.curr) }}</h3>
                       <div class="pro_inventory" v-if="product.stock < 8">
                         <p class="active"> Поспешите! У нас осталось всего {{ product.stock }} шт. на складе. </p>
                       </div>
@@ -157,8 +158,8 @@ const decrement= () => {
   if (counter.value > 1) counter.value--
 };
 
-const getImgUrl = (path) => {
-  return ('/images/' + path)
+const getDiscountPercentages = (product) => {
+  return (((product.official_price - product.retail_price) / product.official_price) * 100).toFixed(0);
 };
 
 const slideTo = (id) => {

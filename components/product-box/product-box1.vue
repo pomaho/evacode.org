@@ -51,8 +51,8 @@
       <h6>{{ product.title }}</h6>
     </nuxt-link>
     <h4>
-      <del>{{ curr.symbol }}{{ (product.official_price * curr.curr) }}</del>
      {{ curr.symbol }}{{ (product.retail_price * curr.curr) }}
+      <del>{{ curr.symbol }}{{ (product.official_price * curr.curr) }}</del>
     </h4>
   </div>
 </template>
