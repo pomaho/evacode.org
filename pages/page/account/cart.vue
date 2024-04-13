@@ -131,8 +131,6 @@
   <Footer/>
 </template>
 <script>
-import {useStorage} from '@vueuse/core'
-import {mapState} from 'pinia'
 import {useProductStore} from '~~/store/products'
 import {useCartStore} from '~~/store/cart'
 

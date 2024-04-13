@@ -1,14 +1,9 @@
-// import products from '../data/products_1.json'
-import products from '../data/products.json'
-import {useStorage} from '@vueuse/core'
-
 import {defineStore} from 'pinia'
 
 export const useCartStore = defineStore({
     id: 'cart-store',
     state: () => {
         return {
-            products: products.data,
             cart: [],
             abc: {},
             paymentRatios: {
@@ -30,7 +25,6 @@ export const useCartStore = defineStore({
                     quantity: qty
                 })
             }
-            product.stock--
         },
         updateCartQuantity(payload) {
             function calculateStockCounts(product, quantity) {

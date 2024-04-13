@@ -34,9 +34,7 @@ export default {
             localStorage.setItem('product', JSON.stringify(useCartStore().cart))
             localStorage.setItem('whish', JSON.stringify(useProductStore().wishlist))
             localStorage.setItem('compare', JSON.stringify(useProductStore().compare))
-
         });
-
     },
 }
 </script>
