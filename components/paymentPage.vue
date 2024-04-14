@@ -221,7 +221,7 @@ export default {
 
       return isValidForm;
     },
-    onSubmit() {
+    async onSubmit() {
       if (this.validateFields()) {
         useProductStore().createOrder({
           product: this.cart,
@@ -229,6 +229,20 @@ export default {
           paymentType: this.paymentType,
           amt: this.cartTotal
         });
+
+        const userForCheckout = {};
+        Object.keys(this.user).forEach((key) => {
+          userForCheckout[key] = this.user[key].value;
+        })
+        await $fetch(`${useRuntimeConfig().public.apiBase}/market/checkout/`, {
+          method: 'POST',
+          body: {
+            cart: this.cart,
+            user: userForCheckout,
+            paymentType: this.paymentType,
+            consult: false,
+          }
+        })
 
         this.$router.push('/page/order-success')
       }

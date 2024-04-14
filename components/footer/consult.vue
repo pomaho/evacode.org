@@ -40,12 +40,14 @@ import {useRouter} from 'vue-router';
 const router = useRouter();
 const telegram_nickname = ref('');
 const telegramNickErrorMessage = ref('');
-const onSubmit = () => {
+const onSubmit = async () => {
   if (validateTgNick()) {
-    $fetch(`${useRuntimeConfig().public.apiBase}/market/checkout/`, {
+    await $fetch(`${useRuntimeConfig().public.apiBase}/market/checkout/`, {
       method: 'POST',
       body: {
-        telegram_nickname: getTgNicknameByRegexp(),
+        user: {
+          telegram: getTgNicknameByRegexp(),
+        },
         consult: true,
       }
     })
