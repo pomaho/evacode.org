@@ -22,12 +22,10 @@ export default defineNuxtConfig({
     css: ['@/assets/scss/app.scss'],
     ssr: true,
     modules: [
-        'nuxt-icon',
+        '@nuxtjs/robots',
         '@nuxtjs/sitemap',
         '@nuxt/image-edge',
-        // "@nuxtjs/i18n",
         '@vueuse/nuxt',
-        // 'vue-toastification/nuxt',
         [
             '@pinia/nuxt',
             {
