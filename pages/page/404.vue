@@ -8,15 +8,15 @@
           <div class="col-12">
             <div class="error-section">
               <h1>404</h1>
-              <h2>page not found</h2>
-              <nuxt-link :to="{ path: '/shop/fashion'}" class="btn btn-solid">back to home</nuxt-link>
+              <h2>Страница не найдена</h2>
+              <nuxt-link :to="{ path: '/'}" class="btn btn-solid">На главную</nuxt-link>
             </div>
           </div>
         </div>
       </div>
     </section>
   </div>
-   <Footer /> 
+   <Footer />
 </template>
 <script>
 
