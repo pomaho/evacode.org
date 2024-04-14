@@ -42,7 +42,7 @@ const telegram_nickname = ref('');
 const telegramNickErrorMessage = ref('');
 const onSubmit = () => {
   if (validateTgNick()) {
-    $fetch(`http://127.0.0.1:8000/api/market/checkout/`, {
+    $fetch(`${useRuntimeConfig().public.apiBase}/market/checkout/`, {
       method: 'POST',
       body: {
         telegram_nickname: getTgNicknameByRegexp(),

@@ -134,7 +134,7 @@ const product = computed(() => productResponse.value.results[0]);
 
 const {data: productResponse} = await useAsyncData(
     'productResponse',
-    () => $fetch(`http://127.0.0.1:8000/api/market/goods`, {
+    () => $fetch(`${useRuntimeConfig().public.apiBase}/market/goods`, {
       query: {
         id: route.params.id,
       }

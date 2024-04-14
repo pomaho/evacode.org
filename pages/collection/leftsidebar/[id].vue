@@ -105,7 +105,7 @@ const currentCategory = ref(parseFloat(route.params.id) || null);
 
 const {data: productsResponse} = await useAsyncData(
     'productsResponse',
-    () => $fetch(`http://127.0.0.1:8000/api/market/goods`, {
+    () => $fetch(`${useRuntimeConfig().public.apiBase}/market/goods`, {
       query: {
         page: currentPage.value,
         category: currentCategory.value
