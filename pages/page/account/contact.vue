@@ -72,34 +72,6 @@ export default {
       message: null
     }
   },
-  methods: {
-    checkForm: function (e) {
-      this.errors = []
-      if (!this.fname) {
-        this.errors.push('First name required.')
-      }
-      if (!this.lname) {
-        this.errors.push('Фамилия required.')
-      }
-      if (!this.email) {
-        this.errors.push('Email required.')
-      } else if (!this.validEmail(this.email)) {
-        this.errors.push('Valid email required.')
-      }
-      if (!this.phone) {
-        this.errors.push('Номер телефона required.')
-      }
-      if (!this.message) {
-        this.errors.push('Message required.')
-      }
-      if (!this.errors.length) return true
-      e.preventDefault()
-    },
-    validEmail: function (email) {
-      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return re.test(email)
-    }
-  }
 }
 </script>
 

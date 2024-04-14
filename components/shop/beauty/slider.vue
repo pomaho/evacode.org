@@ -18,8 +18,7 @@
                       <div>
                         <h4>{{ item.title }}</h4>
                         <h1>{{ item.subtitle }}</h1>
-                        <nuxt-link :to="{ path: '/collection/leftsidebar/all' }" class="btn btn-solid">shop
-                          now</nuxt-link>
+                        <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn btn-solid">купить!</nuxt-link>
                       </div>
                     </div>
                   </div>
@@ -56,7 +55,6 @@ export default {
   },
   data() {
     return {
-
       items: [
         {
           imagepath: '/images/evacode/34.jpg',

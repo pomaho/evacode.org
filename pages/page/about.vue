@@ -23,14 +23,7 @@
   <Footer/>
 </template>
 <script>
-import {
-  Swiper,
-  SwiperSlide
-} from 'swiper/vue';
-import 'swiper/css';
-
 export default {
-  components: {Swiper, SwiperSlide},
   data() {
     return {
       aboutbanner: '/images/evacode/about-us_page_banner.jpg',

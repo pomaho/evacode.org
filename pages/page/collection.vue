@@ -16,7 +16,6 @@
                 <nuxt-link :to="`/collection/leftsidebar/${category.id}`">
                   <h3>{{category.name}}</h3>
                 </nuxt-link>
-<!--                <nuxt-link :to="`/collection/leftsidebar/${category.id}`" class="btn btn-outline">К покупкам!</nuxt-link>-->
               </div>
             </div>
           </div>

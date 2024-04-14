@@ -138,8 +138,6 @@ export default {
   data() {
     return {
       counter: 1,
-      // cartdata:useLocalStorage('product')
-      // cart:[]
     }
   },
   computed: {
