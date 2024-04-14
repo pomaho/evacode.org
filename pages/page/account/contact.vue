@@ -56,8 +56,8 @@ export default {
 
   data() {
     return {
-      phoneimage: '/images/icon/phone.png',
-      emailimage: '/images/icon/email.png',
+      phoneimage: '/images/evacode/icon/phone.png',
+      emailimage: '/images/evacode/icon/email.png',
       phone1: '+8210-7652-8595',
       phone2: '',
       address: '안산시 단원구 초지동 742-3, 2 этаж, 210 кабинет <br />' +

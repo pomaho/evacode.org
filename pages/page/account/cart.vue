@@ -104,7 +104,7 @@
               </tfoot>
             </table>
             <div class="col-sm-12 empty-cart-cls text-center" v-if="!cart.length">
-              <img src='/images/icon-empty-cart.png' class="img-fluid" alt="empty cart"/>
+              <img src='/images/evacode/icon-empty-cart.png' class="img-fluid" alt="empty cart"/>
               <h3 class="mt-3">
                 <strong>Ваша корзина пуста</strong>
               </h3>

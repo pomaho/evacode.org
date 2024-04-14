@@ -33,7 +33,7 @@ export default {
   components: {Swiper, SwiperSlide},
   data() {
     return {
-      aboutbanner: '/images/about/about-us.jpg',
+      aboutbanner: '/images/evacode/about-us_page_banner.jpg',
       aboutTitle:
           'О нас',
       aboutText:

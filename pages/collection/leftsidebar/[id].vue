@@ -15,7 +15,7 @@
                   <div class="col-12">
                     <div class="top-banner-wrapper">
                       <a href="#">
-                        <img src='/images/mega-menu/2.jpg' class="img-fluid" alt/>
+                        <img src='/images/evacode/shop_banner.jpg' class="img-fluid" alt/>
                       </a>
                     </div>
                     <div class="collection-product-wrapper">
@@ -38,7 +38,7 @@
                         <div class="row">
                           <div class="col-12">
                             <div class="text-center section-t-space section-b-space" v-if="totalProductsCount == 0">
-                              <img :src='"/images/empty-search.jpg"' class="img-fluid" alt/>
+                              <img src="/images/evacode/empty-search.jpg" class="img-fluid" alt/>
                               <h3 class="mt-3">Извините! Не найден товар который Вы искали!!!</h3>
                               <div class="col-12 mt-3">
                                 <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn btn-solid">Продолжить покупки</nuxt-link>

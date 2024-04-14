@@ -4,7 +4,7 @@
       <ul>
         <li class="onhover-div mobile-cart">
           <div>
-            <img alt src="/images/icon/layout4/cart.png" class="img-fluid">
+            <img alt src="/images/evacode/icon/cart.png" class="img-fluid">
             <i class="ti-shopping-cart"></i>
             <span class="cart_qty_cls">{{ cart.length }}</span>
           </div>

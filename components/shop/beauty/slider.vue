@@ -59,13 +59,13 @@ export default {
 
       items: [
         {
-          imagepath: '/images/home-banner/34.jpg',
+          imagepath: '/images/evacode/34.jpg',
           title: 'Beauty Products',
           subtitle: 'welcome to cosmetics',
           alignclass: 'p-left'
         },
         {
-          imagepath: '/images/home-banner/35.jpg',
+          imagepath: '/images/evacode/35.jpg',
           title: 'On all cosmetics',
           subtitle: 'save 30% off',
           alignclass: 'p-left'

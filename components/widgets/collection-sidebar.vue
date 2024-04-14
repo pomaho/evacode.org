@@ -25,7 +25,7 @@
 
 <script setup>
 import SidebarCategories from '~/components/widgets/sidebar-categories.vue';
-const bannerimagepath = ref('/images/side-banner.png');
+const bannerimagepath = ref('/images/evacode/side-banner.png');
 const filter = ref(false);
 const props = defineProps({
   currentCategory: {
