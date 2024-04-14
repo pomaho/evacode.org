@@ -1,6 +1,6 @@
 <template>
   <Header/>
-  <div>
+  <div v-if="!!product">
     <WidgetsBreadcrumbs :title="product.title"/>
     <section class="section-b-space">
       <div class="collection-wrapper">
