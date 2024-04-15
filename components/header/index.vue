@@ -10,7 +10,7 @@
               <div class="menu-left">
                 <div class="brand-logo">
                   <nuxt-link :to="{ path: '/' }">
-                    <img src="/images/evacode/evacode.png" class="img-fluid" alt />
+                    <img src="/images/evacode/evacode_brand_logo.png" class="img-fluid" alt />
                   </nuxt-link>
                 </div>
               </div>
@@ -31,6 +31,6 @@
 
 <style scoped>
   .brand-logo img {
-    width: 160px;
+    width: auto;
   }
 </style>
