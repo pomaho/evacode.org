@@ -22,7 +22,7 @@
       "title": "Доставка",
       "type": "sub",
       "active": false,
-      "path": "/page/faq"
+      "path": "/page/delivery"
     },
     {
       "title": "Контакты",
