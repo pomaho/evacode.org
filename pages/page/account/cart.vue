@@ -32,14 +32,14 @@
                         <div class="input-group">
                             <span class="input-group-prepend">
                               <button type="button" class="btn quantity-left-minus" data-type="minus" data-field
-                                      @click="decrement()">
+                                      @click="decrement(product)">
                                 <i class="ti-angle-left"></i>
                               </button>
                             </span>
-                          <input type="text" name="quantity" class="form-control input-number" v-model="counter"/>
+                          <input type="text" name="quantity" class="form-control input-number" v-model="product.quantity"/>
                           <span class="input-group-prepend">
                               <button type="button" class="btn quantity-right-plus" data-type="plus" data-field
-                                      @click="increment()">
+                                      @click="increment(product)">
                                 <i class="ti-angle-right"></i>
                               </button>
                             </span>
@@ -47,11 +47,12 @@
                       </div>
                     </div>
                     <div class="col-xs-3">
-                      <h2 class="td-color">{{ curr.symbol }}{{ product.retail_price * curr.curr }}</h2>
+                      <h2 class="td-color">
+                        {{ curr.symbol }} {{ (product.retail_price * curr.curr) * product.quantity }}</h2>
                     </div>
                     <div class="col-xs-3">
                       <h2 class="td-color">
-                        <a href="#" class="icon">
+                        <a class="icon" href="#" @click.prevent="removeCartItem(product)">
                           <i class="ti-close"></i>
                         </a>
                       </h2>
