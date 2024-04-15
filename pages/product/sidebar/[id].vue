@@ -23,7 +23,7 @@
                       <div class="col-12 slider-nav-images">
                         <Swiper :slidesPerView="3" slide-active-class="true" :spaceBetween="20" class="swiper-wrapper">
                           <SwiperSlide class="swiper-slide" v-for="(image, index) in product.images" :key="index"
-                                        :class="slideId == index ? 'product-slider-active' : ''">
+                                       :class="slideId == index ? 'product-slider-active' : ''">
                             <img :src="image.url" :id="image.image_id" class="img-fluid bg-img"
                                  alt="image.alt" @click="slideTo(index)"/>
                           </SwiperSlide>
@@ -89,17 +89,13 @@
           </div>
         </div>
       </div>
-<!--      <WidgetsRelatedProducts :productTYpe="productTYpe" :productId="productId"/>-->
+      <!--      <WidgetsRelatedProducts :productTYpe="productTYpe" :productId="productId"/>-->
       <div class="modal fade " id="modal-1" aria-hidden="true" tabindex="-1" role="dialog"
            aria-labelledby="modal-cartLabel">
         <div class="modal-dialog modal-md modal-dialog-centered">
           <div class="modal-content">
             <div class="row">
               <div class="col-lg-12">
-                <!-- <button class="close" type="button" data-bs-dismiss="modal">
-                  <span>×</span>
-                </button>
-                {{ product.title }} -->
                 <div class="modal-header"><h5 class="modal-title">{{ product.title }}</h5>
                   <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
@@ -115,7 +111,7 @@
 
 <script setup>
 
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import {Swiper, SwiperSlide} from 'swiper/vue';
 import 'swiper/css';
 import {useProductStore} from '~~/store/products';
 import {useCartStore} from '~~/store/cart';
@@ -125,7 +121,6 @@ const route = useRoute();
 
 const slideId = ref(0);
 const counter = ref(1);
-const qty = ref('');
 const swiper = ref({});
 
 
@@ -154,7 +149,7 @@ const addToCart = (product, qty) => {
 
 // Item Count
 const increment = () => counter.value++;
-const decrement= () => {
+const decrement = () => {
   if (counter.value > 1) counter.value--
 };
 
@@ -167,4 +162,15 @@ const slideTo = (id) => {
 
   slideId.value = id
 };
+
+useHead({
+  meta: [
+    {name: 'description', content: product.value.title},
+    {name: 'og:description', content: product.value.title},
+    {name: 'twitter:description', content: product.value.title},
+    {name: 'og:title', content: product.value.title}
+  ],
+  titleTemplate: product.value.title,
+});
+
 </script>

@@ -11,7 +11,25 @@ export default defineNuxtConfig({
             viewport: 'width=device-width, initial-scale=1',
             title: 'Evacode - интернет магазин корейской косметики',
             meta: [
-                {name: 'description', content: 'Evacode - интернет магазин корейской косметики.'}
+                {
+                    name: 'description',
+                    content: 'Evacode - интернет магазин корейской косметики.- The History of Whoo, O HUI, SU:M37,' +
+                        'CNP, The Saga of Soo, Sulwhasoo, Hera, Amore Pacifi'
+                },
+                {
+                    name: 'og:description',
+                    content: 'Evacode - интернет магазин корейской косметики.- The History of Whoo, O HUI, SU:M37,' +
+                        'CNP, The Saga of Soo, Sulwhasoo, Hera, Amore Pacifi'
+                },
+                {
+                    name: 'twitter:description',
+                    content: 'Evacode - интернет магазин корейской косметики.- The History of Whoo, O HUI, SU:M37,' +
+                        'CNP, The Saga of Soo, Sulwhasoo, Hera, Amore Pacifi'
+                },
+                {
+                    name: 'og:title',
+                    content: 'Evacode - интернет магазин корейской косметики'
+                },
             ],
             link: [
                 {rel: 'icon', type: 'image/png', href: '/images/evacode/favicon.ico'}

@@ -163,4 +163,9 @@ watch(
       currentCategory.value = parseFloat(route.query.category) || null;
     }
 );
+
+useHead({
+  titleTemplate: `%s - Магазин`,
+});
+
 </script>
