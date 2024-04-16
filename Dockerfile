@@ -5,7 +5,9 @@ ENV APP_ROOT /web
 WORKDIR ${APP_ROOT}
 ADD . ${APP_ROOT}
 
-RUN yarn install
+RUN npm install -g bun
 
-RUN yarn run build
+RUN bun install
+
+RUN bun run build
 CMD node .output/server/index.mjs
