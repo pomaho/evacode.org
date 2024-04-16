@@ -38,16 +38,15 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            apiBase: 'http://127.0.0.1/api'
+            apiBase: 'http://127.0.0.1:8000/api'
         }
     },
 
     css: ['@/assets/scss/app.scss'],
     ssr: true,
     modules: [
-        '@nuxtjs/robots',
-        '@nuxtjs/sitemap',
         '@nuxt/image-edge',
+        '@nuxtjs/robots',
         '@vueuse/nuxt',
         [
             '@pinia/nuxt',
@@ -62,6 +61,5 @@ export default defineNuxtConfig({
     ],
     plugins: [
         {src: './plugins/useBootstrap.client.ts', mode: 'client'},
-        {src: './plugins/showToast.client.js', mode: 'client'},
     ]
 })
