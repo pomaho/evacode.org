@@ -168,12 +168,12 @@ const slideTo = (id) => {
 
 useHead({
   meta: [
-    {name: 'description', content: product.value.title},
-    {name: 'og:description', content: product.value.title},
-    {name: 'twitter:description', content: product.value.title},
-    {name: 'og:title', content: product.value.title}
+    {name: 'description', content: product.value?.title},
+    {name: 'og:description', content: product.value?.title},
+    {name: 'twitter:description', content: product.value?.title},
+    {name: 'og:title', content: product.value?.title}
   ],
-  titleTemplate: product.value.title,
+  titleTemplate: product.value?.title,
 });
 
 </script>
