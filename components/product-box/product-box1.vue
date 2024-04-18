@@ -119,6 +119,7 @@ export default {
   top: 50%;
   position: relative;
   transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
 }
 .product-detail {
   padding-top: 5px;
