@@ -120,6 +120,7 @@ export default {
   position: relative;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
+  /*comment*/
 }
 .product-detail {
   padding-top: 5px;
