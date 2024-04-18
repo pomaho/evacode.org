@@ -2,7 +2,7 @@
   <div class="collection-filter-block">
     <!-- brand filter start -->
     <div class="collection-mobile-back">
-        <span class="filter-back" @click="this.$emit('clickBack')">
+        <span class="filter-back" @click="onCLick()">
             <i class="fa fa-angle-left" aria-hidden="true"></i> Назад
         </span>
     </div>
@@ -46,12 +46,18 @@ const props = defineProps({
   }
 });
 
+const emit = defineEmits(['clickBack']);
+
 const {data: categoriesResponse} = await useAsyncData(
     'categoriesResponse',
     () => $fetch(`${useRuntimeConfig().public.apiBase}/market/categories/`),
 );
 
 const categories = computed(() => categoriesResponse.value.result);
+
+const onCLick = () => {
+  emit('clickBack');
+};
 </script>
 
 <style scoped>
