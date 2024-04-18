@@ -102,7 +102,6 @@ import {useRoute} from 'vue-router';
 const route = useRoute();
 const currentPage = ref(parseFloat(route.query.page) || 1);
 const currentCategory = ref(parseFloat(route.params.id) || null);
-
 const {data: productsResponse} = await useAsyncData(
     'productsResponse',
     () => $fetch(`${useRuntimeConfig().public.apiBase}/market/goods`, {
@@ -116,10 +115,10 @@ const {data: productsResponse} = await useAsyncData(
     }
 );
 
-const products = computed(() => productsResponse?.value.results);
-const totalProductsCount = computed(() => productsResponse?.value.count);
-const previous = computed(() => productsResponse?.value.previous ? `?${productsResponse?.value.previous.split('?')[1]}` : null);
-const next = computed(() => productsResponse?.value.next ? `?${productsResponse?.value.next.split('?')[1]}` : null);
+const products = computed(() => productsResponse.value?.results);
+const totalProductsCount = computed(() => productsResponse.value?.count);
+const previous = computed(() => productsResponse.value?.previous ? `?${productsResponse.value?.previous.split('?')[1]}` : null);
+const next = computed(() => productsResponse.value?.next ? `?${productsResponse.value?.next.split('?')[1]}` : null);
 const paginates = computed(() => Math.round(totalProductsCount.value / itemsPerPage.value));
 
 const itemsPerPage = ref(12);
