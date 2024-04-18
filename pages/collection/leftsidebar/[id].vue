@@ -111,6 +111,7 @@ const {data: productsResponse} = await useAsyncData(
       }
     }),
     {
+      server: false,
       watch: [currentPage, currentCategory]
     }
 );

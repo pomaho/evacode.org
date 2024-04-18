@@ -51,6 +51,9 @@ const emit = defineEmits(['clickBack']);
 const {data: categoriesResponse} = await useAsyncData(
     'categoriesResponse',
     () => $fetch(`${useRuntimeConfig().public.apiBase}/market/categories/`),
+    {
+      server: false,
+    }
 );
 
 const categories = computed(() => categoriesResponse.value?.result);

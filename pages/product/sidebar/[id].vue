@@ -134,6 +134,9 @@ const {data: productResponse} = await useAsyncData(
         id: route.params.id,
       }
     }),
+    {
+      server: false,
+    }
 );
 
 const onSwiper = (_swiper) => swiper.value = _swiper;
