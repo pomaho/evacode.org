@@ -53,7 +53,7 @@ const {data: categoriesResponse} = await useAsyncData(
     () => $fetch(`${useRuntimeConfig().public.apiBase}/market/categories/`),
 );
 
-const categories = computed(() => categoriesResponse.value.result);
+const categories = computed(() => categoriesResponse.value?.result);
 
 const onCLick = () => {
   emit('clickBack');

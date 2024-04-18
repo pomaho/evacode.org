@@ -32,7 +32,7 @@ const {data: categoriesResponse} = await useAsyncData(
     () => $fetch(`${useRuntimeConfig().public.apiBase}/market/categories/`),
 );
 
-const categories = computed(() => categoriesResponse.value.result.slice(1));
+const categories = computed(() => categoriesResponse.value?.result.slice(1));
 </script>
 
 <style scoped>
