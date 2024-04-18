@@ -16,7 +16,7 @@
       </nuxt-link>
     </div>
     <div class="back" v-if="product.images.length>1">
-      <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+      <nuxt-link :class="'product-detail-link'" :to="{ path: '/product/sidebar/'+product.id}">
         <img :src='imageSrc ? imageSrc : product.images[1].url' :key="index" :id="product.id" alt=""
              class="img-fluid  m-auto media"></nuxt-link>
     </div>
