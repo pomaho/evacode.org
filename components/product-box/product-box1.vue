@@ -5,7 +5,7 @@
       <span class="lable4" v-if="product.sale">sale</span>
     </div>
     <div class="front">
-      <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
+      <nuxt-link :class="'product-detail-link'" :to="{ path: '/product/sidebar/'+product.id}">
         <img
             :src='imageSrc ? imageSrc : product.images[0].url'
             :id="product.id"
@@ -131,5 +131,11 @@ export default {
 }
 .product-detail h4 {
   margin-top: 5px;
+}
+
+.product-detail-link {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 </style>
