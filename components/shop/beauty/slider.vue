@@ -8,16 +8,16 @@
 
         <swiper :loop="true" :navigation="true" :modules="modules" class="swiper-wrapper">
 
-          <swiper-slide class="swiper-slide" v-for="(item, index) in items" :key="index">
-            <div class="home text-center" :class="item.alignclass"
-              v-bind:style="{ 'background-image': 'url(' + item.imagepath + ')' }">
+          <swiper-slide class="swiper-slide" v-for="(slide, index) in slides" :key="index">
+            <div class="home text-center" :class="slide.alignclass"
+                 v-bind:style="{ 'background-image': 'url(' + slide.image + ')' }">
               <div class="container">
                 <div class="row">
                   <div class="col">
                     <div class="slider-contain">
                       <div>
-                        <h4>{{ item.title }}</h4>
-                        <h1>{{ item.subtitle }}</h1>
+                        <h4>{{ slide.title }}</h4>
+                        <h1>{{ slide.description }}</h1>
                         <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn btn-solid">купить!</nuxt-link>
                       </div>
                     </div>
@@ -34,43 +34,21 @@
   </div>
 </template>
 
-<script type="text/javascript">
-import {
-  Swiper,
-  SwiperSlide
-} from "swiper/vue";
+<script type="text/javascript" setup>
+import {Swiper, SwiperSlide} from "swiper/vue";
 import 'swiper/css';
-
-
 import "swiper/css/navigation";
 import { Navigation } from "swiper";
-export default {
-  components: {
-    Swiper, SwiperSlide
-  },
-  setup() {
-    return {
-      modules: [Navigation],
-    };
-  },
-  data() {
-    return {
-      items: [
-        {
-          imagepath: '/images/evacode/34.jpg',
-          title: 'Beauty Products',
-          subtitle: 'welcome to cosmetics',
-          alignclass: 'p-left'
-        },
-        {
-          imagepath: '/images/evacode/35.jpg',
-          title: 'On all cosmetics',
-          subtitle: 'save 30% off',
-          alignclass: 'p-left'
-        }
-      ]
-    }
-  },
 
-}
+const modules = [Navigation];
+const {data: slidesResponse} = await useAsyncData(
+    'slidesResponse',
+    () => $fetch(`${useRuntimeConfig().public.apiBase}/core/slide`),
+    {
+      server: false,
+    }
+);
+
+const slides = computed(() => slidesResponse.value?.results);
+
 </script>
