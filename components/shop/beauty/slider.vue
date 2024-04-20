@@ -9,15 +9,14 @@
         <swiper :loop="true" :navigation="true" :modules="modules" class="swiper-wrapper">
 
           <swiper-slide class="swiper-slide" v-for="(slide, index) in slides" :key="index">
-            <div class="home text-center" :class="slide.alignclass"
-                 v-bind:style="{ 'background-image': 'url(' + slide.image + ')' }">
+            <div class="home text-center" v-bind:style="{ 'background-image': 'url(' + slide.image + ')' }">
               <div class="container">
                 <div class="row">
                   <div class="col">
                     <div class="slider-contain">
                       <div>
                         <h4>{{ slide.title }}</h4>
-                        <h1>{{ slide.description }}</h1>
+                        {{ slide.description }}
                         <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn btn-solid">купить!</nuxt-link>
                       </div>
                     </div>
