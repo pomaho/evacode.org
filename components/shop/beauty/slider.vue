@@ -16,7 +16,7 @@
                     <div class="slider-contain">
                       <div>
                         <h4>{{ slide.title }}</h4>
-                        {{ slide.description }}
+                        <div v-html="slide.description"></div>
                         <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn btn-solid">купить!</nuxt-link>
                       </div>
                     </div>
