@@ -2,16 +2,16 @@
   <div>
     <section class="section-b-space beauty-about">
       <div class="container">
-        <div class="row">
+        <div v-if="aboutHome" class="row">
           <div class="col-xl-5 col-lg-6 col-md-12 offset-xl-1 text-center">
-            <img :src="imagepath" alt class="img-fluid" />
+            <img :src="aboutHome.image" alt class="img-fluid" />
           </div>
           <div class="col-xl-5 col-lg-6 col-md-12">
             <div class="about-section">
               <div>
-                <h2>{{ title }}</h2>
+                <div v-html="aboutHome.title"></div>
                 <div class="about-text">
-                  <p>{{ desc }}</p>
+                  <div v-html="aboutHome.description"></div>
                 </div>
                 <div class="service small-section pb-0">
                   <div class="row">
@@ -81,18 +81,19 @@
     </section>
   </div>
 </template>
-<script>
-export default {
-  data() {
-    return {
-      imagepath: '/images/evacode/about-us.jpg',
-      title: 'О Evacode',
-      desc:
-        'Погрузитесь в мир красоты с Evacode - вашим надежным партнером в косметических покупках. Наш интернет-магазин предлагает широкий ассортимент качественной корейской косметики, включая популярные бренды и новинки. Приобретайте продукты, которые подчеркнут вашу натуральную красоту и создадут неповторимый образ.',
-      service_1: 'доставка по миру',
-      service_2: '24 X 7 сервис',
-      service_3: 'акционные предложения'
+
+<script setup>
+const {data: aboutResponse} = await useAsyncData(
+    'aboutResponse',
+    () => $fetch(`${useRuntimeConfig().public.apiBase}/core/about`),
+    {
+      server: false,
     }
-  }
-}
+);
+
+const aboutHome = computed(() => aboutResponse.value?.results[0]);
+const service_1 = 'доставка по миру';
+const service_2 ='24 X 7 сервис';
+const service_3 = 'акционные предложения';
+
 </script>
