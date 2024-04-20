@@ -8,8 +8,18 @@
 </template>
 
 <script setup>
-import {useContactsStore} from '~~/store/contacts'
-const contacts = await useContactsStore().contacts;
+// import {useContactsStore} from '~~/store/contacts'
+// const contacts = await useContactsStore().contacts;
+
+const {data: contactsResponse} = await useAsyncData(
+    'contactsResponse',
+    () => $fetch(`${useRuntimeConfig().public.apiBase}/core/contacts`),
+    {
+        server: false,
+    }
+);
+
+const contacts = computed(() => contactsResponse.value?.results[0]);
 
 </script>
 

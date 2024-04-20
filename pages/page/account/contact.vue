@@ -11,7 +11,7 @@
                 allowfullscreen></iframe>
           </div>
           <div class="col-lg-5">
-            <div class="contact-right">
+            <div v-if="contacts" class="contact-right">
               <ul>
                 <li>
                   <div class="contact-icon">
@@ -51,8 +51,17 @@
   <Footer/>
 </template>
 <script setup>
-  import {useContactsStore} from '~~/store/contacts'
-  const contacts = await useContactsStore().contacts;
+  // import {useContactsStore} from '~~/store/contacts'
+  // const contacts = await useContactsStore().contacts;
+  const {data: contactsResponse} = await useAsyncData(
+      'contactsResponse',
+      () => $fetch(`${useRuntimeConfig().public.apiBase}/core/contacts`),
+      {
+        server: false,
+      }
+  );
+
+  const contacts = computed(() => contactsResponse.value?.results[0]);
 
   const phoneimage = '/images/evacode/icon/phone.png';
   const emailimage = '/images/evacode/icon/email.png';

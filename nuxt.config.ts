@@ -2,9 +2,6 @@
 
 // @ts-ignore
 export default defineNuxtConfig({
-    $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
-    routeRules: {},
-
     app: {
         head: {
             charset: 'utf-8',
@@ -38,7 +35,7 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         public: {
-            apiBase: 'http://127.0.0.1/api'
+            apiBase: 'http://localhost/api'
         }
     },
 

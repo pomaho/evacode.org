@@ -6,7 +6,7 @@
           <div class="header-contact">
             <ul>
               <li>Добро пожаловать в наш интернет-магазин "Evacode"</li>
-              <li>
+              <li  v-if="contacts">
                 <i class="fa fa-phone" aria-hidden="true"></i>Звоните нам: <phone-link :phone="contacts.phone"/> (там WhatsApp)
               </li>
             </ul>
@@ -18,6 +18,15 @@
 </template>
 
 <script setup>
-import {useContactsStore} from '~~/store/contacts'
-const contacts = await useContactsStore().contacts;
+// import {useContactsStore} from '~~/store/contacts'
+// const contacts = await useContactsStore().contacts;
+const {data: contactsResponse} = await useAsyncData(
+    'contactsResponse',
+    () => $fetch(`${useRuntimeConfig().public.apiBase}/core/contacts`),
+    {
+      server: false,
+    }
+);
+
+const contacts = computed(() => contactsResponse.value?.results[0]);
 </script>
