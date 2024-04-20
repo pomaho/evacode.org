@@ -9,7 +9,7 @@
           <div class="col-xl-5 col-lg-6 col-md-12">
             <div class="about-section">
               <div>
-                <div v-html="aboutHome.title"></div>
+                <h2>{{ aboutHome.title }}</h2>
                 <div class="about-text">
                   <div v-html="aboutHome.description"></div>
                 </div>
