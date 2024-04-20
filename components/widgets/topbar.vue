@@ -7,7 +7,7 @@
             <ul>
               <li>Добро пожаловать в наш интернет-магазин "Evacode"</li>
               <li>
-                <i class="fa fa-phone" aria-hidden="true"></i>Звоните нам: <phone-link :phone="'+8210-7652-8595'"/> (там WhatsApp)
+                <i class="fa fa-phone" aria-hidden="true"></i>Звоните нам: <phone-link :phone="contacts.phone"/> (там WhatsApp)
               </li>
             </ul>
           </div>
@@ -17,5 +17,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
+import {useContactsStore} from '~~/store/contacts'
+const contacts = await useContactsStore().contacts;
 </script>

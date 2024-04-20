@@ -19,7 +19,7 @@
                     <h6>Звоните</h6>
                   </div>
                   <div class="media-body">
-                    <p><phone-link :phone="phone1" /> (там WhatsApp)</p>
+                    <p><phone-link :phone="contacts.phone" /> (там WhatsApp)</p>
                   </div>
                 </li>
                 <li>
@@ -28,7 +28,7 @@
                     <h6>Адрес</h6>
                   </div>
                   <div class="media-body">
-                    <p v-html="address"></p>
+                    <p v-html="contacts.address"></p>
                   </div>
                 </li>
                 <li>
@@ -37,7 +37,7 @@
                     <h6>Email</h6>
                   </div>
                   <div class="media-body">
-                    <p><mail-link :email="email1"/></p>
+                    <p><mail-link :email="contacts.email"/></p>
                     <p><mail-link :email="email2"/></p>
                   </div>
                 </li>
@@ -50,29 +50,12 @@
   </div>
   <Footer/>
 </template>
-<script>
+<script setup>
+  import {useContactsStore} from '~~/store/contacts'
+  const contacts = await useContactsStore().contacts;
 
-export default {
-
-  data() {
-    return {
-      phoneimage: '/images/evacode/icon/phone.png',
-      emailimage: '/images/evacode/icon/email.png',
-      phone1: '+8210-7652-8595',
-      phone2: '',
-      address: '안산시 단원구 초지동 742-3, 2 этаж, 210 кабинет <br />' +
-          'Gyeonggi-do, Ansan-si, Danwon-gu, Choji-dong, 742-3, 210호',
-      email1: 'sales@evacode.org',
-      email2: '',
-      errors: [],
-      fname: null,
-      lname: null,
-      email: null,
-      phone: null,
-      message: null
-    }
-  },
-}
+  const phoneimage = '/images/evacode/icon/phone.png';
+  const emailimage = '/images/evacode/icon/email.png';
 </script>
 
 <style scoped>

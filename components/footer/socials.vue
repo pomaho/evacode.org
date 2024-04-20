@@ -1,16 +1,17 @@
-<script setup>
-
-</script>
-
 <template>
-  <div class="footer-social">
+  <div v-if="contacts" class="footer-social">
     <ul>
-      <li><a target="_blank" href="https://www.facebook.com/groups/379782879558998/"><i class="fa fa-facebook-f"></i></a></li>
-      <li><a target="_blank" href="https://www.instagram.com/evacodeorg"><i class="fa fa-instagram"></i></a></li>
-      <li><a target="_blank" href="https://t.me/EvaCodeKR"><i class="fa fa-telegram"></i></a></li>
+      <li><a target="_blank" :href="contacts.facebook"><i class="fa fa-facebook-f"></i></a></li>
+      <li><a target="_blank" :href="contacts.instagram"><i class="fa fa-instagram"></i></a></li>
+      <li><a target="_blank" :href="contacts.telegram"><i class="fa fa-telegram"></i></a></li>
     </ul>
   </div>
 </template>
+
+<script setup>
+import {useContactsStore} from '~~/store/contacts'
+const contacts = await useContactsStore().contacts;
+</script>
 
 <style scoped>
 

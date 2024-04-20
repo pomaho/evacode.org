@@ -92,6 +92,7 @@ const {data: aboutResponse} = await useAsyncData(
 );
 
 const aboutHome = computed(() => aboutResponse.value?.results[0]);
+
 const service_1 = 'доставка по миру';
 const service_2 ='24 X 7 сервис';
 const service_3 = 'акционные предложения';
