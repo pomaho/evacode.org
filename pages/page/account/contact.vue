@@ -38,7 +38,7 @@
                   </div>
                   <div class="media-body">
                     <p><mail-link :email="contacts.email"/></p>
-                    <p><mail-link :email="email2"/></p>
+                    <p></p>
                   </div>
                 </li>
               </ul>
@@ -53,15 +53,6 @@
 <script setup>
   import {useContactsStore} from '~~/store/contacts'
   const contacts = await useContactsStore().contacts;
-  // const {data: contactsResponse} = await useAsyncData(
-  //     'contactsResponse',
-  //     () => $fetch(`${useRuntimeConfig().public.apiBase}/core/contacts`),
-  //     {
-  //       server: false,
-  //     }
-  // );
-  //
-  // const contacts = computed(() => contactsResponse.value?.results[0]);
 
   const phoneimage = '/images/evacode/icon/phone.png';
   const emailimage = '/images/evacode/icon/email.png';
