@@ -83,15 +83,8 @@
 </template>
 
 <script setup>
-const {data: aboutResponse} = await useAsyncData(
-    'aboutResponse',
-    () => $fetch(`${useRuntimeConfig().public.apiBase}/core/about`),
-    {
-      server: false,
-    }
-);
-
-const aboutHome = computed(() => aboutResponse.value?.results[0]);
+import {useAboutStore} from '~/store/about';
+const aboutHome = await useAboutStore().aboutHome;
 
 const service_1 = 'доставка по миру';
 const service_2 ='24 X 7 сервис';
