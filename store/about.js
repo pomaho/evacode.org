@@ -6,6 +6,7 @@ export const useAboutStore = defineStore({
         return {
             _aboutHome: null,
             _aboutPage: null,
+            _aboutFooter: null,
         }
     },
     getters: {
@@ -24,6 +25,14 @@ export const useAboutStore = defineStore({
                 state._aboutPage = about;
             }
             return state._aboutPage;
+        },
+        aboutFooter: async (state) => {
+            if (!state._aboutFooter) {
+                const aboutResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/about`);
+                const about = aboutResponse?.results[2] || {};
+                state._aboutFooter = about;
+            }
+            return state._aboutFooter;
         },
     }
 })
