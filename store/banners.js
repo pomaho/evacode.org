@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
 
 export const useBannersStore = defineStore({
-    id: 'contacts-store',
+    id: 'banner-store',
     state: () => {
         return {
             _bannerShop: null,

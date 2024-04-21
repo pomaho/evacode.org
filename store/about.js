@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
 
 export const useAboutStore = defineStore({
-    id: 'contacts-store',
+    id: 'about-store',
     state: () => {
         return {
             _aboutHome: null,

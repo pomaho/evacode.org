@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia'
 
 export const useDeliveryStore = defineStore({
-    id: 'contacts-store',
+    id: 'delivery-store',
     state: () => {
         return {
             _deliveries: null,
