@@ -12,7 +12,7 @@ export const useAboutStore = defineStore({
     getters: {
         aboutHome: async (state) => {
             if (!state._aboutHome) {
-                const aboutResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/about`);
+                const aboutResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/about?name=about-home`);
                 const about = aboutResponse?.results[0] || {};
                 state._aboutHome = about;
             }
@@ -20,16 +20,16 @@ export const useAboutStore = defineStore({
         },
         aboutPage: async (state) => {
             if (!state._aboutPage) {
-                const aboutResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/about`);
-                const about = aboutResponse?.results[1] || {};
+                const aboutResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/about?name=about-page`);
+                const about = aboutResponse?.results[0] || {};
                 state._aboutPage = about;
             }
             return state._aboutPage;
         },
         aboutFooter: async (state) => {
             if (!state._aboutFooter) {
-                const aboutResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/about`);
-                const about = aboutResponse?.results[2] || {};
+                const aboutResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/about?name=about-footer`);
+                const about = aboutResponse?.results[0] || {};
                 state._aboutFooter = about;
             }
             return state._aboutFooter;
