@@ -15,7 +15,7 @@
                   <div class="col-12">
                     <div class="top-banner-wrapper">
                       <a href="#">
-                        <img src='/images/evacode/shop_banner.jpg' class="img-fluid" alt/>
+                        <img :src='bannerShop.image' class="img-fluid" alt/>
                       </a>
                     </div>
                     <div class="collection-product-wrapper">
@@ -100,6 +100,10 @@
 import {useRoute} from 'vue-router';
 
 const route = useRoute();
+
+import {useBannersStore} from '~/store/banners';
+const bannerShop = await useBannersStore().bannerShop;
+
 const currentPage = ref(parseFloat(route.query.page) || 1);
 const currentCategory = ref(parseFloat(route.params.id) || null);
 const {data: productsResponse} = await useAsyncData(

@@ -14,7 +14,7 @@
       <!-- side-bar banner start here -->
       <div class="collection-sidebar-banner">
         <a href="#">
-          <img :src="bannerimagepath" class="img-fluid"/>
+          <img :src="bannerShopSide.image" class="img-fluid"/>
         </a>
       </div>
       <!-- side-bar banner end here -->
@@ -25,7 +25,9 @@
 
 <script setup>
 import SidebarCategories from '~/components/widgets/sidebar-categories.vue';
-const bannerimagepath = ref('/images/evacode/side-banner.png');
+
+import {useBannersStore} from '~/store/banners';
+const bannerShopSide = await useBannersStore().bannerShopSide;
 const filter = ref(false);
 const props = defineProps({
   currentCategory: {
