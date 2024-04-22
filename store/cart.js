@@ -5,11 +5,7 @@ export const useCartStore = defineStore({
     state: () => {
         return {
             cart: [],
-            abc: {},
-            paymentRatios: {
-                individual: 1,
-                entity: 1.05,
-            }
+            abc: {}
         }
     },
     actions: {
