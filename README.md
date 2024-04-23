@@ -4,11 +4,18 @@ Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introdu
 
 ## Setup
 
+Install package manager 'bun'
+
+
+```bash
+npm install -g bun
+```
+
 Make sure to install the dependencies:
 
 ```bash
-# yarn
-yarn install
+# bun
+bun install
 ```
 
 ## Development Server
@@ -16,7 +23,7 @@ yarn install
 Start the development server on http://localhost:3000
 
 ```bash
-yarn run dev
+bun run dev
 ```
 
 ## Production
@@ -24,13 +31,19 @@ yarn run dev
 Build the application for production:
 
 ```bash
-yarn run build
+bun run build
 ```
+
+If you want run prod version
+```bash
+node .output/server/index.mjs
+```
+
 
 Locally preview production build:
 
 ```bash
-yarn run preview
+bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

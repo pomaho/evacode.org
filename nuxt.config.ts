@@ -38,13 +38,17 @@ export default defineNuxtConfig({
             apiBase: process.env.BASE_API_URL,
         }
     },
-
+    site: {
+        url: process.env.SITE_URL,
+        trailingSlash: true,
+    },
     css: ['@/assets/scss/app.scss'],
     ssr: true,
     modules: [
         '@nuxt/image-edge',
         '@nuxtjs/robots',
         '@vueuse/nuxt',
+        'nuxt-simple-sitemap',
         [
             '@pinia/nuxt',
             {
