@@ -38,11 +38,6 @@ export default defineNuxtConfig({
             apiBase: process.env.BASE_API_URL,
         }
     },
-    sitemap: {
-        sources: [
-            '/api/__sitemap__/urls',
-        ]
-    },
     site: {
         url: process.env.SITE_URL,
         trailingSlash: true,
