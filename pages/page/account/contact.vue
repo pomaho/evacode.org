@@ -56,6 +56,16 @@
 
   const phoneimage = '/images/evacode/icon/phone.png';
   const emailimage = '/images/evacode/icon/email.png';
+
+  useHead({
+    titleTemplate: `%s - Контакты`,
+    meta: [
+      {
+        name: 'description',
+        content: 'Evacode - интернет магазин корейской косметики - Контакты'
+      },
+    ]
+  });
 </script>
 
 <style scoped>

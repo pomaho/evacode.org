@@ -36,6 +36,16 @@ const {data: categoriesResponse} = await useAsyncData(
 );
 
 const categories = computed(() => categoriesResponse.value?.result.slice(1));
+
+useHead({
+  titleTemplate: `%s - Категории`,
+  meta: [
+    {
+      name: 'description',
+      content: 'Evacode - интернет магазин корейской косметики - Категории'
+    },
+  ]
+});
 </script>
 
 <style scoped>

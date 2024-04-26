@@ -28,5 +28,11 @@ import {useAboutStore} from '~/store/about';
 const about = await useAboutStore().aboutPage;
 useHead({
   titleTemplate: `%s - ${about.title}`,
+  meta: [
+    {
+      name: 'description',
+      content: 'Evacode - интернет магазин корейской косметики - О нас'
+    },
+  ]
 });
 </script>
