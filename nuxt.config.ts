@@ -36,6 +36,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             apiBase: process.env.BASE_API_URL,
+            url: process.env.SITE_URL,
         }
     },
     sitemap: {
@@ -43,7 +44,7 @@ export default defineNuxtConfig({
             // fetch your URLs from a database or other source
             const productsResponse = await fetch(`${process.env.BASE_API_URL}/market/get_all_goods`);
             const products = await productsResponse.json();
-            return products.result.map((product) => {
+            return products.result.map((product: any) => {
                 return `${process.env.SITE_URL}/product/sidebar/${product.id}`;
             });
         }
@@ -55,6 +56,7 @@ export default defineNuxtConfig({
     css: ['@/assets/scss/app.scss'],
     ssr: true,
     modules: [
+        'nuxt3-localforage',
         '@nuxt/image-edge',
         '@nuxtjs/robots',
         '@vueuse/nuxt',
@@ -66,6 +68,11 @@ export default defineNuxtConfig({
             },
         ],
     ],
+    vite: {
+        optimizeDeps: {
+            include: ['localforage'],
+        },
+    },
     pluginsIgnore: [
         /^ignored-plugin/,
         /another-ignored-plugin/,
