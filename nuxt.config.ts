@@ -56,6 +56,7 @@ export default defineNuxtConfig({
     css: ['@/assets/scss/app.scss'],
     ssr: true,
     modules: [
+        'maz-ui/nuxt',
         'nuxt3-localforage',
         '@nuxt/image-edge',
         '@nuxtjs/robots',

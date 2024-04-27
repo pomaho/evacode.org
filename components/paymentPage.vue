@@ -10,16 +10,33 @@
                   <h3>Ваши данные</h3>
                 </div>
                 <div class="row check-out">
-                  <div class="form-group col-md-6 col-sm-6">
+                  <div class="form-group col-md-5 col-sm-5">
                     <div class="field-label">Имя</div>
-                    <input type="text" v-model="user.firstName.value" name="First name"/>
-                    <span class="validate-error" v-if="user.firstName.value.length === 0">{{
-                        user.firstName.errormsg
-                      }}</span>
+                    <MazInput
+                        v-model="user.firstName.value"
+                        label="Ваше имя"
+                        autocomplete="off"
+                        no-radius
+                    />
+                    <span class="validate-error" v-if="user.firstName.value.length === 0">{{ user.firstName.errormsg }}</span>
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
                     <div class="field-label">Телефон</div>
-                    <input type="tel" v-model="user.phone.value" name="Phone"/>
+                    <MazPhoneNumberInput
+                        v-model="user.phone.value"
+                        :translations="{
+                          countrySelector: {
+                            placeholder: 'Код страны',
+                            error: 'Выберите страну',
+                            searchPlaceholder: 'Искать страну',
+                          },
+                          phoneInput: {
+                            placeholder: 'Номер телефона',
+                            example: 'Пример:',
+                          },
+                        }"
+                        no-radius
+                    />
                     <span class="validate-error" v-if="user.phone.value.length === 0">{{ user.phone.errormsg }}</span>
                   </div>
                 </div>
@@ -61,46 +78,28 @@
   </section>
 </template>
 <script>
+import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
 import {useCartStore} from '~~/store/cart'
 import {useProductStore} from '~~/store/products'
 
 export default {
   computed: {
     cart() {
-      return useCartStore().cartItems
+      return useCartStore().cartItems;
     },
     cartTotal() {
       return useCartStore().cartTotalAmount;
     },
     curr() {
-      return useProductStore().changeCurrency
+      return useProductStore().changeCurrency;
     },
   },
   data() {
     return {
-      items: [{
-        stripePriceId: '1',
-        quantity: 5
-      }],
-      selectedPayment: 'paypal',
-      errors: [],
       user: {
         firstName: {value: '', errormsg: ''},
         phone: {value: '', errormsg: ''},
       },
-      isLogin: false,
-      paypal: {
-        sandbox: 'Your_Sendbox_Key'
-      },
-      payment: false,
-      environment: 'sandbox',
-      button_style: {
-        label: 'checkout',
-        size: 'medium', // small | medium | large | responsive
-        shape: 'pill', // pill | rect
-        color: 'blue' // gold | blue | silver | black
-      },
-      amtchar: ''
     }
   },
 
@@ -174,3 +173,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.checkout-page .checkout-form input[type=text] {
+  border: 0 !important;
+}
+</style>
