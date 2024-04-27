@@ -18,7 +18,7 @@
                         autocomplete="off"
                         no-radius
                     />
-                    <span class="validate-error" v-if="user.firstName.value.length === 0">{{ user.firstName.errormsg }}</span>
+                    <span class="validate-error" v-if="user.firstName.errormsg.length > 0">{{ user.firstName.errormsg }}</span>
                   </div>
                   <div class="form-group col-md-6 col-sm-6">
                     <div class="field-label">Телефон</div>
@@ -65,7 +65,7 @@
                   </div>
                   <div class="payment-box">
                     <div class="text-end">
-                      <button class="btn btn-primary" @click.prevent="onSubmit">Отправить заказ</button>
+                      <span class="btn btn-primary" @click="onSubmit">Отправить заказ</span>
                     </div>
                   </div>
                 </div>
@@ -107,7 +107,6 @@ export default {
     cart: {
       handler(value) {
         if (value.length == 0) {
-          useNuxtApp().$showToast({msg: 'Cart is Empty.', type: 'error'})
           this.$router.replace('/page/account/cart')
         }
 
@@ -120,8 +119,11 @@ export default {
     validateFields() {
       let isValidForm = true;
       const empty_error_msg = 'Обязательное поле'
-      if (this.user.firstName.value.length <= 1 || this.user.firstName.value.length > 10) {
+      if (this.user.firstName.value.length <= 1) {
         this.user.firstName.errormsg = empty_error_msg;
+        isValidForm = false;
+      } else if (this.user.firstName.value.length > 100) {
+        this.user.firstName.errormsg = 'Слишком длинное имя';
         isValidForm = false;
       } else {
         this.user.firstName.errormsg = ''
@@ -166,7 +168,6 @@ export default {
     this.isLogin = true;
 
     if (this.isLogin && this.cart.length == 0) {
-      useNuxtApp().$showToast({msg: 'Cart is Empty.', type: 'error'})
       this.$router.replace('/page/account/cart')
     }
 
