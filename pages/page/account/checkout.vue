@@ -6,11 +6,7 @@
   </div>
   <Footer />
 </template>
-<script>
-export default{
-
-}
-
+<script setup>
 useHead({
   titleTemplate: `%s - Оформить заказ`,
   meta: [
