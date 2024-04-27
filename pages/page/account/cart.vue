@@ -48,7 +48,8 @@
                     </div>
                     <div class="col-xs-3">
                       <h2 class="td-color">
-                        {{ curr.symbol }} {{ (product.retail_price * curr.curr) * product.quantity }}</h2>
+                        {{ curr.symbol }} {{ (product.retail_price * curr.curr) * product.quantity }}
+                        <del>{{ curr.symbol }}{{ (product.official_price * curr.curr) * product.quantity }}</del></h2>
                     </div>
                     <div class="col-xs-3">
                       <h2 class="td-color">
@@ -60,7 +61,8 @@
                   </div>
                 </td>
                 <td>
-                  <h2>{{ curr.symbol }} {{ product.retail_price * curr.curr }}</h2>
+                  <h2>{{ curr.symbol }} {{ product.retail_price * curr.curr }}
+                    <del>{{ curr.symbol }}{{ (product.official_price * curr.curr) }}</del></h2>
                 </td>
                 <td>
                   <div class="qty-box">
@@ -89,7 +91,8 @@
                 </td>
                 <td>
                   <h2 class="td-color">
-                    {{ curr.symbol }} {{ (product.retail_price * curr.curr) * product.quantity }}</h2>
+                    {{ curr.symbol }} {{ (product.retail_price * curr.curr) * product.quantity }}
+                    <del>{{ curr.symbol }}{{ (product.official_price * curr.curr) * product.quantity }}</del></h2>
                 </td>
               </tr>
               </tbody>
@@ -99,7 +102,8 @@
               <tr>
                 <td>Общая стоимость :</td>
                 <td>
-                  <h2>{{ curr.symbol }}{{ cartTotal * curr.curr }}</h2>
+                  <h2>{{ curr.symbol }}{{ cartTotal * curr.curr }}
+                    <del>{{ curr.symbol }}{{ cartOfficialTotal * curr.curr }}</del></h2>
                 </td>
               </tr>
               </tfoot>
@@ -148,6 +152,9 @@ export default {
     },
     cartTotal() {
       return useCartStore().cartTotalAmount
+    },
+    cartOfficialTotal() {
+      return useCartStore().cartTotalOfficialAmount;
     },
     curr() {
       return useProductStore().changeCurrency

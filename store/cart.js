@@ -63,6 +63,11 @@ export const useCartStore = defineStore({
             return state.cart.reduce((total, product) => {
                 return total + (product.retail_price * product.quantity)
             }, 0)
+        },
+        cartTotalOfficialAmount: (state) => {
+            return state.cart.reduce((total, product) => {
+                return total + (product.official_price * product.quantity)
+            }, 0)
         }
     }
 })

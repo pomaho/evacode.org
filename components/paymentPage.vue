@@ -16,7 +16,6 @@
                         v-model="user.firstName.value"
                         label="Ваше имя"
                         autocomplete="off"
-                        no-radius
                     />
                     <span class="validate-error" v-if="user.firstName.errormsg.length > 0">{{ user.firstName.errormsg }}</span>
                   </div>
@@ -35,7 +34,6 @@
                             example: 'Пример:',
                           },
                         }"
-                        no-radius
                     />
                     <span class="validate-error" v-if="user.phone.value.length === 0">{{ user.phone.errormsg }}</span>
                   </div>
@@ -53,13 +51,15 @@
                     <ul class="qty" v-if="cart.length">
                       <li v-for="(item, index) in cart" :key="index">
                         {{ item.title }} X {{ item.quantity }}
-                        <span>{{ curr.symbol }}{{ (item.retail_price * curr.curr) * item.quantity }}</span>
+                        <span>{{ curr.symbol }}{{ (item.retail_price * curr.curr) * item.quantity }}
+                              <del>{{ curr.symbol }}{{ (item.official_price * curr.curr) }}</del></span>
                       </li>
                     </ul>
                     <ul class="sub-total">
                       <li>
                         Общая стоимость
-                        <span class="count">{{ curr.symbol }}{{ cartTotal * curr.curr }}</span>
+                        <span class="count">{{ curr.symbol }}{{ cartTotal * curr.curr }}
+                        <del>{{ curr.symbol }}{{ cartOfficialTotal * curr.curr }}</del></span>
                       </li>
                     </ul>
                   </div>
@@ -89,6 +89,9 @@ export default {
     },
     cartTotal() {
       return useCartStore().cartTotalAmount;
+    },
+    cartOfficialTotal() {
+      return useCartStore().cartTotalOfficialAmount;
     },
     curr() {
       return useProductStore().changeCurrency;

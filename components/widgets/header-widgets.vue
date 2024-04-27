@@ -22,7 +22,7 @@
                     <h4>{{ item.title }}</h4>
                   </nuxt-link>
                   <h4>
-                    <span>{{ item.quantity }} x {{ curr.symbol }}{{ item.retail_price }}</span>
+                    <span>{{ item.quantity }} x {{ curr.symbol }}{{ item.retail_price }}<del>{{ curr.symbol }}{{ item.official_price }}</del></span>
                   </h4>
                 </div>
               </div>
@@ -36,7 +36,7 @@
               <div class="total">
                 <h5>
                   Итого :
-                  <span>{{ curr.symbol }}{{ cartTotal }}</span>
+                  <span>{{ curr.symbol }}{{ cartTotal }}<del>{{ curr.symbol }}{{ cartOfficialTotal }}</del></span>
                 </h5>
               </div>
             </li>
@@ -65,6 +65,7 @@ export default {
   computed: {
     ...mapState(useCartStore, {
       cartTotal: (store) => store.cartTotalAmount,
+      cartOfficialTotal:(store) => store.cartTotalOfficialAmount,
     }),
     cart() {
       return useCartStore().cartItems
