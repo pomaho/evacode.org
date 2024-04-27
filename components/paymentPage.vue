@@ -23,6 +23,7 @@
                     <div class="field-label">Телефон</div>
                     <MazPhoneNumberInput
                         v-model="user.phone.value"
+                        v-model:country-code="countryCode"
                         :translations="{
                           countrySelector: {
                             placeholder: 'Код страны',
@@ -103,6 +104,7 @@ export default {
         firstName: {value: '', errormsg: ''},
         phone: {value: '', errormsg: ''},
       },
+      countryCode: 'KR'
     }
   },
 
