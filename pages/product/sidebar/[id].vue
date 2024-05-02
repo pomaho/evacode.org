@@ -35,10 +35,10 @@
                     <div class="product-right">
                       <h2>{{ product.title }}</h2>
                       <h4>
-                        <del>{{ curr.symbol }}{{ (product.official_price * curr.curr).toFixed(0) }}</del>
+                        <del>{{ getPrice(product.official_price) }}</del>
                         <span>{{ getDiscountPercentages(product) }}% off</span>
                       </h4>
-                      <h3>{{ curr.symbol }}{{ (product.retail_price * curr.curr) }}</h3>
+                      <h3>{{ getPrice(product.retail_price) }}</h3>
                       <div class="pro_inventory" v-if="product.stock < 8">
                         <p class="active"> Поспешите! У нас осталось всего {{ product.stock }} шт. на складе. </p>
                       </div>
@@ -140,14 +140,15 @@ const {data: productResponse} = await useAsyncData(
 );
 
 const onSwiper = (_swiper) => swiper.value = _swiper;
-const discountedPrice = (product) => {
-  return (product.retail_price - (product.retail_price * product.discount / 100)) * this.curr.curr
-};
 
 // add to cart
 const addToCart = (product, qty) => {
   product.quantity = qty || 1
   useCartStore().addToCart(product)
+};
+
+const getPrice = (price) => {
+  return useProductStore().getPrice(price);
 };
 
 // Item Count
