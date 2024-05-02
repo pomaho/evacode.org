@@ -132,12 +132,8 @@ export default {
 }
 .img-wrapper .front img,
 .img-wrapper .back img {
-  left: 50%;
-  top: 50%;
-  position: relative;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  /*comment*/
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 .product-detail {
   padding-top: 5px;
