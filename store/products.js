@@ -7,7 +7,8 @@ export const useProductStore = defineStore({
             currency: {
                 value: 'KRW',
                 curr: 1,
-                symbol: '₩'
+                symbol: '₩',
+                locale: 'ko-KR',
             },
             order: [],
         }
@@ -15,6 +16,11 @@ export const useProductStore = defineStore({
     actions: {
         createOrder(payload) {
             this.order = payload
+        },
+        getPrice(price) {
+            return new Intl.NumberFormat(this.currency.locale, { style: "currency", currency: this.currency.value }).format(
+                price * this.currency.curr,
+            );
         }
     },
     getters: {

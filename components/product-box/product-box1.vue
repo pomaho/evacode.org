@@ -51,7 +51,7 @@
       <h6>{{ product.title }}</h6>
     </nuxt-link>
     <h4>
-     {{ curr.symbol }}{{ (product.retail_price * curr.curr) }}
+     {{ getPrice(product.retail_price) }}
       <del>{{ curr.symbol }}{{ (product.official_price * curr.curr) }}</del>
     </h4>
   </div>
@@ -96,6 +96,9 @@ export default {
     productVariantChange(imgsrc) {
       this._imageSrc = imgsrc
     },
+    getPrice: function (price) {
+      return useProductStore().getPrice(price);
+    }
   },
 }
 </script>
@@ -104,10 +107,7 @@ export default {
 .img-wrapper {
   outline: 1px solid #c1b6b626;
 }
-.img-wrapper .front {
-  width: 238px;
-  height: 318px;
-}
+
 .img-wrapper .back {
   width: auto;
   height: 100%;
