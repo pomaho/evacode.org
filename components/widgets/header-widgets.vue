@@ -22,7 +22,7 @@
                     <h4>{{ item.title }}</h4>
                   </nuxt-link>
                   <h4>
-                    <span>{{ item.quantity }} x {{ curr.symbol }}{{ item.retail_price }}<del>{{ curr.symbol }}{{ item.official_price }}</del></span>
+                    <span>{{ item.quantity }} x {{ getPrice(item.retail_price) }}<del>{{ getPrice(item.official_price) }}</del></span>
                   </h4>
                 </div>
               </div>
@@ -36,7 +36,7 @@
               <div class="total">
                 <h5>
                   Итого :
-                  <span>{{ curr.symbol }}{{ cartTotal }}<del>{{ curr.symbol }}{{ cartOfficialTotal }}</del></span>
+                  <span>{{ getPrice(cartTotal) }}<del>{{ getPrice(cartOfficialTotal) }}</del></span>
                 </h5>
               </div>
             </li>
@@ -87,6 +87,9 @@ export default {
         this.$router.replace('/page/account/cart')
       }
     },
+    getPrice: function (price) {
+      return useProductStore().getPrice(price);
+    }
   },
 }
 </script>
