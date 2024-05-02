@@ -2872,7 +2872,7 @@
   }
 
   .filter-main-btn {
-    display: block;
+    display: none;
   }
 
   .collection-filter {
@@ -5551,6 +5551,9 @@
 }
 
 @media (max-width: 577px) {
+  .breadcrumb-main {
+    display: none;
+  }
   .img-wrapper .front {
     width: 171px;
     height: 171px;
