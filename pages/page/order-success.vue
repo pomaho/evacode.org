@@ -55,7 +55,7 @@
                 <div class="col-3 order_detail">
                   <div>
                     <h4>Цена</h4>
-                    <h5>{{getPrice(item.retail_price * item.quantity)}}</h5>
+                    <h5>{{ item.retail_price }}</h5>
                   </div>
                 </div>
               </div>

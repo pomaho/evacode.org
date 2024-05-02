@@ -145,10 +145,17 @@ export default {
     },
     async onSubmit() {
       if (this.validateFields()) {
+        const cartCheckout = [];
+        this.cart.forEach((item) => {
+          const checkoutProduct = JSON.parse(JSON.stringify(item));
+          checkoutProduct.retail_price = this.getPrice(checkoutProduct.retail_price);
+          cartCheckout.push(checkoutProduct);
+        })
+
         useProductStore().createOrder({
-          product: this.cart,
+          product: cartCheckout,
           userDetail: this.user,
-          amt: this.cartTotal
+          amt: this.getPrice(this.cartTotal)
         });
 
         const userForCheckout = {};
@@ -158,7 +165,7 @@ export default {
         await $fetch(`${useRuntimeConfig().public.apiBase}/market/checkout/`, {
           method: 'POST',
           body: {
-            cart: this.cart,
+            cart: cartCheckout,
             user: userForCheckout,
             consult: false,
           }
