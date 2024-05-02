@@ -2284,6 +2284,8 @@ header {
               .media {
                 img {
                   height: 90px;
+                  width: 90px;
+                  object-fit: contain;
                 }
 
                 .media-body {
