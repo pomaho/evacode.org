@@ -52,7 +52,7 @@
     </nuxt-link>
     <h4>
      {{ getPrice(product.retail_price) }}
-      <del>{{ curr.symbol }}{{ (product.official_price * curr.curr) }}</del>
+      <del>{{ getPrice(product.official_price) }}</del>
     </h4>
   </div>
 </template>

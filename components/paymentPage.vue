@@ -52,15 +52,15 @@
                     <ul class="qty" v-if="cart.length">
                       <li v-for="(item, index) in cart" :key="index">
                         {{ item.title }} X {{ item.quantity }}
-                        <span>{{ curr.symbol }}{{ (item.retail_price * curr.curr) * item.quantity }}
-                              <del>{{ curr.symbol }}{{ (item.official_price * curr.curr) }}</del></span>
+                        <span>{{ getPrice(item.retail_price * item.quantity) }}
+                              <del>{{ getPrice(item.official_price * item.quantity) }}</del></span>
                       </li>
                     </ul>
                     <ul class="sub-total">
                       <li>
                         Общая стоимость
-                        <span class="count">{{ curr.symbol }}{{ cartTotal * curr.curr }}
-                        <del>{{ curr.symbol }}{{ cartOfficialTotal * curr.curr }}</del></span>
+                        <span class="count">{{ getPrice(cartTotal) }}
+                        <del>{{ getPrice(cartOfficialTotal)}}</del></span>
                       </li>
                     </ul>
                   </div>
@@ -167,6 +167,9 @@ export default {
         this.$router.push('/page/order-success')
       }
     },
+    getPrice: function (price) {
+      return useProductStore().getPrice(price);
+    }
   },
 
   mounted() {
