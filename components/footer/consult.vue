@@ -6,10 +6,9 @@
           <div class="col-lg-6">
             <div class="subscribe">
               <div>
-                <span class="request-tg-consult"><h4>Запросите консультацию в Telegram!</h4><a href="#"><i
-                    class="fa fa-telegram"></i></a></span>
+                <span class="request-tg-consult"><h4>Запросите консультацию!</h4></span>
 
-                <p>Получите персональный подбор косметического ухода от наших консультантов в Telegram</p>
+                <p>Получите персональный подбор косметического ухода от наших консультантов</p>
               </div>
             </div>
           </div>
@@ -19,11 +18,24 @@
                 class="form-inline subscribe-form auth-form needs-validation" method="post"
                 id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank">
               <div class="form-group mx-sm-3">
-                <input type="text" class="form-control" name="telegram-nickname" id="mce-telegram"
-                       placeholder="Введите свой ник в Telegram" v-model="telegram_nickname"
-                       required="required">
+                <MazPhoneNumberInput
+                    v-model="phone_number"
+                    v-model:country-code="countryCode1"
+                    @update="updateResults"
+                    :translations="{
+                          countrySelector: {
+                            placeholder: 'Код страны',
+                            error: 'Выберите страну',
+                            searchPlaceholder: 'Искать страну',
+                          },
+                          phoneInput: {
+                            placeholder: 'Номер телефона',
+                            example: 'Пример:',
+                          },
+                        }"
+                />
                 <span class="validate-error">
-                  {{ telegramNickErrorMessage }}
+                  {{ phoneErrorMessage }}
                 </span>
               </div>
               <button type="submit" class="btn btn-solid" id="mc-submit" @click.prevent="onSubmit">Получить</button>
@@ -38,15 +50,22 @@
 <script setup>
 import {useRouter} from 'vue-router';
 const router = useRouter();
-const telegram_nickname = ref('');
-const telegramNickErrorMessage = ref('');
+const phone_number = ref('');
+const phoneErrorMessage = ref('');
+const phone_results = ref('');
+const countryCode1 = ref('KR');
+
+const updateResults = (event) => {
+  phone_results.value = event
+};
+
 const onSubmit = async () => {
-  if (validateTgNick()) {
+  if (phone_results.value.isValid) {
     await $fetch(`${useRuntimeConfig().public.apiBase}/market/checkout/`, {
       method: 'POST',
       body: {
         user: {
-          telegram: getTgNicknameByRegexp(),
+          phone: phone_number.value,
         },
         consult: true,
       }
@@ -54,29 +73,18 @@ const onSubmit = async () => {
 
     router.push('/page/consult-success')
   } else {
-    telegramNickErrorMessage.value = 'Некорректное имя пользователя Telegram';
+    phoneErrorMessage.value = 'Обязательное поле';
   }
 };
-
-const validateTgNick = () => {
-  const tgNickFromForm = getTgNicknameByRegexp();
-  const hasSpacesInValue = telegram_nickname.value.indexOf(' ') !== -1;
-  return tgNickFromForm && !hasSpacesInValue;
-};
-
-const getTgNicknameByRegexp = () => {
-  let tgNickFromForm = telegram_nickname.value;
-  tgNickFromForm = tgNickFromForm.indexOf('@') === -1 ? `@${tgNickFromForm}` : tgNickFromForm;
-
-  const tgNickRegexp = /.*?\B@(\w{5}.*)/g;
-  const tgNickRegexpResult = tgNickRegexp.exec(tgNickFromForm);
-  return tgNickRegexpResult ? tgNickRegexpResult[1] : null;
-};
-
 </script>
 
 <style scoped>
 .request-tg-consult {
   display: flex;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
 }
 </style>

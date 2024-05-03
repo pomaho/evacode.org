@@ -2,7 +2,7 @@
 <Header/>
   <div>
     <!-- thank-you section start -->
-    <section class="section-b-space light-layout" v-if="telegramNickname!=''">
+    <section class="section-b-space light-layout">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
