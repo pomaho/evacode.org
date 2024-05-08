@@ -31,6 +31,20 @@ export default defineNuxtConfig({
             link: [
                 {rel: 'icon', type: 'image/png', href: '/images/evacode/favicon.ico'}
             ],
+            script:[
+                {
+                    src: 'https://www.googletagmanager.com/gtag/js?id=G-22XGNP36M1',
+                    tagPosition: 'bodyOpen',
+                },
+                {
+                    innerHTML:
+                            `window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag("js", new Date());
+                            gtag("config", "G-22XGNP36M1");`,
+                    tagPosition: 'bodyOpen',
+                }
+            ],
         },
     },
     runtimeConfig: {
