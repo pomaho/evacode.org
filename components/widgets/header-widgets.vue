@@ -4,7 +4,10 @@
       <ul>
         <li class="onhover-div mobile-cart">
           <div>
-            <img alt src="/images/evacode/icon/cart.png" class="img-fluid">
+            <div class="top-header-shopping-cart">
+              <img alt src="/images/new_evacode/shopping-cart.svg" class="img-fluid">
+              <span class="shopping-cart-text">Корзина</span>
+            </div>
             <i class="ti-shopping-cart"></i>
             <span class="cart_qty_cls">{{ cart.length }}</span>
           </div>

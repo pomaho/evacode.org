@@ -7,13 +7,6 @@
         <div class="row">
           <div class="col-12">
             <div class="main-menu">
-              <div class="menu-left">
-                <div class="brand-logo">
-                  <nuxt-link :to="{ path: '/' }">
-                    <img src="/images/evacode/evacode_brand_logo.png" class="img-fluid" alt />
-                  </nuxt-link>
-                </div>
-              </div>
               <div class="menu-right pull-right">
                 <WidgetsNavbar />
                 <WidgetsHeaderWidgets />

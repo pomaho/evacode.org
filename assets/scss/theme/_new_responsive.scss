@@ -1,0 +1,70 @@
+/*=====================
+    29.Responsive CSS start
+==========================*/
+@media(min-width: 1430px) {
+
+}
+
+header .top-header .main-navbar {
+  display: none;
+}
+
+@media (max-width: 1430px) {
+
+}
+
+@media (max-width: 1367px) {
+
+}
+
+@media (max-width: 1199px) {
+
+}
+
+@media (max-width: 991px) {
+  .top-header-left-column {
+    display: none;
+  }
+  .currency {
+    display: none;
+  }
+  .top-header {
+    height: 100px;
+
+    .container,
+    .container .row {
+      height: 100%;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+
+}
+
+@media (max-width: 577px) {
+
+  header .top-header .main-navbar {
+    display: block;
+  }
+  .top-header-right {
+    justify-content: center;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+}
+
+@media (max-width: 420px) {
+
+}
+
+@media (max-width: 360px) {
+
+}
+
+@media (max-width: 320px) {
+
+}
