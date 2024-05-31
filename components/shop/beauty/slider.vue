@@ -26,6 +26,10 @@
             <ShopBeautySlidesSlide4 />
           </swiper-slide>
 
+          <swiper-slide class="swiper-slide">
+            <ShopBeautySlidesSlide5 />
+          </swiper-slide>
+
         </swiper>
 
       </div>

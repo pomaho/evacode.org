@@ -7,7 +7,7 @@
           <WidgetsBrandLogo />
           <h2 class="slider-heading-2">Акция</h2>
           <p class="slider-description">В честь дня рождения ЕваКод дарим скидку! Вся косметика по оптовой цене</p>
-          <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="evacode-btn slider-btn">Каталог</nuxt-link>
+          <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="evacode-btn slider-btn">Купить</nuxt-link>
         </div>
       </div>
     </div>
@@ -17,7 +17,7 @@
           <div class="slider-container">
             <h1 class="slider-headline">Акция</h1>
             <p class="slider-description">В честь дня рождения ЕваКод дарим скидку! Вся косметика по оптовой цене</p>
-            <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="evacode-btn slider-btn btn-bordered">Каталог</nuxt-link>
+            <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="evacode-btn slider-btn btn-bordered">Купить</nuxt-link>
           </div>
         </div>
       </div>
