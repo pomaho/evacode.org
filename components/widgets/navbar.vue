@@ -3,17 +3,14 @@
     <!-- Sample menu definition -->
     <div class="main-navbar">
       <div id="mainnav">
-        <div class="toggle-nav" :class="leftSidebarVal ? 'toggle-button' : ''" @click="openmobilenav = true">
+        <div class="toggle-nav" :class="leftSidebarVal ? 'toggle-button' : ''" @click="openMobileNavProp = true">
           <i class="fa fa-bars sidebar-bar"></i>
         </div>
-        <ul class="nav-menu" :class="{ opennav: openmobilenav }">
+        <ul class="nav-menu" :class="{ opennav: openMobileNavProp }">
+          <MobileTopSidenav
+              :openmobilenav = "openmobilenav"
+          />
           <WidgetsHeaderWidgets/>
-          <li class="back-btn">
-            <div class="mobile-back text-end">
-              <span @click="openmobilenav = false">Назад</span>
-              <i class="fa fa-angle-right ps-2" aria-hidden="true"></i>
-            </div>
-          </li>
           <li v-for="(menuItem, index) in menulist" :key="index" class="'dropdown'">
             <nuxt-link :to="menuItem.path"> {{menuItem.title}} </nuxt-link>
           </li>
@@ -22,14 +19,17 @@
     </div>
   </div>
 </template>
+
 <script>
 import { mapState } from 'pinia'
 import { useMenuStore } from '~/store/menu'
+import MobileTopSidenav from '~/components/widgets/mobile-top-sidenav.vue';
 export default {
+  components: {MobileTopSidenav},
   props: ['leftSidebarVal'],
   data() {
     return {
-      openmobilenav: false,
+      openMobileNavProp: false,
     }
   },
   computed: {
@@ -37,6 +37,11 @@ export default {
       menulist: 'data'
     })
   },
+  methods: {
+    openmobilenav() {
+      this.openMobileNavProp = !this.openMobileNavProp;
+    }
+  }
 }
 </script>
 
