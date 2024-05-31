@@ -13,9 +13,15 @@
           <swiper-slide class="swiper-slide">
             <ShopBeautySlidesSlide1 />
           </swiper-slide>
+
           <swiper-slide class="swiper-slide">
             <ShopBeautySlidesSlide2 />
           </swiper-slide>
+
+          <swiper-slide class="swiper-slide">
+            <ShopBeautySlidesSlide3 />
+          </swiper-slide>
+
         </swiper>
 
       </div>

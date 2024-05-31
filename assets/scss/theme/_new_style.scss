@@ -123,6 +123,7 @@ img.slide-main-image {
     margin: 0;
     width: auto;
     height: 100%;
+    position: relative;
   }
 }
 
@@ -150,7 +151,7 @@ img.slide-main-image {
       width: 100%;
       margin-top: 13px;
       position: absolute;
-      bottom: 45px;
+      bottom: 75px;
       height: 40px;
       line-height: 40px;
     }
@@ -186,6 +187,16 @@ img.slide-main-image {
   margin-top: 15px;
 }
 
+.slider-description-white {
+  font-size: 26px;
+  font-weight: 300;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1.12px;
+  line-height: 1.1;
+  margin-top: 15px;
+}
+
 .evacode-btn {
   display: inline-block;
   color: #AE894D;
@@ -209,4 +220,8 @@ img.slide-main-image {
 
 .btn-bordered {
   border: 1px solid #AE894D;
+}
+
+.white {
+  color: #fff !important;
 }
