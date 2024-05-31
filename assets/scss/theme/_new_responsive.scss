@@ -11,6 +11,9 @@
   header .top-header .main-navbar {
     display: none;
   }
+  #mainnav .shopping-cart-container {
+    display: none;
+  }
 }
 
 @media (max-width: 1430px) {
@@ -26,7 +29,7 @@
     display: none;
   }
 
-  .menu-right.pull-right > div > .shopping-cart-container {
+  .menu-right.pull-right > .shopping-cart-container {
     display: none;
   }
 

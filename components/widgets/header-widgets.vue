@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="icon-nav shopping-cart-container">
+  <div class="shopping-cart-container">
+    <div class="icon-nav">
       <ul>
         <li class="onhover-div mobile-cart">
           <div>

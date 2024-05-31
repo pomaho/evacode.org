@@ -7,6 +7,7 @@
           <i class="fa fa-bars sidebar-bar"></i>
         </div>
         <ul class="nav-menu" :class="{ opennav: openmobilenav }">
+          <WidgetsHeaderWidgets/>
           <li class="back-btn">
             <div class="mobile-back text-end">
               <span @click="openmobilenav = false">Назад</span>
