@@ -1,5 +1,5 @@
 <template>
-  <div class="evacode-slide slide-1">
+  <div class="evacode-slide slide-3">
     <img class="slide-main-image" src="/images/new_evacode/Slides/slide_3.jpg" alt="">
     <div class="row">
       <div class="col">
@@ -24,6 +24,3 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
-import BrandLogo from '~/components/widgets/brand-logo.vue';
-</script>
