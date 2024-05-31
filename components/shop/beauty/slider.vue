@@ -1,29 +1,20 @@
 <template>
   <div>
-    <!-- <h2 class="title">{{ $t('home.title') }}</h2> -->
-    <!-- <h2 class="subtitle">{{ $t('home.introduction') }}</h2> -->
-    <!-- Home slider -->
     <section class="p-0">
       <div class="slide-1 home-slider">
 
-        <swiper :loop="true" :navigation="true" :modules="modules" class="swiper-wrapper">
-
-          <swiper-slide class="swiper-slide" v-for="(slide, index) in slides" :key="index">
-            <div class="home text-center" v-bind:style="{ 'background-image': 'url(' + slide.image + ')' }">
-              <div class="container">
-                <div class="row">
-                  <div class="col">
-                    <div class="slider-contain">
-                      <div>
-                        <h4>{{ slide.title }}</h4>
-                        <div v-html="slide.description"></div>
-                        <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn btn-solid">купить!</nuxt-link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <swiper
+            :loop="true"
+            :navigation="false"
+            :pagination="pagination"
+            :modules="modules"
+            class="swiper-wrapper"
+        >
+          <swiper-slide class="swiper-slide">
+            <ShopBeautySlidesSlide1 />
+          </swiper-slide>
+          <swiper-slide class="swiper-slide">
+            <ShopBeautySlidesSlide2 />
           </swiper-slide>
         </swiper>
 
@@ -34,12 +25,15 @@
 </template>
 
 <script type="text/javascript" setup>
-import {Swiper, SwiperSlide} from "swiper/vue";
+import {Swiper, SwiperSlide} from 'swiper/vue';
 import 'swiper/css';
-import "swiper/css/navigation";
-import { Navigation } from "swiper";
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import {Navigation} from 'swiper';
+import {Pagination} from 'swiper';
+import Slide_2 from '~/components/shop/beauty/slides/slide_2.vue';
 
-const modules = [Navigation];
+const modules = [Navigation, Pagination];
 const {data: slidesResponse} = await useAsyncData(
     'slidesResponse',
     () => $fetch(`${useRuntimeConfig().public.apiBase}/core/slide`),
@@ -47,6 +41,12 @@ const {data: slidesResponse} = await useAsyncData(
       server: false,
     }
 );
+const pagination = {
+  clickable: true,
+  renderBullet: function (index, className) {
+    return '<span class="' + className + ' evacode-slide-pagination"></span>';
+  },
+};
 
 const slides = computed(() => slidesResponse.value?.results);
 

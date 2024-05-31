@@ -1,4 +1,4 @@
-
+/* Header and menus */
 
 .top-header-v-centered {
   display: flex;
@@ -84,4 +84,129 @@
   #mainnav {
     height: 90px;
   }
+}
+
+
+/* Slider */
+
+.home-slider {
+  height: 600px;
+}
+
+.swiper-pagination-bullet.evacode-slide-pagination {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #FCF6E9;
+  margin: 0 10px !important;
+  opacity: 1;
+  background: none;
+
+  &.swiper-pagination-bullet-active {
+    background: #FCF6E9;
+  }
+}
+
+img.slide-main-image {
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.slider-container {
+  margin: 125px 0 0 125px;
+  width: 650px;
+  height: calc(100% - 125px);
+
+  .container & {
+    margin: 0;
+    width: auto;
+    height: 100%;
+  }
+}
+
+.evacode-slide {
+  overflow: hidden !important;
+  position: relative;
+  height: 100%;
+
+  .row {
+    height: 100%;
+  }
+
+  .container {
+    .slider-headline {
+      margin-top: 25px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .slider-description {
+      margin-top: 5px;
+      margin-bottom: 0;
+      font-size: 12px;
+    }
+    .evacode-btn.slider-btn {
+      width: 100%;
+      margin-top: 13px;
+      position: absolute;
+      bottom: 45px;
+      height: 40px;
+      line-height: 40px;
+    }
+  }
+}
+
+.slider-headline {
+  font-size: 46px;
+  font-weight: 400;
+  background: -webkit-linear-gradient(80deg, #AD884C, #C9A872);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-top: 60px;
+  margin-bottom: 0;
+}
+
+.slider-heading-2 {
+  font-size: 36px;
+  color: white;
+  margin-top: 45px;
+  font-weight: 400;
+}
+
+.slider-description {
+  font-size: 26px;
+  font-weight: 300;
+  background: -webkit-linear-gradient(80deg, #AD884C, #C9A872);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1.12px;
+  line-height: 1.1;
+  margin-top: 15px;
+}
+
+.evacode-btn {
+  display: inline-block;
+  color: #AE894D;
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+  background-color: #ffffff;
+  border-radius: 6px;
+  text-align: center;
+
+  &.slider-btn {
+    width: 360px;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    bottom: 120px;
+  }
+}
+
+.btn-bordered {
+  border: 1px solid #AE894D;
 }
