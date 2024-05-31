@@ -1,14 +1,28 @@
 <template>
   <div class="mobile-top-sidenav">
-    <div class="back-btn">
-      <div class="mobile-back text-end">
-        <span @click="openmobilenav()">Назад</span>
-        <i class="fa fa-angle-right ps-2" aria-hidden="true"></i>
+    <div class="row">
+      <div class="col-8">
+        <WidgetsBrandLogo />
+      </div>
+      <div class="col-4">
+        <div class="back-btn">
+          <div class="mobile-back text-end">
+            <img @click="openmobilenav()" src="/images/new_evacode/close_sidenav_icon.svg" alt="close_sidenav_icon" />
+          </div>
+        </div>
       </div>
     </div>
-    <WidgetsBrandLogo />
-    <WidgetsCurrency />
-    <WidgetsContactPhone />
+    <div class="row phone-and-cart-row">
+      <div class="col-9">
+        <div class="top-sidenav-cur-phone top-header-v-centered">
+          <WidgetsCurrency />
+          <WidgetsContactPhone />
+        </div>
+      </div>
+      <div class="col-3">
+        <WidgetsHeaderWidgets/>
+      </div>
+    </div>
   </div>
 </template>
 

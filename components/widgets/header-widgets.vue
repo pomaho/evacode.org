@@ -2,13 +2,12 @@
   <div class="shopping-cart-container">
     <div class="icon-nav">
       <ul>
-        <li class="onhover-div mobile-cart">
+        <li class="onhover-div">
           <div>
             <div class="top-header-shopping-cart">
               <img alt src="/images/new_evacode/shopping-cart.svg" class="img-fluid">
               <span class="shopping-cart-text">Корзина</span>
             </div>
-            <i class="ti-shopping-cart"></i>
             <span class="cart_qty_cls">{{ cart.length }}</span>
           </div>
           <ul class="show-div shopping-cart" v-if="!cart.length">

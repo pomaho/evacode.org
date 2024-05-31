@@ -4,13 +4,12 @@
     <div class="main-navbar">
       <div id="mainnav">
         <div class="toggle-nav" :class="leftSidebarVal ? 'toggle-button' : ''" @click="openMobileNavProp = true">
-          <i class="fa fa-bars sidebar-bar"></i>
+          <img alt src="/images/new_evacode/hamburger_menu_icon.svg" class="img-fluid">
         </div>
         <ul class="nav-menu" :class="{ opennav: openMobileNavProp }">
           <MobileTopSidenav
               :openmobilenav = "openmobilenav"
           />
-          <WidgetsHeaderWidgets/>
           <li v-for="(menuItem, index) in menulist" :key="index" class="'dropdown'">
             <nuxt-link :to="menuItem.path"> {{menuItem.title}} </nuxt-link>
           </li>

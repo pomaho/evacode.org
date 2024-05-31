@@ -7,7 +7,8 @@
   height: 100%;
 }
 
-.top-header-left {
+.top-header-left,
+.top-sidenav-cur-phone {
   .currency {
     width: 26px;
     height: 18px;
@@ -17,6 +18,29 @@
     }
   }
 }
+
+.main-menu .mobile-top-sidenav{
+  .brand-logo {
+    padding: 0;
+  }
+
+  .phone-and-cart-row {
+    margin-top: 35px;
+  }
+
+  .header-contact {
+    margin-left: 15px;
+  }
+
+  .onhover-div {
+    padding: 0;
+
+    .cart_qty_cls {
+      display: none;
+    }
+  }
+}
+
 
 .top-header-center {
   .brand-logo {
@@ -56,7 +80,8 @@
     flex-direction: row;
     justify-content: space-between;
   }
-}
-#mainnav {
-  height: 90px;
+
+  #mainnav {
+    height: 90px;
+  }
 }
