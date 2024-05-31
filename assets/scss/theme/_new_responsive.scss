@@ -2,11 +2,15 @@
     29.Responsive CSS start
 ==========================*/
 @media(min-width: 1430px) {
-
 }
 
-header .top-header .main-navbar {
-  display: none;
+@media(min-width: 1199px) {
+  .nav-menu .back-btn {
+    display: none !important;
+  }
+  header .top-header .main-navbar {
+    display: none;
+  }
 }
 
 @media (max-width: 1430px) {
@@ -18,7 +22,17 @@ header .top-header .main-navbar {
 }
 
 @media (max-width: 1199px) {
+  .header-menu-section {
+    display: none;
+  }
 
+  .menu-right.pull-right > div > .shopping-cart-container {
+    display: none;
+  }
+
+  .top-header-right {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 991px) {
@@ -47,10 +61,6 @@ header .top-header .main-navbar {
   header .top-header .main-navbar {
     display: block;
   }
-  .top-header-right {
-    justify-content: center;
-  }
-
 }
 
 @media (max-width: 480px) {

@@ -3,18 +3,15 @@
     <header>
       <div class="mobile-fix-option"></div>
       <WidgetsTopbar />
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="main-menu">
-              <div class="menu-right pull-right">
+      <section class="header-menu-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
                 <WidgetsNavbar />
-                <WidgetsHeaderWidgets />
-              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </header>
   </div>
 </template>

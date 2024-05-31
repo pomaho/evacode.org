@@ -17,7 +17,7 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-6 col-lg-4 col-sm-4 col-8 top-header-center-column">
+        <div class="col-xl-6 col-lg-4 col-sm-8 col-8 top-header-center-column">
           <div class="top-header-center top-header-v-centered">
             <div class="brand-logo">
               <nuxt-link :to="{ path: '/' }">

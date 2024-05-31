@@ -1,3 +1,5 @@
+
+
 .top-header-v-centered {
   display: flex;
   flex-direction: row;
@@ -43,5 +45,18 @@
   }
 }
 
+.header-menu-section {
+  padding: 0;
+  border-top: 1px solid #D8D8D8;
+  border-bottom: 1px solid #D8D8D8;
+  height: 90px;
 
-//Responsive start
+  .nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+#mainnav {
+  height: 90px;
+}

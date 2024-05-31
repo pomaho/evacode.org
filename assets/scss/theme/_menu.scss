@@ -6,7 +6,10 @@ header {
     text-align: center;
 
     .nav-menu {
-      display: inline-block;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 100%;
       list-style: none;
       margin: 0;
       padding: 0;
@@ -17,25 +20,24 @@ header {
       >li {
         position: relative;
         float: left;
-        display: block;
+        display: flex;
 
         >a {
           display: block;
-          padding-right: 45px;
           color: #222222;
           font-size: 16px;
-          font-weight: 400;
+          font-weight: 300;
           line-height: 23px;
           text-decoration: none;
           text-transform: uppercase;
-          padding-top: 42px;
-          padding-bottom: 42px;
           padding-left: 0;
           letter-spacing: 0.07em;
           position: relative;
+          margin: auto 0;
 
           &.router-link-exact-active {
             color: $theme-default;
+            font-weight: 600;
           }
 
           .sub-arrow {
@@ -997,15 +999,17 @@ header {
       .nav-menu {
         position: fixed;
         background-color: #fff;
-        width: 300px;
+        width: 420px;
         border-radius: 0;
         border: 1px solid #eee;
         top: 0;
         height: 100vh;
-        right: -300px;
+        right: -420px;
         z-index: 99;
         transition: all 0.3s ease;
         overflow: scroll;
+        flex-direction: column;
+        justify-content: flex-start;
 
         &.opennav {
           right: 0;
@@ -1035,10 +1039,13 @@ header {
           width: 100%;
 
           a {
-            padding: 10px 15px;
+            padding: 20px 15px;
             font-size: 16px;
-            font-weight: 700;
             position: relative;
+
+            &.router-link-exact-active {
+              font-weight: 300;
+            }
 
             .sub-arrow {
               right: 0;
