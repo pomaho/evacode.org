@@ -116,7 +116,7 @@ img.slide-main-image {
 
 .slider-container {
   margin: 125px 0 0 125px;
-  width: 650px;
+  width: 700px;
   height: calc(100% - 125px);
 
   .container & {
@@ -166,6 +166,9 @@ img.slide-main-image {
   -webkit-text-fill-color: transparent;
   margin-top: 60px;
   margin-bottom: 0;
+  .slide-6 > .row & {
+    margin-top: 25px;
+  }
 }
 
 .slider-heading-2 {
@@ -190,6 +193,11 @@ img.slide-main-image {
     background: #6B4F6A;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .slide-6 > .row & {
+    font-size: 24px;
+    margin-top: 5px;
   }
 }
 
