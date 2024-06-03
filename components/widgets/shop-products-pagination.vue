@@ -1,7 +1,7 @@
 <template>
   <nav aria-label="Page navigation">
-    <ul class="pagination">
-      <li class="page-item">
+    <ul class="evacode-pagination">
+      <li class="page-item btn-bordered">
         <nuxt-link v-if="previous != null" class="page-link" :to="previous" tabindex="-1">
           <span aria-hidden="true">
             <i class="fa fa-chevron-left" aria-hidden="true"></i>
@@ -18,7 +18,7 @@
           {{ page_index }}
         </nuxt-link>
       </li>
-      <li class="page-item">
+      <li class="page-item btn-bordered">
         <nuxt-link v-if="next != null" class="page-link" :to="next" tabindex="-1">
           <span aria-hidden="true">
             <i class="fa fa-chevron-right" aria-hidden="true"></i>

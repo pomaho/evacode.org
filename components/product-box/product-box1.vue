@@ -29,7 +29,7 @@
         <button
             data-toggle="modal"
             data-target="#modal-cart"
-            class="evacode-btn buy-btn"
+            class="evacode-btn buy-btn btn-bordered"
             title="Купить"
             @click="addToCart(product, 1)"
             :disabled="1 > product.stock">Купить
