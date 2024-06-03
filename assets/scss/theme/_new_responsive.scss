@@ -52,7 +52,59 @@
 }
 
 @media (max-width: 767px) {
+  .col-grid-box:not(:first-child) {
+    padding: 0 0 0 8px;
+  }
 
+  .product-box {
+    height: 340px;
+
+    & > div {
+      padding: 12px;
+
+      .img-wrapper {
+        height: 167px;
+
+        img {
+          object-fit: cover;
+          object-position: center;
+          aspect-ratio: 1 / 1;
+          height: 100%;
+          margin: 0 auto;
+        }
+      }
+
+      .product-detail {
+        font-family: $font_0_1, $font_1;
+        padding-top: 12px;
+
+        h6 {
+          font-size: 8.5px;
+          text-align: center;
+          line-height: 1.3;
+          height: 38px;
+          overflow: hidden;
+        }
+
+        h4 {
+          margin-top: 12px;
+        }
+      }
+
+      .evacode-btn.buy-btn {
+        width: 100%;
+        height: 38px;
+        line-height: 38px;
+        border: 1px solid;
+        font-size: 11px;
+      }
+
+      .product-right,
+      .product-right .product-buttons {
+        margin-top: 12px;
+      }
+    }
+  }
 }
 
 @media (max-width: 577px) {

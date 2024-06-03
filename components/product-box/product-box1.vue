@@ -84,26 +84,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.product-right .product-buttons {
-  margin-top: 20px;
-}
-
-.product-detail {
-  padding-top: 20px;
-}
-.product-detail h6 {
-  height: 46px;
-  overflow: hidden;
-}
-.product-detail h4 {
-  margin-top: 20px;
-}
-
-.product-detail-link {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-</style>
