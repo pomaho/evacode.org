@@ -5,46 +5,15 @@
         <span class="lable3" v-if="product.new">Новый</span>
         <span class="lable4" v-if="product.sale">sale</span>
       </div>
-      <div class="front">
-        <nuxt-link :class="'product-detail-link'" :to="{ path: '/product/sidebar/'+product.id}">
-          <img
-              :src='imageSrc ? imageSrc : product.images[0].url'
-              :id="product.id"
-              class="img-fluid bg-img media "
-              :alt="product.title"
-              :key="index"
-          />
-        </nuxt-link>
-      </div>
-      <div class="back" v-if="product.images.length>1">
-        <nuxt-link :class="'product-detail-link'" :to="{ path: '/product/sidebar/'+product.id}">
-          <img :src='imageSrc ? imageSrc : product.images[1].url' :key="index" :id="product.id" alt=""
-               class="img-fluid  m-auto media"></nuxt-link>
-      </div>
-      <ul class="product-thumb-list">
-        <li
-            class="grid_thumb_img"
-            :class="{active: imageSrc === image.url}"
-            v-for="(image,index) in product.images"
+      <nuxt-link :class="'product-detail-link'" :to="{ path: '/product/sidebar/'+product.id}">
+        <img
+            :src='imageSrc ? imageSrc : product.images[0].url'
+            :id="product.id"
+            class="img-fluid bg-img media "
+            :alt="product.title"
             :key="index"
-            @click="productVariantChange(image.url)"
-        >
-          <a href="javascript:void(0);">
-            <img :src="image.url"/>
-          </a>
-        </li>
-      </ul>
-      <div class="cart-info cart-wrap">
-        <button
-            data-toggle="modal"
-            data-target="#modal-cart"
-            title="Добавить в корзину"
-            @click="addToCart(product)"
-            variant="primary"
-        >
-          <i class="ti-shopping-cart"></i>
-        </button>
-      </div>
+        />
+      </nuxt-link>
     </div>
     <div class="product-detail">
       <nuxt-link :to="{ path: '/product/sidebar/'+product.id}">
@@ -60,10 +29,10 @@
         <button
             data-toggle="modal"
             data-target="#modal-cart"
-            class="btn btn-solid"
-            title="Добавить в корзину"
+            class="evacode-btn buy-btn"
+            title="Купить"
             @click="addToCart(product, 1)"
-            :disabled="1 > product.stock">Добавить в корзину
+            :disabled="1 > product.stock">Купить
         </button>
     </div>
     </div>
@@ -118,32 +87,18 @@ export default {
 
 <style scoped>
 .product-right .product-buttons {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
-.img-wrapper {
-  outline: 1px solid #c1b6b626;
-}
-
-.img-wrapper .back {
-  width: auto;
-  height: 100%;
-  background: white;
-}
-.img-wrapper .front img,
-.img-wrapper .back img {
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
 .product-detail {
-  padding-top: 5px;
+  padding-top: 20px;
 }
 .product-detail h6 {
-  height: 70px;
+  height: 46px;
   overflow: hidden;
 }
 .product-detail h4 {
-  margin-top: 5px;
+  margin-top: 20px;
 }
 
 .product-detail-link {

@@ -230,6 +230,12 @@ img.slide-main-image {
     position: absolute;
     bottom: 120px;
   }
+  &.buy-btn {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid;
+  }
 }
 
 .btn-bordered {
@@ -238,4 +244,37 @@ img.slide-main-image {
 
 .white {
   color: #fff !important;
+}
+
+
+/* Products on main*/
+
+section.products-main-section {
+  padding-top: 30px;
+}
+
+.product-box {
+  height: 572px;
+
+  & > div {
+    padding: 20px;
+
+    .img-wrapper {
+      height: 340px;
+
+      img {
+        object-fit: cover;
+        object-position: center;
+        aspect-ratio: 1 / 1;
+        height: 100%;
+      }
+    }
+
+    .product-detail {
+      font-family: $font_0_1, $font_1;
+      font-size: 14px;
+      text-align: center;
+      line-height: 1.3;
+    }
+  }
 }
