@@ -67,15 +67,6 @@
                                   :pages="pages"
                               />
                             </div>
-                            <div class="col-xl-6 col-md-6 col-sm-12">
-                              <div class="product-search-count-bottom">
-                                <WidgetsShowedProductsLabel
-                                    :from="currentPage === 1 ? 1 : itemsPerPage * (currentPage - 1) + 1"
-                                    :to="currentPage === 1 ? itemsPerPage : itemsPerPage * currentPage"
-                                    :total="totalProductsCount"
-                                />
-                              </div>
-                            </div>
                           </div>
                         </div>
                       </div>
