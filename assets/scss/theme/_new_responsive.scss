@@ -288,6 +288,35 @@
       }
     }
   }
+  .beauty-payment-types {
+    padding: 15px;
+
+    .container {
+      padding: 30px 0;
+      border-radius: 6px;
+    }
+
+    h3 {
+      font-size: 16px;
+    }
+
+    h5 {
+      font-size: 12px;
+      margin-top: 7px;
+    }
+
+    .payment-logos {
+      .payment-logo {
+        width: auto;
+        height: 30px;
+        margin-top: 15px;
+
+        &:not(:first-child) {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
 }
 
 @media (min-width: 481px) {

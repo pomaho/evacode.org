@@ -15,6 +15,7 @@
     <ShopBeautyAbout />
     <ShopBeautyLeadership />
     <ShopBeautyAssortiment />
+    <ShopBeautyPaymentTypes />
     <Footer />
   </div>
 </template>
