@@ -14,6 +14,7 @@
     <ShopBeautyAboutCons />
     <ShopBeautyAbout />
     <ShopBeautyLeadership />
+    <ShopBeautyAssortiment />
     <Footer />
   </div>
 </template>

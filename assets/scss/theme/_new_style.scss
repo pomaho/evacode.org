@@ -417,3 +417,44 @@ section.beauty-about {
   }
 }
 
+/* Assortiment */
+.beauty-assortiment {
+  padding-top: 30px;
+
+  .container {
+    height: 600px;
+    position: relative;
+    overflow: auto;
+    background: #F7EFD6;
+
+    .assortiment-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .beauty-assortiment-desc {
+      width: 500px;
+      height: 320px;
+      margin-top: 130px;
+      margin-left: 65px;
+      position: relative;
+
+      h3 {
+        font-size: 36px;
+        color: #C9A872;
+        text-transform: uppercase;
+        letter-spacing: normal;
+      }
+
+      p {
+        font-size: 18px;
+        color: black;
+        margin-top: 45px;
+        text-align: justify;
+        line-height: 1.3;
+      }
+    }
+  }
+}
