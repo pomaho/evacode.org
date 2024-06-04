@@ -11,6 +11,7 @@
         />
       </div>
     </section>
+    <ShopBeautyAboutCons />
     <ShopBeautyAbout />
     <Footer />
   </div>
@@ -41,7 +42,7 @@ const previous = computed(() => productsResponse.value?.previous ? `?${productsR
 const next = computed(() => productsResponse.value?.next ? `?${productsResponse.value?.next.split('?')[1]}` : '');
 const paginates = computed(() => Math.round(totalProductsCount.value / itemsPerPage.value));
 
-const itemsPerPage = ref(12);
+const itemsPerPage = ref(6);
 const paginateRange = ref(3);
 
 const pages = computed(() => {

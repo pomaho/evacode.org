@@ -316,3 +316,41 @@ section.products-main-section {
     }
   }
 }
+
+/* Home About Section */
+
+h2.evacode-main-about {
+  font-size: 46px;
+  color: $button-border-color;
+  font-weight: 500;
+}
+
+h5.service-about {
+  font-size: 16px;
+  color: $button-border-color;
+  font-weight: 500;
+}
+
+section.beauty-about {
+  height: 490px;
+  margin-top: 50px;
+  padding-top: 110px;
+  padding-bottom: 100px;
+  background: -webkit-linear-gradient(45deg, #F7EFD6, #FFFBEE);
+}
+
+.about-section {
+  display: block;
+
+  .small-section {
+    padding-top: 60px;
+  }
+}
+
+.beauty-about .about-text p {
+  color: $button-border-color;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  line-height: 1.4;
+}
+
