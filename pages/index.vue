@@ -13,6 +13,7 @@
     </section>
     <ShopBeautyAboutCons />
     <ShopBeautyAbout />
+    <ShopBeautyLeadership />
     <Footer />
   </div>
 </template>

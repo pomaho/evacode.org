@@ -24,6 +24,10 @@
     object-position: center;
     aspect-ratio: 1 / 1;
   }
+
+  .leadership-blocks {
+    width: 1140px;
+  }
 }
 
 @media (max-width: 1430px) {
@@ -35,6 +39,7 @@
 }
 
 @media (max-width: 1199px) {
+
   .header-menu-section {
     display: none;
   }
@@ -170,6 +175,74 @@
   .beauty-about .about-text p {
     text-align: justify;
     font-size: 12px;
+  }
+
+  .beauty-leadership {
+    padding-top: 105px;
+    padding-bottom: 45px;
+
+    h3 {
+      font-size: 16px;
+      color: black;
+      text-align: center;
+      letter-spacing: normal;
+      margin-bottom: 0;
+    }
+  }
+
+  .leadership-blocks {
+    width: auto;
+    margin: 70px auto 0;
+
+    h5 {
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: normal;
+    }
+
+    p {
+      margin-top: 12px;
+      margin-bottom: 35px;
+      font-size: 16px;
+      line-height: 1.3;
+      color: black;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    .rounded-corners {
+      border-radius: 6px;
+      padding: 25px;
+      height: 100%;
+    }
+
+    .gray-bg {
+      background: #f9f9f9;
+    }
+
+    .pink-bg {
+      background: #FFA5C0;
+    }
+
+    .green-bg {
+      background: #94CBA7;
+
+      p {
+        margin-right: 55px;
+      }
+    }
+    .bird-from-cage {
+      width: 243px;
+      margin: 0 auto;
+      display: block;
+    }
+    .clap-hands {
+      width: 204px;
+      margin: 0 auto;
+      display: block;
+    }
   }
 }
 
