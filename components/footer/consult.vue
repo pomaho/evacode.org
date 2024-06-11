@@ -4,7 +4,7 @@
             <section class="small-section border-section border-top-0">
                 <div class="row">
                     <div class="col-lg-6">
-                        <img src="/images/new_evacode/consult/consult-girl.png" alt="Consult-girl">
+                        <img class="consult-girl" src="/images/new_evacode/consult/consult-girl.png" alt="Consult-girl">
                     </div>
                     <div class="col-lg-6 consult-column">
                         <h2 class="request-tg-consult">Запросите консультацию!</h2>

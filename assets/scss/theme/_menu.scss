@@ -1000,7 +1000,7 @@ header {
       .nav-menu {
         position: fixed;
         background-color: #fff;
-        width: 420px;
+        width: min(100%, 420px);
         padding: 40px 45px;
         border-radius: 0;
         border: 1px solid #eee;
