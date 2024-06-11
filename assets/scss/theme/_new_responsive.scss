@@ -173,6 +173,19 @@
             }
         }
     }
+    .footer-light {
+        .footer-contact {
+            text-align: left;
+        }
+
+        .footer-social {
+            align-items: start;
+
+            ul {
+                margin: 20px 0;
+            }
+        }
+    }
 }
 
 @media (min-width: 578px) {
@@ -449,6 +462,9 @@
             h4 {
                 font-size: 14px;
             }
+        }
+        .footer-contact {
+            text-align: left;
         }
     }
 }
