@@ -69,13 +69,15 @@
     }
 }
 
-footer,
 .header-menu-section {
     padding: 0;
     border-top: 1px solid #D8D8D8;
     border-bottom: 1px solid #D8D8D8;
     height: 90px;
+}
 
+footer,
+.header-menu-section {
     .nav-menu {
         display: flex;
         flex-direction: row;

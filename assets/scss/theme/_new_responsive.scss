@@ -186,6 +186,15 @@
             }
         }
     }
+
+    .swiper-pagination-bullet.evacode-slide-pagination {
+        border: 1px solid #B89254;
+
+        &.swiper-pagination-bullet-active {
+            background: #B89254;
+        }
+    }
+
 }
 
 @media (min-width: 578px) {
@@ -432,14 +441,6 @@
 
   .home-slider {
     height: 440px;
-  }
-
-  .swiper-pagination-bullet.evacode-slide-pagination {
-    border: 1px solid #B89254;
-
-    &.swiper-pagination-bullet-active {
-      background: #B89254;
-    }
   }
 
     .about-slider {
