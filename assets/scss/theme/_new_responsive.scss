@@ -369,6 +369,24 @@
       }
     }
   }
+
+    .footer-light {
+        .consulting {
+            text-align: center;
+            h2 {
+                display: inline-block;
+                font-size: 36px;
+            }
+
+            h4 {
+                font-size: 18px;
+            }
+        }
+        .footer-title {
+            text-align: center;
+        }
+    }
+
 }
 
 @media (min-width: 481px) {
@@ -420,6 +438,19 @@
         }
     }
 
+    .footer-light {
+        .consulting {
+            text-align: center;
+            h2 {
+                display: inline-block;
+                font-size: 16px;
+            }
+
+            h4 {
+                font-size: 14px;
+            }
+        }
+    }
 }
 
 @media (max-width: 420px) {

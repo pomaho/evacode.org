@@ -6247,31 +6247,6 @@ footer {
   }
 }
 
-.footer-light {
-  .subscribe {
-    display: flex;
-    height: 100%;
-    align-items: center;
-    border-right: 1px solid $round-border;
-    text-align: left;
-
-    p {
-      line-height: 1;
-    }
-
-    h4 {
-      margin-bottom: 10px;
-    }
-  }
-
-  .subscribe-form {
-    display: flex;
-    align-items: flex-start;
-    height: 100%;
-    justify-content: flex-end;
-  }
-}
-
 .subscribe {
   text-align: center;
 
