@@ -2,6 +2,15 @@
     <div>
         <footer class="footer-light">
             <FooterConsult/>
+            <section class="header-menu-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <WidgetsNavbar />
+                        </div>
+                    </div>
+                </div>
+            </section>
             <section class="section-b-space">
                 <div class="container">
                     <div class="row footer-theme partition-f">

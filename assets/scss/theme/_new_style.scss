@@ -69,6 +69,7 @@
     }
 }
 
+footer,
 .header-menu-section {
     padding: 0;
     border-top: 1px solid #D8D8D8;
@@ -81,7 +82,7 @@
         justify-content: space-between;
     }
 
-    #mainnav {
+    .mainnav {
         height: 90px;
     }
 }
@@ -108,10 +109,10 @@
 
 img.slide-main-image {
     height: 100%;
+    width: 100%;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    object-fit: cover;
+    object-position: right;
 }
 
 .slider-container {

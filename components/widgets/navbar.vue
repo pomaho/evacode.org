@@ -2,7 +2,7 @@
   <div>
     <!-- Sample menu definition -->
     <div class="main-navbar">
-      <div id="mainnav">
+      <div class="mainnav">
         <div class="toggle-nav" :class="leftSidebarVal ? 'toggle-button' : ''" @click="openMobileNavProp = true">
           <img alt src="/images/new_evacode/hamburger_menu_icon.svg" class="img-fluid">
         </div>

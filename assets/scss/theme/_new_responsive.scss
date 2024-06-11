@@ -11,17 +11,17 @@
   header .top-header .main-navbar {
     display: none;
   }
-  #mainnav .shopping-cart-container {
+  .mainnav .shopping-cart-container {
     display: none;
   }
-  #mainnav .mobile-top-sidenav {
+  .mainnav .mobile-top-sidenav {
     display: none;
   }
 
   img.slide-main-image {
     width: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: right;
     aspect-ratio: 1 / 1;
   }
 
