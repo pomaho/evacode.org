@@ -1,7 +1,6 @@
 <template>
   <Header/>
   <div>
-    <WidgetsBreadcrumbs title="О нас"/>
     <!-- about section start -->
     <section class="about-page section-b-space">
       <div class="container">

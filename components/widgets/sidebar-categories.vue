@@ -7,8 +7,6 @@
         </span>
     </div>
     <div class="collection-collapse-block open">
-      <h3 class="collapse-block-title">Категории</h3>
-
       <div class="collection-collapse-block-content" :style="{ display: 'block'}">
         <div class="collection-brand-filter">
           <ul class="category-list">

@@ -11,15 +11,7 @@
     </div>
     <div class="collection-filter" :class="filter ? 'openFilterbar' : ''">
       <sidebar-categories @clickBack="filter = !filter" :current-category="currentCategory"/>
-      <!-- side-bar banner start here -->
-      <div class="collection-sidebar-banner">
-        <a href="#">
-          <img :src="bannerShopSide.image" class="img-fluid"/>
-        </a>
-      </div>
-      <!-- side-bar banner end here -->
     </div>
-    <!-- silde-bar colleps block end here -->
   </div>
 </template>
 

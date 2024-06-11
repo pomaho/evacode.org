@@ -1,7 +1,6 @@
 <template>
   <Header/>
   <div>
-    <WidgetsBreadcrumbs title="Магазин"/>
     <section class="section-b-space ratio_asos">
       <div class="collection-wrapper">
         <div class="container">

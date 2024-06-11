@@ -1,7 +1,6 @@
 <template>
 <Header/>
   <div>
-    <WidgetsBreadcrumbs title="404" />
     <section class="p-0">
       <div class="container">
         <div class="row">

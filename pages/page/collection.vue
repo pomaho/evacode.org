@@ -1,7 +1,6 @@
 <template>
 <Header/>
   <div>
-    <WidgetsBreadcrumbs title="Категории" />
     <section class="collection section-b-space pt-0 ratio_square">
       <div class="container">
         <div class="row partition-collection">

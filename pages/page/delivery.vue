@@ -1,7 +1,6 @@
 <template>
  <Header/>
   <div>
-    <WidgetsBreadcrumbs title="Доставка" />
     <section class="faq-section section-b-space">
       <div class="container">
         <div class="row">

@@ -1,7 +1,6 @@
 <template>
   <div>
     <header>
-      <div class="mobile-fix-option"></div>
       <WidgetsTopbar />
       <section class="header-menu-section">
         <div class="container">
