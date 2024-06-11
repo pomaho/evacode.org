@@ -9,15 +9,15 @@
                 <h2 class="evacode-main-about">Преимущества РАБОТЫ с EVACODE</h2>
                 <div class="service small-section pb-0">
                   <div class="row">
-                    <div class="col-sm-4 service-block1">
+                    <div class="col-4 service-block1">
                       <img class="service-icon" src="/images/new_evacode/Airplane.svg" alt="Airplane" />
                       <h5 class="service-about">{{ service_1 }}</h5>
                     </div>
-                    <div class="col-sm-4 service-block1">
+                    <div class="col-4 service-block1">
                       <img class="service-icon" src="/images/new_evacode/24-7.svg" alt="24x7" />
                       <h5 class="service-about">{{ service_2 }}</h5>
                     </div>
-                    <div class="col-sm-4 service-block1">
+                    <div class="col-4 service-block1">
                       <img class="service-icon" src="/images/new_evacode/Shop_bag.svg" alt="ShopBag" />
                       <h5 class="service-about">{{ service_3 }}</h5>
                     </div>

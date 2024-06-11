@@ -1,41 +1,42 @@
 <template>
-  <div>
-    <Header/>
-    <ShopBeautySlider />
-    <section class="products-main-section">
-      <div class="container">
-        <ShopBeautyProducts
-            :products="products"
-            :pagination-props="paginationProps"
-            :totalProductsCount="totalProductsCount"
-        />
-      </div>
-    </section>
-    <ShopBeautyAboutCons />
-    <ShopBeautyAbout />
-    <ShopBeautyLeadership />
-    <ShopBeautyAssortiment />
-    <ShopBeautyPaymentTypes />
-    <Footer />
-  </div>
+    <div>
+        <Header/>
+        <ShopBeautySlider/>
+        <section class="products-main-section">
+            <div class="container">
+                <ShopBeautyProducts
+                    :products="products"
+                    :pagination-props="paginationProps"
+                    :totalProductsCount="totalProductsCount"
+                />
+            </div>
+        </section>
+        <ShopBeautyAboutCons/>
+        <ShopBeautyLeadership/>
+        <ShopBeautyAssortiment/>
+        <ShopBeautyPaymentTypes/>
+        <ShopBeautyTestimonials />
+        <Footer/>
+    </div>
 </template>
 
 <script setup>
 import {useRoute} from 'vue-router';
+
 const route = useRoute();
 const currentPage = ref(parseFloat(route.query.page) || 1);
 const currentCategory = ref(parseFloat(route.params.id) || null);
 const {data: productsResponse} = await useAsyncData(
     'productsResponse',
     () => $fetch(`${useRuntimeConfig().public.apiBase}/market/goods`, {
-      query: {
-        page: currentPage.value,
-        category: currentCategory.value
-      }
+        query: {
+            page: currentPage.value,
+            category: currentCategory.value
+        }
     }),
     {
-      server: false,
-      watch: [currentPage, currentCategory]
+        server: false,
+        watch: [currentPage, currentCategory]
     }
 );
 
@@ -49,35 +50,35 @@ const itemsPerPage = ref(6);
 const paginateRange = ref(3);
 
 const pages = computed(() => {
-  let start = currentPage.value < paginateRange.value - 1 ? 1 : currentPage.value - 1
-  let end = currentPage.value < paginateRange.value - 1 ? start + paginateRange.value - 1 : currentPage.value + 1;
+    let start = currentPage.value < paginateRange.value - 1 ? 1 : currentPage.value - 1
+    let end = currentPage.value < paginateRange.value - 1 ? start + paginateRange.value - 1 : currentPage.value + 1;
 
-  start = Math.max(1, start);
-  end = Math.min(end, paginates.value);
+    start = Math.max(1, start);
+    end = Math.min(end, paginates.value);
 
-  const _pages = []
-  for (let i = start; i <= end; i++) {
-    _pages.push(i)
-  }
-  return _pages;
+    const _pages = []
+    for (let i = start; i <= end; i++) {
+        _pages.push(i)
+    }
+    return _pages;
 });
 
 const paginationProps = computed(() => {
-  return {
-    currentPage,
-    previous,
-    next,
-    paginates,
-    itemsPerPage: 12,
-    paginateRange: 3,
-    pages: pages.value,
-  }
+    return {
+        currentPage,
+        previous,
+        next,
+        paginates,
+        itemsPerPage: 12,
+        paginateRange: 3,
+        pages: pages.value,
+    }
 });
 
 watch(
     () => route.query.page,
     () => {
-      currentPage.value = parseFloat(route.query.page) || 1;
+        currentPage.value = parseFloat(route.query.page) || 1;
     }
 );
 </script>

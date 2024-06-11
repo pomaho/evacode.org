@@ -32,10 +32,33 @@
 
 @media (max-width: 1430px) {
 
+    .beauty-assortiment {
+        .container {
+            .assortiment-bg {
+                object-position: left;
+            }
+        }
+    }
 }
 
 @media (max-width: 1367px) {
 
+    .beauty-assortiment {
+        .container {
+            padding: 0;
+
+            .beauty-assortiment-desc {
+                margin: 20px;
+                width: auto;
+            }
+            .assortiment-bg {
+                position: relative;
+                height: 800px;
+                object-fit: cover;
+                object-position: right;
+            }
+        }
+    }
 }
 
 @media (max-width: 1199px) {
@@ -47,6 +70,19 @@
   .menu-right.pull-right > .shopping-cart-container {
     display: none;
   }
+    .beauty-assortiment {
+        .container {
+            .row {
+                flex-flow: column-reverse;
+            }
+            .assortiment-bg {
+                position: relative;
+                height: 600px;
+                object-fit: none;
+                object-position: right;
+            }
+        }
+    }
 }
 
 @media (max-width: 991px) {
@@ -61,6 +97,16 @@
       height: 100%;
     }
   }
+    .beauty-assortiment {
+        .container {
+            .assortiment-bg {
+                position: relative;
+                height: 450px;
+                object-fit: cover;
+                object-position: right;
+            }
+        }
+    }
 }
 
 @media (max-width: 767px) {
@@ -117,6 +163,16 @@
       }
     }
   }
+    .beauty-assortiment {
+        .container {
+            .assortiment-bg {
+                position: relative;
+                height: 350px;
+                object-fit: cover;
+                object-position: right;
+            }
+        }
+    }
 }
 
 @media (min-width: 578px) {
@@ -126,9 +182,6 @@
 }
 
 @media (max-width: 577px) {
-  .beauty-about.first-about {
-    display: none;
-  }
 
   header .top-header .main-navbar {
     display: block;
@@ -308,7 +361,6 @@
     .payment-logos {
       .payment-logo {
         width: auto;
-        height: 30px;
         margin-top: 15px;
 
         &:not(:first-child) {

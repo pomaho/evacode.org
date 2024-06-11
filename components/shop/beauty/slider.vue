@@ -49,7 +49,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import {Navigation} from 'swiper';
 import {Pagination} from 'swiper';
-import Slide_2 from '~/components/shop/beauty/slides/slide_2.vue';
 
 const modules = [Navigation, Pagination];
 const {data: slidesResponse} = await useAsyncData(
