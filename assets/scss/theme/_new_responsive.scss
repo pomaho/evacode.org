@@ -411,6 +411,15 @@
     }
   }
 
+    .about-slider {
+        .evacode-slide {
+            padding-bottom: 40px;
+            &.about-slide-2 {
+                padding-top: 0;
+            }
+        }
+    }
+
 }
 
 @media (max-width: 420px) {

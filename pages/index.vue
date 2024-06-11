@@ -16,6 +16,7 @@
         <ShopBeautyAssortiment/>
         <ShopBeautyPaymentTypes/>
         <ShopBeautyTestimonials />
+        <ShopBeautyAboutSlider />
         <Footer/>
     </div>
 </template>

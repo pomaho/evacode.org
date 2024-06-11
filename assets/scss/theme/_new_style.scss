@@ -550,11 +550,28 @@ section.beauty-about {
 
 }
 .testimonials {
+    background: #F9F9F9;
     .swiper-pagination-bullet.evacode-slide-pagination {
         border: 1px solid #B89254;
 
         &.swiper-pagination-bullet-active {
             background: #B89254;
+        }
+    }
+}
+
+
+.about-slider {
+    .evacode-slide {
+        &.about-slide-2 {
+            padding-top: 150px;
+        }
+        p {
+            font-size: 18px;
+            padding: 20px;
+            background: #FFFBED;
+            color: black;
+            line-height: 1.3;
         }
     }
 }
