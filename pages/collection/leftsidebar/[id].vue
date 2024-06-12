@@ -24,7 +24,7 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-grid-box col-xl-3 col-md-4 col-6" v-for="(product, index) in products" :key="index">
+                          <div class="col-grid-box col-xl-3 col-lg-6 col-md-6 col-6" v-for="(product, index) in products" :key="index">
                             <div class="product-box">
                               <ProductBoxProductBox1
                                   @opencartmodel="showCart"
