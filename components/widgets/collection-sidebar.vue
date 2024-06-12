@@ -28,8 +28,4 @@ const props = defineProps({
     default: 0,
   }
 })
-
-const openCategories = () => {
-    this.filter = !this.filter;
-};
 </script>

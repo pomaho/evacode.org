@@ -5,6 +5,9 @@
 }
 
 @media(min-width: 1199px) {
+    .large-btn {
+        padding: 10px 40px;
+    }
   .nav-menu .back-btn {
     display: none !important;
   }
@@ -62,6 +65,9 @@
 }
 
 @media (max-width: 1199px) {
+    .large-btn {
+        padding: 10px 40px;
+    }
 
   .header-menu-section {
     display: none;
@@ -91,6 +97,14 @@
     }
 }
 @media (max-width: 991px) {
+    .product-right {
+        .border-product {
+            text-align: left;
+        }
+    }
+    .product-right .product-description .qty-box {
+        justify-content: start;
+    }
   .top-header-left-column {
     display: none;
   }
@@ -219,6 +233,9 @@
 }
 
 @media (max-width: 577px) {
+    .large-btn {
+        padding: 10px 20px;
+    }
 
   header .top-header .main-navbar {
     display: block;
@@ -421,6 +438,13 @@
         }
         .footer-title {
             text-align: center;
+        }
+    }
+    .product-details-section {
+        .beauty-about.first-about {
+            .service.small-section {
+                padding-top: 30px;
+            }
         }
     }
 

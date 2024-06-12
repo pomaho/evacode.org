@@ -229,6 +229,7 @@ img.slide-main-image {
     border-radius: 6px;
     text-align: center;
     border: 1px solid;
+    transition: all 0.5s;
 
     &.slider-btn {
         width: 360px;
@@ -241,15 +242,29 @@ img.slide-main-image {
     &.buy-btn {
         width: 100%;
         height: 50px;
-        line-height: 50px;
         border: 1px solid;
+    }
+    &:hover {
+        background: $button-border-color;
+        color: white;
+    }
+    &.fill-btn:hover {
+        background: white;
+        color: $button-border-color;
     }
 }
 .fill-btn {
     background: $button-border-color;
     color: white;
+    &:hover {
+        background: white;
+        color: $button-border-color;
+    }
 }
 
+.large-btn {
+    padding: 10px 100px;
+}
 .btn-bordered {
     border: 1px solid $button-border-color;
 }
@@ -654,6 +669,7 @@ section.beauty-about {
     }
 }
 
+.product-details-section,
 .products-section {
     padding-top: 30px;
 
@@ -666,9 +682,34 @@ section.beauty-about {
 
 .categories-btn {
     text-align: center;
+    margin-bottom: 50px;
+
     button {
         letter-spacing: 2px;
         width: 300px;
         padding: 10px 0;
+    }
+}
+
+.product-details-section {
+    .beauty-about.first-about {
+        padding: 50px 0;
+        height: auto;
+
+        .evacode-main-about {
+            font-size: 16px;
+        }
+        .service-icon {
+            width: 90px;
+            height: 90px;
+        }
+        .service-about {
+            font-size: 12px;
+        }
+    }
+
+    div.swiper-slide {
+        display: flex;
+        justify-content: center;
     }
 }

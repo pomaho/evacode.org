@@ -2873,7 +2873,7 @@
 
   .collection-filter {
     position: fixed;
-    height: 100vh;
+    height: 100%;
       min-width: 100vw;
     top: 0;
     left: -100vw;
@@ -2898,6 +2898,10 @@
       padding: 0 30px;
     }
   }
+    .collection-collapse-block.open .collection-collapse-block-content,
+    .collection-collapse-block .collection-collapse-block-content .collection-brand-filter {
+        max-height: 100%;
+    }
 
   .collection-filter-block {
     border: none;
@@ -5205,13 +5209,6 @@
 
         h5 {
           padding: 10px 0;
-        }
-      }
-
-      .theme-paggination-block {
-        nav {
-          border-right: 1px solid #ddd;
-          border-bottom: 1px solid #ddd;
         }
       }
     }
