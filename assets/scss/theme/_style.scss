@@ -7054,7 +7054,6 @@ footer {
   margin-bottom: 30px;
   padding: 0 30px;
   border: 1px solid lighten($grey-lighter, 86.5%);
-  background-color: $grey-lighter;
 
   .product-service {
     padding: 30px 0;
@@ -7118,7 +7117,7 @@ footer {
 
   &.open {
     .collection-collapse-block-content {
-      max-height: 500px;
+      max-height: 100%;
       transition-property: all;
       transition-duration: .5s;
       transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
@@ -7137,7 +7136,7 @@ footer {
     }
 
     .collection-brand-filter {
-      max-height: 400px;
+      max-height: 100%;
       overflow-y: auto;
       margin-top: 30px;
 
@@ -7161,14 +7160,18 @@ footer {
 
       .category-list {
         li {
-          display: flex;
-          font-size: 16px;
-          text-transform: none;
-          line-height: 18px;
-
+            display: flex;
+            font-family: "Rubik", sans-serif;
+            font-size: 16px;
+            text-transform: none;
+            line-height: 2.5;
+            font-weight: 300;
           a {
             color: $grey;
             padding-bottom: 10px;
+              &:hover {
+                  color: $theme-default;
+              }
           }
 
           &:last-child {

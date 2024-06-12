@@ -13,12 +13,6 @@
       "path": "/collection/leftsidebar/0"
     },
     {
-      "title": "Категории",
-      "type": "sub",
-      "active": false,
-      "path": "/page/collection"
-    },
-    {
       "title": "Доставка",
       "type": "sub",
       "active": false,

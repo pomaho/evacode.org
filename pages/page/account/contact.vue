@@ -1,7 +1,6 @@
 <template>
   <Header/>
   <div>
-    <WidgetsBreadcrumbs title="Контакты"/>
     <section class="contact-page section-b-space">
       <div class="container">
         <div class="row section-b-space">

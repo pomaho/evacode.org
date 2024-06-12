@@ -1,7 +1,6 @@
 <template>
   <div>
     <Header/>
-    <WidgetsBreadcrumbs title="Корзина"/>
     <section class="cart-section section-b-space">
       <div class="container">
         <div class="row">
