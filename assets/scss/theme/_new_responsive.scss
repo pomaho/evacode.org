@@ -85,6 +85,11 @@
     }
 }
 
+@media (min-width: 992px) {
+    .categories-btn {
+        display: none;
+    }
+}
 @media (max-width: 991px) {
   .top-header-left-column {
     display: none;

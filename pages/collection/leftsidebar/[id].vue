@@ -1,7 +1,7 @@
 <template>
   <Header/>
   <div>
-    <section class="section-b-space ratio_asos">
+    <section class="section-b-space ratio_asos products-section">
       <div class="collection-wrapper">
         <div class="container">
           <div class="row">
@@ -12,27 +12,7 @@
               <div class="page-main-content">
                 <div class="row">
                   <div class="col-12">
-                    <div class="top-banner-wrapper">
-                      <a href="#">
-                        <img :src='bannerShop.image' class="img-fluid" alt/>
-                      </a>
-                    </div>
                     <div class="collection-product-wrapper">
-                      <div class="product-top-filter">
-                        <div class="row">
-                          <div class="col-12">
-                            <div class="product-filter-content">
-                              <div class="search-count">
-                                <WidgetsShowedProductsLabel
-                                    :from="currentPage === 1 ? 1 : itemsPerPage * (currentPage - 1) + 1"
-                                    :to="currentPage === 1 ? itemsPerPage : itemsPerPage * currentPage"
-                                    :total="totalProductsCount"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                       <div class="product-wrapper-grid">
                         <div class="row">
                           <div class="col-12">

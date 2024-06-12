@@ -2,9 +2,9 @@
   <div>
     <div class="row">
       <div class="col-xl-12">
-        <div class="filter-main-btn" @click="filter = !filter">
-          <button class="filter-btn btn btn-theme">
-            <i class="fa fa-filter" aria-hidden="true"></i> Фильтр
+        <div class="categories-btn">
+          <button class="evacode-btn fill-btn btn btn-theme">
+            Категории
           </button>
         </div>
       </div>
@@ -17,9 +17,6 @@
 
 <script setup>
 import SidebarCategories from '~/components/widgets/sidebar-categories.vue';
-
-import {useBannersStore} from '~/store/banners';
-const bannerShopSide = await useBannersStore().bannerShopSide;
 const filter = ref(false);
 const props = defineProps({
   currentCategory: {
@@ -28,9 +25,3 @@ const props = defineProps({
   }
 })
 </script>
-
-<style scoped>
-.collapse-block-title:after {
-  content: none;
-}
-</style>

@@ -244,6 +244,10 @@ img.slide-main-image {
         border: 1px solid;
     }
 }
+.fill-btn {
+    background: $button-border-color;
+    color: white;
+}
 
 .btn-bordered {
     border: 1px solid $button-border-color;
@@ -279,12 +283,12 @@ section.products-main-section {
 
         .product-detail {
             font-family: $font_0_1, $font_1;
-            font-size: 14px;
             text-align: center;
-            line-height: 1.3;
             padding-top: 20px;
 
             h6 {
+                font-size: 14px;
+                line-height: 1.3;
                 height: 46px;
                 overflow: hidden;
             }
@@ -649,3 +653,21 @@ section.beauty-about {
     }
 }
 
+.products-section {
+    padding-top: 30px;
+
+    .theme-paggination-block {
+        > .row {
+            justify-content: center;
+        }
+    }
+}
+
+.categories-btn {
+    text-align: center;
+    button {
+        letter-spacing: 2px;
+        width: 300px;
+        padding: 10px 0;
+    }
+}
