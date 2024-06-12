@@ -2874,8 +2874,9 @@
   .collection-filter {
     position: fixed;
     height: 100vh;
+      min-width: 100vw;
     top: 0;
-    left: -350px;
+    left: -100vw;
     background-color: white;
     z-index: 99;
     overflow-y: scroll;

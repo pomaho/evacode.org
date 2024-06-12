@@ -3,7 +3,11 @@
     <div class="row">
       <div class="col-xl-12">
         <div class="categories-btn">
-          <button class="evacode-btn fill-btn btn btn-theme">
+          <button
+              class="evacode-btn"
+              :class="filter ? 'fill-btn' : ''"
+              @click="filter = !filter"
+          >
             Категории
           </button>
         </div>
@@ -24,4 +28,8 @@ const props = defineProps({
     default: 0,
   }
 })
+
+const openCategories = () => {
+    this.filter = !this.filter;
+};
 </script>

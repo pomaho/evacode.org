@@ -112,6 +112,16 @@
             }
         }
     }
+
+    .collection-collapse-block-content {
+        .collection-brand-filter {
+            .category-list {
+                li {
+                    justify-content: center;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 767px) {
