@@ -1,30 +1,49 @@
 <template>
     <div>
-        <section class="faq-section section-b-space">
+        <section class="section-deliveries section-b-space">
             <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="accordion theme-accordion" id="accordionExample">
-                            <div class="card" v-for="(delivery, index) in deliveries" :key="index">
-                                <div class="card-header" :id="`headingOne${index}`">
-                                    <h5 class="mb-0">
-                                        <button class="btn btn-link" type="button" data-bs-toggle="collapse"
-                                                :data-bs-target="`#collapseOne${index}`" :aria-expanded="index === 0"
-                                                :aria-controls="`collapseOne${index}`" v-html="delivery.delivery_type">
+                <div class="container-wrapper">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="accordion theme-accordion" id="accordionExample">
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li
+                                        class="nav-item"
+                                        role="presentation"
+                                        v-for="(delivery, index) in deliveries" :key="index"
+                                    >
+                                        <button
+                                            class="nav-link"
+                                            type="button"
+                                            role="tab"
+                                            data-bs-toggle="tab"
+                                            :class="{
+                                            active: index === 0,
+                                        }"
+                                            :id="`tab-${index}`"
+                                            :data-bs-target="`#tab${index}`"
+                                            :aria-selected="index === 0"
+                                            :aria-controls="`collapseOne${index}`"
+                                            v-html="delivery.delivery_type"
+                                        >
                                         </button>
-                                    </h5>
-                                </div>
-                                <div :id="`collapseOne${index}`" :class="{
-                  collapse: true,
-                  show: index === 0,
-                }" :aria-labelledby="`headingOne${index}`"
-                                     data-bs-parent="#accordionExample">
-                                    <div class="card-body" v-html="delivery.delivery_description">
-                                    </div>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div
+                                        v-for="(delivery, index) in deliveries" :key="index"
+                                        class="tab-pane fade show"
+                                        :class="{
+                                        active: index === 0,
+                                    }"
+                                        :id="`tab${index}`"
+                                        role="tabpanel"
+                                        :aria-labelledby="`tab-${index}`"
+                                        v-html="delivery.delivery_description"
+                                    ></div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

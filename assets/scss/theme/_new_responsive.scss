@@ -8,29 +8,29 @@
     .large-btn {
         padding: 10px 40px;
     }
-  .nav-menu .back-btn {
-    display: none !important;
-  }
-  header .top-header .main-navbar {
-    display: none;
-  }
-  .mainnav .shopping-cart-container {
-    display: none;
-  }
-  .mainnav .mobile-top-sidenav {
-    display: none;
-  }
+    .nav-menu .back-btn {
+        display: none !important;
+    }
+    header .top-header .main-navbar {
+        display: none;
+    }
+    .mainnav .shopping-cart-container {
+        display: none;
+    }
+    .mainnav .mobile-top-sidenav {
+        display: none;
+    }
 
-  img.slide-main-image {
-    width: 100%;
-    object-fit: cover;
-    object-position: right;
-    aspect-ratio: 1 / 1;
-  }
+    img.slide-main-image {
+        width: 100%;
+        object-fit: cover;
+        object-position: right;
+        aspect-ratio: 1 / 1;
+    }
 
-  .leadership-blocks {
-    width: 1140px;
-  }
+    .leadership-blocks {
+        width: 1140px;
+    }
 }
 
 @media (max-width: 1430px) {
@@ -54,6 +54,7 @@
                 margin: 20px;
                 width: auto;
             }
+
             .assortiment-bg {
                 position: relative;
                 height: 800px;
@@ -69,18 +70,19 @@
         padding: 10px 40px;
     }
 
-  .header-menu-section {
-    display: none;
-  }
+    .header-menu-section {
+        display: none;
+    }
 
-  .menu-right.pull-right > .shopping-cart-container {
-    display: none;
-  }
+    .menu-right.pull-right > .shopping-cart-container {
+        display: none;
+    }
     .beauty-assortiment {
         .container {
             .row {
                 flex-flow: column-reverse;
             }
+
             .assortiment-bg {
                 position: relative;
                 height: 600px;
@@ -96,6 +98,7 @@
         display: none;
     }
 }
+
 @media (max-width: 991px) {
     .product-right {
         .border-product {
@@ -105,17 +108,17 @@
     .product-right .product-description .qty-box {
         justify-content: start;
     }
-  .top-header-left-column {
-    display: none;
-  }
-  .top-header {
-    height: 100px;
-
-    > .container,
-    > .container > .row {
-      height: 100%;
+    .top-header-left-column {
+        display: none;
     }
-  }
+    .top-header {
+        height: 100px;
+
+        > .container,
+        > .container > .row {
+            height: 100%;
+        }
+    }
     .beauty-assortiment {
         .container {
             .assortiment-bg {
@@ -136,62 +139,85 @@
             }
         }
     }
+    .section-deliveries-intro {
+        height: 350px;
+
+        .delivery-title {
+            display: none;
+        }
+
+        .deliveries-banner {
+            background-position-x: 87%;
+            background-size: cover;
+        }
+    }
+    .section-deliveries {
+        .nav-tabs {
+            flex-direction: column;
+
+            .nav-item {
+                button {
+                    padding-left: 0;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 767px) {
-  .col-grid-box:not(:first-child) {
-    padding: 0 0 0 8px;
-  }
-
-  .product-box {
-    height: 340px;
-
-    & > div {
-      padding: 12px;
-
-      .img-wrapper {
-        height: 167px;
-
-        img {
-          object-fit: cover;
-          object-position: center;
-          aspect-ratio: 1 / 1;
-          height: 100%;
-          margin: 0 auto;
-        }
-      }
-
-      .product-detail {
-        font-family: $font_0_1, $font_1;
-        padding-top: 12px;
-
-        h6 {
-          font-size: 8.5px;
-          text-align: center;
-          line-height: 1.3;
-          height: 38px;
-          overflow: hidden;
-        }
-
-        h4 {
-          margin-top: 12px;
-        }
-      }
-
-      .evacode-btn.buy-btn {
-        width: 100%;
-        height: 38px;
-        line-height: 38px;
-        border: 1px solid;
-        font-size: 11px;
-      }
-
-      .product-right,
-      .product-right .product-buttons {
-        margin-top: 12px;
-      }
+    .col-grid-box:not(:first-child) {
+        padding: 0 0 0 8px;
     }
-  }
+
+    .product-box {
+        height: 340px;
+
+        & > div {
+            padding: 12px;
+
+            .img-wrapper {
+                height: 167px;
+
+                img {
+                    object-fit: cover;
+                    object-position: center;
+                    aspect-ratio: 1 / 1;
+                    height: 100%;
+                    margin: 0 auto;
+                }
+            }
+
+            .product-detail {
+                font-family: $font_0_1, $font_1;
+                padding-top: 12px;
+
+                h6 {
+                    font-size: 8.5px;
+                    text-align: center;
+                    line-height: 1.3;
+                    height: 38px;
+                    overflow: hidden;
+                }
+
+                h4 {
+                    margin-top: 12px;
+                }
+            }
+
+            .evacode-btn.buy-btn {
+                width: 100%;
+                height: 38px;
+                line-height: 38px;
+                border: 1px solid;
+                font-size: 11px;
+            }
+
+            .product-right,
+            .product-right .product-buttons {
+                margin-top: 12px;
+            }
+        }
+    }
     .beauty-assortiment {
         .container {
             .assortiment-bg {
@@ -227,9 +253,9 @@
 }
 
 @media (min-width: 578px) {
-  .beauty-about.second-about {
-    display: none;
-  }
+    .beauty-about.second-about {
+        display: none;
+    }
 }
 
 @media (max-width: 577px) {
@@ -237,196 +263,202 @@
         padding: 10px 20px;
     }
 
-  header .top-header .main-navbar {
-    display: block;
-  }
-
-  .mobile-top-sidenav .brand-logo {
-    position: relative;
-    left: 0;
-    transform: none;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  h2.evacode-main-about {
-    font-size: 16px;
-    color: $button-border-color;
-    font-weight: 500;
-  }
-
-  h5.service-about {
-    font-size: 12px;
-    color: $button-border-color;
-    font-weight: 500;
-  }
-
-  section.beauty-about {
-    height: auto;
-    margin-top: 55px;
-    padding-top: 50px;
-    padding-bottom: 60px;
-    background: -webkit-linear-gradient(45deg, #F7EFD6, #FFFBEE);
-  }
-
-  .about-section {
-    display: block;
-
-    .small-section {
-      padding-top: 0px;
-    }
-    .service-icon {
-      width: 64px;
-      height: 64px;
-    }
-  }
-  .beauty-about .about-text p {
-    text-align: justify;
-    font-size: 12px;
-  }
-
-  .beauty-leadership {
-    padding-top: 105px;
-    padding-bottom: 30px;
-
-    .container {
-      padding-top: 0;
-    }
-    h3 {
-      font-size: 16px;
-      color: black;
-      text-align: center;
-      letter-spacing: normal;
-      margin-bottom: 0;
-    }
-  }
-
-  .leadership-blocks {
-    width: auto;
-    margin: 70px auto 0;
-
-    h5 {
-      font-size: 18px;
-      line-height: 1.2;
-      letter-spacing: normal;
+    header .top-header .main-navbar {
+        display: block;
     }
 
-    p {
-      margin-top: 12px;
-      margin-bottom: 35px;
-      font-size: 16px;
-      line-height: 1.3;
-      color: black;
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-
-    .rounded-corners {
-      border-radius: 6px;
-      padding: 25px;
-      height: 100%;
-    }
-
-    .gray-bg {
-      background: #f9f9f9;
-    }
-
-    .pink-bg {
-      background: #FFA5C0;
-    }
-
-    .green-bg {
-      background: #94CBA7;
-
-      p {
-        margin-right: 55px;
-      }
-    }
-    .bird-from-cage {
-      width: 243px;
-      margin: 0 auto;
-      display: block;
-    }
-    .clap-hands {
-      width: 204px;
-      margin: 0 auto;
-      display: block;
-    }
-  }
-
-  .beauty-assortiment {
-    padding-top: 0;
-
-    .container {
-      height: auto;
-      position: relative;
-      overflow: hidden;
-      border-radius: 6px;
-
-      .assortiment-bg {
+    .mobile-top-sidenav .brand-logo {
         position: relative;
-        top: 0;
-        left: -180px;
-        width: auto;
-        height: 220px;
-        z-index: 1;
-      }
-      .beauty-assortiment-desc {
-        width: auto;
+        left: 0;
+        transform: none;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    h2.evacode-main-about {
+        font-size: 16px;
+        color: $button-border-color;
+        font-weight: 500;
+    }
+
+    h5.service-about {
+        font-size: 12px;
+        color: $button-border-color;
+        font-weight: 500;
+    }
+
+    section.beauty-about {
         height: auto;
-        margin: 15px 12px 25px;
+        margin-top: 55px;
+        padding-top: 50px;
+        padding-bottom: 60px;
+        background: -webkit-linear-gradient(45deg, #F7EFD6, #FFFBEE);
+    }
+
+    .about-section {
         display: block;
 
+        .small-section {
+            padding-top: 0px;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+        }
+    }
+    .beauty-about .about-text p {
+        text-align: justify;
+        font-size: 12px;
+    }
+
+    .beauty-leadership {
+        padding-top: 105px;
+        padding-bottom: 30px;
+
+        .container {
+            padding-top: 0;
+        }
+
         h3 {
-          font-size: 16px;
-          color: #C9A872;
-          text-transform: uppercase;
-          letter-spacing: normal;
+            font-size: 16px;
+            color: black;
+            text-align: center;
+            letter-spacing: normal;
+            margin-bottom: 0;
+        }
+    }
+
+    .leadership-blocks {
+        width: auto;
+        margin: 70px auto 0;
+
+        h5 {
+            font-size: 18px;
+            line-height: 1.2;
+            letter-spacing: normal;
         }
 
         p {
-          font-size: 12px;
-          color: black;
-          margin-top: 20px;
-          text-align: justify;
-          line-height: 1.3;
+            margin-top: 12px;
+            margin-bottom: 35px;
+            font-size: 16px;
+            line-height: 1.3;
+            color: black;
         }
-      }
-    }
-  }
-  .beauty-payment-types {
-    padding: 15px;
 
-    .container {
-      padding: 30px 0;
-      border-radius: 6px;
-    }
-
-    h3 {
-      font-size: 16px;
-    }
-
-    h5 {
-      font-size: 12px;
-      margin-top: 7px;
-    }
-
-    .payment-logos {
-      .payment-logo {
-        width: auto;
-        margin-top: 15px;
-
-        &:not(:first-child) {
-          margin-left: 10px;
+        p:last-child {
+            margin-bottom: 0;
         }
-      }
+
+        .rounded-corners {
+            border-radius: 6px;
+            padding: 25px;
+            height: 100%;
+        }
+
+        .gray-bg {
+            background: #f9f9f9;
+        }
+
+        .pink-bg {
+            background: #FFA5C0;
+        }
+
+        .green-bg {
+            background: #94CBA7;
+
+            p {
+                margin-right: 55px;
+            }
+        }
+
+        .bird-from-cage {
+            width: 243px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .clap-hands {
+            width: 204px;
+            margin: 0 auto;
+            display: block;
+        }
     }
-  }
+
+    .beauty-assortiment {
+        padding-top: 0;
+
+        .container {
+            height: auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 6px;
+
+            .assortiment-bg {
+                position: relative;
+                top: 0;
+                left: -180px;
+                width: auto;
+                height: 220px;
+                z-index: 1;
+            }
+
+            .beauty-assortiment-desc {
+                width: auto;
+                height: auto;
+                margin: 15px 12px 25px;
+                display: block;
+
+                h3 {
+                    font-size: 16px;
+                    color: #C9A872;
+                    text-transform: uppercase;
+                    letter-spacing: normal;
+                }
+
+                p {
+                    font-size: 12px;
+                    color: black;
+                    margin-top: 20px;
+                    text-align: justify;
+                    line-height: 1.3;
+                }
+            }
+        }
+    }
+    .beauty-payment-types {
+        padding: 15px;
+
+        .container {
+            padding: 30px 0;
+            border-radius: 6px;
+        }
+
+        h3 {
+            font-size: 16px;
+        }
+
+        h5 {
+            font-size: 12px;
+            margin-top: 7px;
+        }
+
+        .payment-logos {
+            .payment-logo {
+                width: auto;
+                margin-top: 15px;
+
+                &:not(:first-child) {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
 
     .footer-light {
         .consulting {
             text-align: center;
+
             h2 {
                 display: inline-block;
                 font-size: 36px;
@@ -436,6 +468,7 @@
                 font-size: 18px;
             }
         }
+
         .footer-title {
             text-align: center;
         }
@@ -456,10 +489,12 @@
             .evacode-main-about {
                 font-size: 16px;
             }
+
             .service-icon {
                 width: 64px;
                 height: 64px;
             }
+
             .service-about {
                 font-size: 10px;
             }
@@ -470,43 +505,58 @@
             justify-content: center;
         }
     }
+
+    .section-deliveries-intro {
+        height: 200px;
+
+        .delivery-title {
+            display: none;
+        }
+
+        .deliveries-banner {
+            background-position-x: 87%;
+            background-size: cover;
+        }
+    }
 }
 
 @media (min-width: 481px) {
-  .evacode-slide > .container {
-    display: none;
-  }
+    .evacode-slide > .container {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
-  img.slide-main-image {
-    position: relative;
-    top: 0;
-    left: 0;
-    object-position: 90%;
-    height: 250px;
-  }
-
-  .evacode-slide {
-    > .row {
-      display: none;
+    img.slide-main-image {
+        position: relative;
+        top: 0;
+        left: 0;
+        object-position: 90%;
+        height: 250px;
     }
-    > .container {
-      height: 190px;
+
+    .evacode-slide {
+        > .row {
+            display: none;
+        }
+
+        > .container {
+            height: 190px;
+        }
     }
-  }
 
-  .container {
-    width: 328px;
-  }
+    .container {
+        width: 328px;
+    }
 
-  .home-slider {
-    height: 440px;
-  }
+    .home-slider {
+        height: 440px;
+    }
 
     .about-slider {
         .evacode-slide {
             padding-bottom: 40px;
+
             &.about-slide-2 {
                 padding-top: 0;
             }
@@ -516,6 +566,7 @@
     .footer-light {
         .consulting {
             text-align: center;
+
             h2 {
                 display: inline-block;
                 font-size: 16px;
@@ -525,9 +576,11 @@
                 font-size: 14px;
             }
         }
+
         .footer-contact {
             text-align: left;
         }
+
         .consult-girl {
             width: 100%;
         }
