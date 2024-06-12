@@ -713,3 +713,21 @@ section.beauty-about {
         justify-content: center;
     }
 }
+
+.section-deliveries-intro {
+    height: 428px;
+
+    .container {
+        height: 100%;
+    }
+    .deliveries-banner {
+        background-image: url('/images/new_evacode/deliveries-banner.png');
+        width: 100%;
+        height: 100%;
+
+        .delivery-title {
+            color: white;
+
+        }
+    }
+}
