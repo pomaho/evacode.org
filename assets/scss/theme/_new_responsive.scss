@@ -448,6 +448,28 @@
         }
     }
 
+    .product-details-section {
+        .beauty-about.first-about {
+            padding: 50px 0;
+            height: auto;
+
+            .evacode-main-about {
+                font-size: 16px;
+            }
+            .service-icon {
+                width: 64px;
+                height: 64px;
+            }
+            .service-about {
+                font-size: 10px;
+            }
+        }
+
+        div.swiper-slide {
+            display: flex;
+            justify-content: center;
+        }
+    }
 }
 
 @media (min-width: 481px) {
