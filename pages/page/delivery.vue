@@ -2,6 +2,7 @@
     <Header/>
     <ShopBeautyDeliveriesIntro />
     <ShopBeautyDeliveries />
+    <ShopBeautyCancellation />
     <Footer/>
 </template>
 

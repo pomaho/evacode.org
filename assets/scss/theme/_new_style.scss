@@ -779,3 +779,34 @@ section.beauty-about {
         }
     }
 }
+
+.section-cancellation {
+    background: #f9f9f9;
+    padding: 100px 0;
+
+    .cancellation-image {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .cancellation-title {
+        text-align: center;
+        color: #B89254;
+        margin-top: 25px;
+    }
+
+    .container-wrapper {
+        margin-top: 25px;
+
+        p {
+            color: black;
+        }
+
+        .text-column {
+            max-height: 450px;
+            flex-wrap: wrap;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
