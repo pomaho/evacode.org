@@ -34,7 +34,21 @@ export const useAboutStore = defineStore({
             }
             return state._aboutFooter;
         },
-    }
+		aboutTermsOfUse: async (state) => {
+			if (!state._aboutTermsOfUse) {
+				const aboutResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/about?name=about-terms-of-use`);
+				state._aboutTermsOfUse = aboutResponse?.results[0] || {};
+			}
+			return state._aboutTermsOfUse;
+		},
+		aboutPrivacyPolicy: async (state) => {
+			if (!state._aboutPrivacyPolicy) {
+				const aboutResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/about?name=about-privacy-policy`);
+				state._aboutPrivacyPolicy = aboutResponse?.results[0] || {};
+			}
+			return state._aboutPrivacyPolicy;
+		},
+	}
 })
 
 

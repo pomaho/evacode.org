@@ -39,11 +39,7 @@
 </template>
 <script setup>
 import {useContactsStore} from '~~/store/contacts'
-
 const contacts = await useContactsStore().contacts;
-
-const phoneimage = '/images/evacode/icon/phone.png';
-const emailimage = '/images/evacode/icon/email.png';
 
 useHead({
     titleTemplate: `%s - Контакты`,

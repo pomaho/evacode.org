@@ -811,17 +811,26 @@ section.beauty-about {
     }
 }
 
+.terms-of-use-title,
+.contact-title {
+    font-size: 46px;
+    text-align: center;
+    margin-top: 90px;
+}
+
+.terms-of-use-title,
+.contact-title,
+.our-address {
+    color: #B89254;
+}
+
+
 .contact-page {
     .contact-logo {
         display: block;
         margin: 0 auto;
     }
 
-    .contact-title {
-        font-size: 46px;
-        text-align: center;
-        margin-top: 90px;
-    }
 
     .our-address {
         font-size: 24px;
@@ -846,11 +855,6 @@ section.beauty-about {
     }
 
     .contact-title,
-    .our-address {
-        color: #B89254;
-    }
-
-    .contact-title,
     .our-address,
     .social-contact {
         text-transform: uppercase;
@@ -863,6 +867,23 @@ section.beauty-about {
 
         img {
             margin-right: 10px;
+        }
+    }
+}
+
+.terms-of-use-description {
+    &, p {
+        color: black;
+        line-height: 1.5;
+
+        strong {
+            font-family: LatoWebBold, sans-serif;
+        }
+    }
+
+    ol {
+        li {
+            display: list-item;
         }
     }
 }

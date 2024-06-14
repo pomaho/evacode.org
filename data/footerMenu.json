@@ -2,31 +2,23 @@
   "data": [
     {
       "title": "Условия использования",
-      "path": "/"
+      "path": "/page/account/terms-of-use"
     },
     {
       "title": "Доставка и возврат",
-      "path": "/"
+      "path": "/page/delivery"
     },
     {
       "title": "Политика безопасности",
-      "path": "/"
+      "path": "/page/account/privacy-policy"
     },
     {
       "title": "Телеграм",
-      "path": "/"
-    },
-    {
-      "title": "Facebook",
-      "path": "/"
+      "path": "https://t.me/EvaCodeKR"
     },
     {
       "title": "Связаться с нами",
-      "path": "/"
-    },
-    {
-      "title": "Faq",
-      "path": "/"
+      "path": "/page/account/contact"
     }
   ]
 }
