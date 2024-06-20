@@ -1,7 +1,6 @@
 <template>
     <Header/>
     <div>
-        <!-- about section start -->
         <section class="about-section-with-img">
             <div class="container-img container">
                 <div class="about-background">
@@ -27,7 +26,54 @@
                 </div>
             </div>
         </section>
-        <!-- about section end -->
+        <section class="about-illustration-section">
+            <div class="container">
+                <div class="row gx-5">
+                    <div class="col-xl-3 col-12">
+                        <img class="about-illustration-img" src="/images/new_evacode/about-illustr-1.png" alt="happy girl">
+                    </div>
+                    <div class="col-xl-9 col-12">
+                        <div class="about-illustration-text-column">
+                            <h3 class="about-illustration-title">Персональные консультации и уход</h3>
+                            <p class="about-illustration-description">В нашем штате работают свыше 20 консультантов по всему миру, которые в любое время суток помогут подобрать индивидуальный уход для лица, тела и волос, при этом – оформить заказ и довести
+                                вас до желаемого результата.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="about-illustration-section">
+            <div class="container">
+                <div class="row gx-5">
+                    <div class="col-xl-9 col-12">
+                        <div class="about-illustration-text-column">
+                            <h3 class="about-illustration-title">Персональные консультации и уход</h3>
+                            <p class="about-illustration-description">В нашем штате работают свыше 20 консультантов по всему миру, которые в любое время суток помогут подобрать индивидуальный уход для лица, тела и волос, при этом – оформить заказ и довести
+                                вас до желаемого результата.</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-12">
+                        <img class="about-illustration-img" src="/images/new_evacode/about-illustr-2.png" alt="happy girl">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="about-illustration-section">
+            <div class="container">
+                <div class="row gx-5">
+                    <div class="col-xl-3 col-12">
+                        <img class="about-illustration-img" src="/images/new_evacode/about-illustr-3.png" alt="happy girl">
+                    </div>
+                    <div class="col-xl-9 col-12">
+                        <div class="about-illustration-text-column">
+                            <h3 class="about-illustration-title">Персональные консультации и уход</h3>
+                            <p class="about-illustration-description">В нашем штате работают свыше 20 консультантов по всему миру, которые в любое время суток помогут подобрать индивидуальный уход для лица, тела и волос, при этом – оформить заказ и довести
+                                вас до желаемого результата.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
     <Footer/>
 </template>
