@@ -150,6 +150,16 @@
             .about-illustration-title {
                 margin-top: 30px;
             }
+
+            .about-illustration-description {
+                margin-top: 10px;
+            }
+        }
+
+        &.second {
+            .row {
+                flex-flow: column-reverse;
+            }
         }
     }
 }

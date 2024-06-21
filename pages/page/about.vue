@@ -26,7 +26,7 @@
                 </div>
             </div>
         </section>
-        <section class="about-illustration-section">
+        <section class="about-illustration-section first">
             <div class="container">
                 <div class="row gx-5">
                     <div class="col-xl-3 col-12">
@@ -42,14 +42,13 @@
                 </div>
             </div>
         </section>
-        <section class="about-illustration-section">
+        <section class="about-illustration-section second">
             <div class="container">
                 <div class="row gx-5">
                     <div class="col-xl-9 col-12">
                         <div class="about-illustration-text-column">
-                            <h3 class="about-illustration-title">Персональные консультации и уход</h3>
-                            <p class="about-illustration-description">В нашем штате работают свыше 20 консультантов по всему миру, которые в любое время суток помогут подобрать индивидуальный уход для лица, тела и волос, при этом – оформить заказ и довести
-                                вас до желаемого результата.</p>
+                            <h3 class="about-illustration-title">ЦЕННОСТИ EVACODE</h3>
+                            <p class="about-illustration-description">Ценности нашей компании – осознанный подход к красоте и здоровью наших клиентов, а также качество поставляемой продукции.</p>
                         </div>
                     </div>
                     <div class="col-xl-3 col-12">
@@ -58,7 +57,7 @@
                 </div>
             </div>
         </section>
-        <section class="about-illustration-section">
+        <section class="about-illustration-section third">
             <div class="container">
                 <div class="row gx-5">
                     <div class="col-xl-3 col-12">
@@ -66,9 +65,8 @@
                     </div>
                     <div class="col-xl-9 col-12">
                         <div class="about-illustration-text-column">
-                            <h3 class="about-illustration-title">Персональные консультации и уход</h3>
-                            <p class="about-illustration-description">В нашем штате работают свыше 20 консультантов по всему миру, которые в любое время суток помогут подобрать индивидуальный уход для лица, тела и волос, при этом – оформить заказ и довести
-                                вас до желаемого результата.</p>
+                            <h3 class="about-illustration-title">Забота о каждой женщине</h3>
+                            <p class="about-illustration-description">Мы стремимся слышать всех женщин, где бы они ни жили и чем бы ни занимались, и удовлетворять их потребности.</p>
                         </div>
                     </div>
                 </div>

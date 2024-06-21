@@ -943,6 +943,7 @@ section.beauty-about {
 .about-illustration-section {
     .about-illustration-img {
         width: 100%;
+        max-width: 100%;
     }
     .about-illustration-text-column {
         height: 100%;
@@ -956,7 +957,7 @@ section.beauty-about {
     }
     .about-illustration-title {
         text-transform: uppercase;
-        color: #C9A872;
+        color: #AD884C;
         font-size: 16px;
     }
     .about-illustration-description {
