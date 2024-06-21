@@ -967,3 +967,92 @@ section.beauty-about {
         margin-top: 30px;
     }
 }
+
+.cart-section {
+    .cart-headline {
+        font-size: 46px;
+        text-align: center;
+        color: #AD884C;
+        margin-bottom: 40px;
+    }
+
+    .cart-product {
+        display: flex;
+        border: 1px solid #D8D8D8;
+        border-radius: 6px;
+        overflow: hidden;
+        margin: 10px 0;
+
+        .product-image-link {
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            width: 170px;
+            height: 200px;
+            max-width: 170px;
+            max-height: 200px;
+            -o-object-fit: contain;
+            object-fit: contain;
+            margin: 0 1em;
+        }
+
+        .cart-table {
+            border-collapse: separate;
+            -webkit-border-horizontal-spacing: 1.5em;
+            -webkit-border-vertical-spacing: 1em;
+
+            .table-head {
+                border: none;
+            }
+
+            th, td {
+                font-size: 16px;
+                border: none;
+                background: #f9f9f9;
+                padding: 20px;
+            }
+            th {
+                color: #AD884C;
+            }
+            td, td a {
+                color: black;
+            }
+        }
+    }
+
+    .cart-table.cart-table-total {
+        border-collapse: separate;
+        -webkit-border-horizontal-spacing: 1.5em;
+        -webkit-border-vertical-spacing: 1em;
+        border: 1px solid #D8D8D8;
+        border-radius: 6px;
+
+
+        th, td {
+            font-size: 16px;
+            border: none;
+            background: #f9f9f9;
+            padding: 20px;
+        }
+
+        .total-title {
+            color: #AD884C;
+        }
+
+        .total-sum {
+            background: #F7EFD5;
+        }
+
+        td, td a {
+            color: black;
+        }
+    }
+
+    .cart-buttons {
+        .evacode-btn {
+            padding: 13px 60px;
+        }
+    }
+}

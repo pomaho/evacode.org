@@ -8266,7 +8266,6 @@ footer {
     >div {
       &:last-child {
         text-align: right;
-        padding-right: 59px;
       }
     }
   }
@@ -8332,9 +8331,12 @@ footer {
         }
 
         h2 {
-          font-size: 24px;
+          font-size: 16px;
           color: $dark-font;
           font-weight: 400;
+            del {
+               font-size: 11px;
+            }
         }
 
         .mobile-cart-content {
@@ -8381,11 +8383,12 @@ footer {
         }
 
         &:first-child {
-          width: 85%;
-          font-size: 15px;
-          padding-right: 10px;
-          text-transform: none;
-          font-weight: 700;
+            font-size: 16px;
+            padding-right: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-align: center;
+            color: #AD884C;
         }
       }
     }
