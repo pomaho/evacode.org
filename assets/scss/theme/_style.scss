@@ -6936,6 +6936,10 @@ footer {
   .banner-section {
     border-radius: 5px;
     overflow: hidden;
+
+    img {
+        max-width: 100%;
+    }
   }
 
   h4 {

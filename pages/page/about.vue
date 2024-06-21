@@ -73,6 +73,8 @@
             </div>
         </section>
     </div>
+    <ShopBeautyTestimonials />
+    <ShopBeautyAboutSlider />
     <Footer/>
 </template>
 
