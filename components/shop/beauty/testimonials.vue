@@ -23,24 +23,11 @@
                     :modules="modules"
                     class="swiper-wrapper"
                 >
-                    <swiper-slide class="swiper-slide">
-                        <ShopBeautyTestimonialsTestimonialSlide/>
-                    </swiper-slide>
-                    <swiper-slide class="swiper-slide">
-                        <ShopBeautyTestimonialsTestimonialSlide/>
-                    </swiper-slide>
-                    <swiper-slide class="swiper-slide">
-                        <ShopBeautyTestimonialsTestimonialSlide/>
-                    </swiper-slide>
-                    <swiper-slide class="swiper-slide">
-                        <ShopBeautyTestimonialsTestimonialSlide/>
-                    </swiper-slide>
-                    <swiper-slide class="swiper-slide">
-                        <ShopBeautyTestimonialsTestimonialSlide/>
-                    </swiper-slide>
-                    <swiper-slide class="swiper-slide">
-                        <ShopBeautyTestimonialsTestimonialSlide/>
-                    </swiper-slide>
+
+                    <SwiperSlide class="swiper-slide" v-for="(testimonial, index) in testimonials"
+                                 :key="index">
+                        <ShopBeautyTestimonialsTestimonialSlide :testimonial="testimonial" />
+                    </SwiperSlide>
                 </swiper>
             </div>
         </section>
@@ -54,6 +41,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import {Navigation} from 'swiper';
 import {Pagination} from 'swiper';
+import {useTestimonialsStore} from '~/store/testimonials';
 
 const modules = [Navigation, Pagination];
 const pagination = {
@@ -63,6 +51,5 @@ const pagination = {
     },
 };
 
-const slides = computed(() => slidesResponse.value?.results);
-
+const testimonials = await useTestimonialsStore().testimonials;
 </script>

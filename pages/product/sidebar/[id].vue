@@ -204,7 +204,7 @@ const pagination = {
 <style scoped>
 .swiper-slide .img-fluid {
     object-fit: cover;
-    object-position: 0 50%;
+    object-position: center;
     aspect-ratio: 1 / 1;
 }
 </style>
