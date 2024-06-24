@@ -38,12 +38,12 @@
                     </div>
                 </div>
                 <div class="row cart-buttons" v-if="cart.length">
-                    <div class="col-lg-6 col-12">
+                    <div class="col-lg-6 col-12 continue-shopping-btn">
                         <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" :class="'evacode-btn'">продолжить
                             покупки
                         </nuxt-link>
                     </div>
-                    <div class="col-lg-6 col-12">
+                    <div class="col-lg-6 col-12 make-order-btn">
                         <nuxt-link :to="{ path: '/page/account/checkout' }" :class="'evacode-btn fill-btn'">заказать
                         </nuxt-link>
                     </div>
