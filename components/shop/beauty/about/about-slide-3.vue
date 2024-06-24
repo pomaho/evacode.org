@@ -1,6 +1,6 @@
 <template>
     <div class="evacode-slide about-slide-3">
-        <video id="background-video-3" class="about-slide-image" autoplay loop muted poster="/images/new_evacode/about-slides/about-slide-3.jpg">
+        <video id="background-video-3" class="about-slide-image" autoplay loop muted webkit-playsinline playsinline poster="/images/new_evacode/about-slides/about-slide-3.jpg">
             <source src="/video/video-3.mp4" type="video/mp4">
         </video>
         <p class="about-slide-text">
@@ -8,3 +8,5 @@
         </p>
     </div>
 </template>
+<script setup lang="ts">
+</script>
