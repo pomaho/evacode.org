@@ -1,6 +1,8 @@
 <template>
     <div class="evacode-slide about-slide-3">
-        <img class="about-slide-image" src="/images/new_evacode/about-slides/about-slide-3.jpg">
+        <video id="background-video-3" class="about-slide-image" autoplay loop muted poster="/images/new_evacode/about-slides/about-slide-3.jpg">
+            <source src="/video/video-3.mp4" type="video/mp4">
+        </video>
         <p class="about-slide-text">
             Компания ЕваКод отслеживает качество продукции на каждом этапе, от производства, лаборатории где изготавливается продукт, сертификации, а так же тестируем все на себе чтобы убедится не только в качественном составе, но и в эффективности формулы.
         </p>
