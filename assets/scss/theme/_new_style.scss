@@ -1050,9 +1050,18 @@ section.beauty-about {
         }
     }
 
-    .cart-buttons {
+    .cart-buttons,
+    .empty-cart-cls {
         .evacode-btn {
             padding: 13px 60px;
         }
+    }
+}
+
+.back-button {
+    text-align: center;
+    .evacode-btn {
+        width: 300px;
+        padding: 10px;
     }
 }

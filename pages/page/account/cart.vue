@@ -1,12 +1,13 @@
 <template>
     <div>
         <Header/>
+        <WidgetsBackButton />
         <section class="cart-section section-b-space">
             <div class="container">
-                <h1 class="cart-headline">Корзина</h1>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="cart-tables" v-if="cart.length">
+                            <h1 class="cart-headline">Корзина</h1>
                             <WidgetsCartProduct v-for="(product, index) in cart" :key="index" :product="product" />
                         </div>
                         <table class="table cart-table cart-table-total table-responsive-md" v-if="cart.length">
@@ -24,13 +25,13 @@
                             </tfoot>
                         </table>
                         <div class="col-sm-12 empty-cart-cls text-center" v-if="!cart.length">
-                            <img src='/images/evacode/icon-empty-cart.png' class="img-fluid" alt="empty cart"/>
+                            <img src='/images/new_evacode/shopping-cart-1.svg' alt="empty cart"/>
                             <h3 class="mt-3">
                                 <strong>Ваша корзина пуста</strong>
                             </h3>
                             <h4 class="mb-3">Добавьте что-нибудь чтобы быть счастливее :)</h4>
                             <div class="col-12">
-                                <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="btn btn-solid">продолжить
+                                <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="evacode-btn fill-btn">продолжить
                                     покупки
                                 </nuxt-link>
                             </div>

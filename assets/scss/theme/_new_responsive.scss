@@ -244,6 +244,9 @@
             display: none;
         }
     }
+    .cart-headline {
+        display: none;
+    }
     .cart-buttons {
         .col-12 {
             text-align: center;
@@ -253,6 +256,12 @@
         .make-order-btn {
             margin-top: 20px;
         }
+    }
+}
+
+@media (min-width: 768px) {
+    .back-button {
+        display: none;
     }
 }
 

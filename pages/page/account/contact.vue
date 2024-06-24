@@ -1,5 +1,6 @@
 <template>
     <Header/>
+    <WidgetsBackButton />
     <div>
         <section class="contact-page section-b-space">
             <div class="container">

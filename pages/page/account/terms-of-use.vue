@@ -1,5 +1,6 @@
 <template>
     <Header/>
+    <WidgetsBackButton />
     <ShopBeautyBigTextSection
         :content="aboutTermsOfUse"
     />
