@@ -21,7 +21,12 @@ export const useProductStore = defineStore({
             return new Intl.NumberFormat(this.currency.locale, { style: "currency", currency: this.currency.value }).format(
                 price * this.currency.curr,
             );
-        }
+        },
+		setCurrency(currency) {
+			this.currency.value = currency.value;
+			this.currency.curr = currency.curr;
+			this.currency.locale = currency.locale || 'en-US';
+		}
     },
     getters: {
         changeCurrency: (state) => {

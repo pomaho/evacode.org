@@ -9,6 +9,7 @@
 import {
     useCartStore
 } from '~~/store/cart'
+import {useProductStore} from '~/store/products';
 export default {
     async mounted() {
         const localForage = useLocalForage();
@@ -17,10 +18,16 @@ export default {
         if (cartArray?.length) {
             useCartStore().setInitialCart(cartArray);
         }
+        const currency = await localForage.getItem('evacode_currency');
+        if (currency) {
+            debugger;
+            useProductStore().setCurrency(JSON.parse(currency));
+        }
 
         window.addEventListener('beforeunload', async (event) => {
             console.log('beforeunload', JSON.stringify(useCartStore().cart));
             await localForage.setItem('evacode_cart', JSON.stringify(useCartStore().cart));
+            await localForage.setItem('evacode_currency', JSON.stringify(useProductStore().changeCurrency));
         });
     },
 }
