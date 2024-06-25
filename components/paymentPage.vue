@@ -61,6 +61,7 @@
                         Общая стоимость
                         <span class="count">{{ getPrice(cartTotal) }}
                         <del>{{ getPrice(cartOfficialTotal)}}</del></span>
+                          <WidgetsCurrencyWarning />
                       </li>
                     </ul>
                   </div>
