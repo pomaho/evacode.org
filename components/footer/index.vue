@@ -40,7 +40,7 @@
                     <div class="row">
                         <div class="col-xl-6 col-md-6 col-sm-12">
                             <div class="footer-end">
-                                <p><i class="fa fa-copyright" aria-hidden="true"></i> evacode.org 2024 </p>
+                                <p><i class="fa fa-copyright" aria-hidden="true"></i> evacode.org {{ date.getFullYear() }} </p>
                             </div>
                         </div>
                     </div>
@@ -49,5 +49,6 @@
         </footer>
     </div>
 </template>
-<script setup lang="ts">
+<script setup>
+const date = new Date();
 </script>

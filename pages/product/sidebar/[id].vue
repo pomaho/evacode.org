@@ -136,8 +136,6 @@ const slideId = ref(0);
 const counter = ref(1);
 const swiper = ref({});
 
-
-const curr = computed(() => useProductStore().changeCurrency);
 const product = computed(() => productResponse.value?.results[0]);
 
 const {data: productResponse} = await useAsyncData(
