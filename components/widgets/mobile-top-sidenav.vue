@@ -13,13 +13,13 @@
       </div>
     </div>
     <div class="row phone-and-cart-row">
-      <div class="col-9">
+      <div class="col-10">
         <div class="top-sidenav-cur-phone top-header-v-centered">
           <WidgetsCurrency />
           <WidgetsContactPhone />
         </div>
       </div>
-      <div class="col-3">
+      <div class="col-2">
         <WidgetsHeaderWidgets/>
       </div>
     </div>
