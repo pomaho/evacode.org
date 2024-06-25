@@ -20,7 +20,6 @@ export default {
         }
         const currency = await localForage.getItem('evacode_currency');
         if (currency) {
-            debugger;
             useProductStore().setCurrency(JSON.parse(currency));
         }
 

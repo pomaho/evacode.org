@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="section-deliveries section-b-space">
+        <section v-if="deliveries.length" class="section-deliveries section-b-space">
             <div class="container">
                 <div class="container-wrapper">
                     <div class="row">

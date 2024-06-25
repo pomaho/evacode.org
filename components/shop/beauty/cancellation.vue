@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="section-cancellation section-b-space">
+        <section v-if="deliveries.length" class="section-cancellation section-b-space">
             <div class="container">
                 <img class="cancellation-image" src="/images/new_evacode/cancellation.png" />
                 <h2 class="cancellation-title">Возврат и отмена</h2>
