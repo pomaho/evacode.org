@@ -543,9 +543,11 @@ section.beauty-about {
         display: flex;
         flex-direction: row;
 
-        .avatar {
+        .avatar .customer-avatar{
             width: 70px;
             height: 70px;
+            object-fit: cover;
+            border-radius: 100%;
         }
 
         .info {
@@ -579,6 +581,8 @@ section.beauty-about {
     .testimonial-image {
         margin-top: 20px;
         max-width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
     }
 
 }

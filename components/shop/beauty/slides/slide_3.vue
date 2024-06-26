@@ -6,7 +6,7 @@
         <div class="slider-container">
           <WidgetsBrandLogo :logo_type="'white'" />
           <h2 class="slider-heading-2">Доверьте свою красоту профессионалам!</h2>
-          <p class="slider-description-white">Мы гарантируем оригинальность каждого продукта</p>
+          <p class="slider-description-white">Мы гарантируем оригинальность <br/>каждого продукта</p>
           <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="evacode-btn slider-btn">Каталог</nuxt-link>
         </div>
       </div>
@@ -24,3 +24,5 @@
     </div>
   </div>
 </template>
+<script setup lang="ts">
+</script>

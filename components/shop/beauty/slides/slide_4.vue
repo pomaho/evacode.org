@@ -6,7 +6,7 @@
         <div class="slider-container">
           <WidgetsBrandLogo />
           <h2 class="slider-heading-2">Акция</h2>
-          <p class="slider-description">В честь дня рождения ЕваКод дарим скидку! Вся косметика по оптовой цене</p>
+          <p class="slider-description">В честь дня рождения ЕваКод <br/> дарим скидку!  <br/>Вся косметика по оптовой цене</p>
           <nuxt-link :to="{ path: '/collection/leftsidebar/0' }" class="evacode-btn slider-btn">Купить</nuxt-link>
         </div>
       </div>
@@ -24,3 +24,5 @@
     </div>
   </div>
 </template>
+<script setup lang="ts">
+</script>
