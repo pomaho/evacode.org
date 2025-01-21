@@ -46,7 +46,27 @@ export default defineNuxtConfig({
                             gtag("js", new Date());
                             gtag("config", "G-22XGNP36M1");`,
                     tagPosition: 'bodyOpen',
-                }
+                },
+                {
+                    type: 'text/javascript',
+                    innerHTML: `
+                        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0];
+                        k.async=1;k.src=r;a.parentNode.insertBefore(k,a)})
+                        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+                        ym(99607281, "init", {
+                            clickmap:true,
+                            trackLinks:true,
+                            accurateTrackBounce:true,
+                            webvisor:true
+                        });
+                      `,
+                },
+            ],
+            noscript: [
+                {
+                    children: '<div><img src="https://mc.yandex.ru/watch/99607281" style="position:absolute; left:-9999px;" alt="" /></div>',
+                },
             ],
         },
     },
