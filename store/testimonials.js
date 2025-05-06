@@ -10,8 +10,13 @@ export const useTestimonialsStore = defineStore({
     getters: {
         testimonials: async (state) => {
             if (!state._testimonials) {
-                const testimonialsResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/review`);
-                state._testimonials = testimonialsResponse?.results || [];
+				try {
+					const testimonialsResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/review`);
+					state._testimonials = testimonialsResponse?.results || [];
+				} catch (error) {
+					console.log(error);
+					state._testimonials = [];
+				}
             }
             return state._testimonials;
         },

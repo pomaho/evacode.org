@@ -10,9 +10,14 @@ export const useDeliveryStore = defineStore({
     getters: {
         deliveries: async (state) => {
             if (!state._deliveries) {
-                const deliveriesResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/delivery`);
-                const deliveries = deliveriesResponse?.results || [];
-                state._deliveries = deliveries;
+				try {
+					const deliveriesResponse = await $fetch(`${useRuntimeConfig().public.apiBase}/core/delivery`);
+					const deliveries = deliveriesResponse?.results || [];
+					state._deliveries = deliveries;
+				} catch (error) {
+					console.log(error);
+					state._deliveries = [];
+				}
             }
             return state._deliveries;
         },
