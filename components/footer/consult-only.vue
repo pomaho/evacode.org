@@ -8,7 +8,7 @@
                     </div>
                     <div class="col-lg-6 consult-column">
                         <h2 class="consult-only-h2">Оставьте Ваш номер телефона и имя.</h2> <br><br>
-                        <h4 class="consult-only-h4">Наш консультант свяжется с Вами в ближайшее время и ответит на все вопросы!</h4>
+                        <h4 class="consult-only-h4">Наш консультант свяжется с Вами в ближайшее время и ответит на все вопросы.</h4>
 
                         <form
                             action="https://pixelstrap.us19.list-manage.com/subscribe/post?u=5a128856334b598b395f1fc9b&amp;id=082f74cbda"
