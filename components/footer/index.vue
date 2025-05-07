@@ -1,7 +1,8 @@
 <template>
     <div>
         <footer class="footer-light">
-            <FooterConsult/>
+            <FooterConsult v-if="!showConsultOnly"/>
+            <FooterConsultOnly v-if="showConsultOnly"/>
             <section  v-if="showMenu" class="header-menu-section">
                 <div class="container">
                     <div class="row">
@@ -56,6 +57,10 @@ const props = defineProps({
     showMenu:{
         type: Boolean,
         default: true,
+    },
+    showConsultOnly:{
+        type: Boolean,
+        default: false,
     },
 });
 </script>
