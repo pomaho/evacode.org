@@ -9,7 +9,7 @@
             <div class="success-text">
               <i class="fa fa-check-circle" aria-hidden="true"></i>
               <h2>Спасибо за обращение!</h2>
-              <p>В ближайшее время с Вами свяжутся наши консультанты!</p>
+              <p>В ближайшее время с Вами свяжется наш консультант!</p>
               <nuxt-link :to="{ path: '/'}" :class="'btn btn-solid'">На главную</nuxt-link>
             </div>
           </div>
