@@ -2,7 +2,7 @@
     <div>
         <footer class="footer-light">
             <FooterConsult/>
-            <section class="header-menu-section">
+            <section  v-if="showMenu" class="header-menu-section">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -49,6 +49,13 @@
         </footer>
     </div>
 </template>
+
 <script setup>
 const date = new Date();
+const props = defineProps({
+    showMenu:{
+        type: Boolean,
+        default: true,
+    },
+});
 </script>

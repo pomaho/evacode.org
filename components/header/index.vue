@@ -2,7 +2,7 @@
   <div>
     <header>
       <WidgetsTopbar />
-      <section class="header-menu-section">
+      <section v-if="showMenu" class="header-menu-section">
         <div class="container">
           <div class="row">
             <div class="col-12">
@@ -15,7 +15,13 @@
   </div>
 </template>
 
-<script>
+<script setup>
+const props = defineProps({
+    showMenu:{
+        type: Boolean,
+        default: true,
+    },
+});
 </script>
 
 <style scoped>
