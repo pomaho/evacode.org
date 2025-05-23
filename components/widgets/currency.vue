@@ -7,15 +7,17 @@
     </MazDropdown>
 </template>
 <script setup>
-import {useCurrenciesStore} from '~/store/currencies';
 import {useProductStore} from '~/store/products';
-
-let currencies = await useCurrenciesStore().currencies;
-currencies = currencies.map((currency) => ({
-    label: currency.value,
-    action: () => useProductStore().setCurrency(currency),
-}));
+import useCurrencies from '~/composables/useCurrencies';
+let currencies = ref([]);
 
 const currentCurrency = ref(useProductStore().changeCurrency);
 
+onMounted(async () => {
+    const currenciesResp = await useCurrencies().getCurrencies();
+    currencies.value = currenciesResp.map((currency) => ({
+        label: currency.value,
+        action: () => useProductStore().setCurrency(currency),
+    }));
+});
 </script>
