@@ -35,7 +35,7 @@
                                 <span class="validate-error">{{ phoneErrorMessage }}</span>
                             </div>
                             <button type="submit" class="btn evacode-btn" id="mc-submit" @click.prevent="onSubmit">
-                                Получить
+                                Связаться с консультантом
                             </button>
                         </form>
                     </div>

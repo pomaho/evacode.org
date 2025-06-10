@@ -67,7 +67,7 @@
                   </div>
                   <div class="payment-box">
                     <div class="text-end">
-                      <span class="btn btn-primary" @click="onSubmit">Отправить заказ</span>
+                      <span class="btn btn-primary" @click="onSubmit">Купить</span>
                     </div>
                   </div>
                 </div>
