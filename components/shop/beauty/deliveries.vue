@@ -57,7 +57,7 @@ import {useDeliveryStore} from '~/store/delivery';
 const deliveries = ref([]);
 
 onMounted(async () => {
-    deliveries.value = await useDeliveryStore().deliveries;
+    deliveries.value = (await useDeliveryStore().deliveries) || [];
 });
 useHead({
     titleTemplate: `%s - Доставка`,
