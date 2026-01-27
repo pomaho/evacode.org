@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section v-if="deliveries.length" class="section-deliveries section-b-space">
+        <section v-if="deliveriesSafe.length" class="section-deliveries section-b-space">
             <div class="container">
                 <div class="container-wrapper">
                     <div class="row">
@@ -10,7 +10,7 @@
                                     <li
                                         class="nav-item"
                                         role="presentation"
-                                        v-for="(delivery, index) in deliveries" :key="index"
+                                        v-for="(delivery, index) in deliveriesSafe" :key="index"
                                     >
                                         <button
                                             class="nav-link"
@@ -31,7 +31,7 @@
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div
-                                        v-for="(delivery, index) in deliveries" :key="index"
+                                        v-for="(delivery, index) in deliveriesSafe" :key="index"
                                         class="tab-pane fade show"
                                         :class="{
                                         active: index === 0,
@@ -53,6 +53,7 @@
 
 <script setup>
 const deliveries = ref([]);
+const deliveriesSafe = computed(() => Array.isArray(deliveries.value) ? deliveries.value : []);
 
 onMounted(async () => {
     try {
