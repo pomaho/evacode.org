@@ -54,7 +54,11 @@
 <script setup>
 import {useDeliveryStore} from '~/store/delivery';
 
-const deliveries = await useDeliveryStore().deliveries;
+const deliveries = ref([]);
+
+onMounted(async () => {
+    deliveries.value = await useDeliveryStore().deliveries;
+});
 useHead({
     titleTemplate: `%s - Доставка`,
     meta: [
