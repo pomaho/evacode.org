@@ -52,12 +52,16 @@
 </template>
 
 <script setup>
-import {useDeliveryStore} from '~/store/delivery';
-
 const deliveries = ref([]);
 
 onMounted(async () => {
-    deliveries.value = await useDeliveryStore().deliveries;
+    try {
+        const res = await $fetch(`${useRuntimeConfig().public.apiBase}/core/delivery`);
+        deliveries.value = res?.results || [];
+    } catch (error) {
+        console.error(error);
+        deliveries.value = [];
+    }
 });
 useHead({
     titleTemplate: `%s - Доставка`,
