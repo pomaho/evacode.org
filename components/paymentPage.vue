@@ -68,6 +68,7 @@
                   <div class="payment-box">
                     <div class="text-end">
                       <span class="btn btn-primary" @click="onSubmit">Купить</span>
+                      <span class="btn btn-primary ms-2" @click="openPaypalInfoModal">Оплатить PayPal</span>
                     </div>
                   </div>
                 </div>
@@ -77,6 +78,10 @@
         </div>
       </div>
     </div>
+    <PaymentPaypalInfoModal
+      :open="showPaypalInfoModal"
+      @close="closePaypalInfoModal"
+    />
   </section>
 </template>
 <script>
@@ -105,7 +110,8 @@ export default {
         firstName: {value: '', errormsg: ''},
         phone: {value: '', errormsg: ''},
       },
-      countryCode: 'KR'
+      countryCode: 'KR',
+      showPaypalInfoModal: false,
     }
   },
 
@@ -122,6 +128,12 @@ export default {
 
 
   methods: {
+    openPaypalInfoModal() {
+      this.showPaypalInfoModal = true;
+    },
+    closePaypalInfoModal() {
+      this.showPaypalInfoModal = false;
+    },
     validateFields() {
       let isValidForm = true;
       const empty_error_msg = 'Обязательное поле'
