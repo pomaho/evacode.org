@@ -20,6 +20,7 @@
                                 <FooterAbout/>
                                 <FooterLinks/>
                                 <FooterSocials/>
+                                <FooterBusinessInfo/>
                             </div>
                         </div>
 
